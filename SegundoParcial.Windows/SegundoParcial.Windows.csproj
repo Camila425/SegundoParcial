@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{838C3B8A-8FE1-4AFB-907F-A3EADC1BC3CA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SegundoParcial.Windows</RootNamespace>
+    <AssemblyName>SegundoParcial.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.6.3.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FrmAsistenciaAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAsistenciaAE.Designer.cs">
+      <DependentUpon>FrmAsistenciaAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAsistencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAsistencias.Designer.cs">
+      <DependentUpon>FrmAsistencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscarPuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarPuesto.Designer.cs">
+      <DependentUpon>FrmBuscarPuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCiudadAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCiudadAE.Designer.cs">
+      <DependentUpon>FrmCiudadAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCiudades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCiudades.Designer.cs">
+      <DependentUpon>FrmCiudades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmpleados.Designer.cs">
+      <DependentUpon>FrmEmpleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmpleadosAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmpleadosAE.Designer.cs">
+      <DependentUpon>FrmEmpleadosAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHorarioAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHorarioAE.Designer.cs">
+      <DependentUpon>FrmHorarioAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHorarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHorarios.Designer.cs">
+      <DependentUpon>FrmHorarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPagoAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPagoAE.Designer.cs">
+      <DependentUpon>FrmPagoAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPagos.Designer.cs">
+      <DependentUpon>FrmPagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPuestoAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPuestoAE.Designer.cs">
+      <DependentUpon>FrmPuestoAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPuestos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPuestos.Designer.cs">
+      <DependentUpon>FrmPuestos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRealizarPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRealizarPago.Designer.cs">
+      <DependentUpon>FrmRealizarPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSectorAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSectorAE.Designer.cs">
+      <DependentUpon>FrmSectorAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSectores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSectores.Designer.cs">
+      <DependentUpon>FrmSectores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CombosHelper.cs" />
+    <Compile Include="Helpers\FromHelper.cs" />
+    <Compile Include="Helpers\GridHelper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAsistenciaAE.resx">
+      <DependentUpon>FrmAsistenciaAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAsistencias.resx">
+      <DependentUpon>FrmAsistencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscarPuesto.resx">
+      <DependentUpon>FrmBuscarPuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCiudadAE.resx">
+      <DependentUpon>FrmCiudadAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCiudades.resx">
+      <DependentUpon>FrmCiudades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmpleados.resx">
+      <DependentUpon>FrmEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmpleadosAE.resx">
+      <DependentUpon>FrmEmpleadosAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHorarioAE.resx">
+      <DependentUpon>FrmHorarioAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHorarios.resx">
+      <DependentUpon>FrmHorarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPagoAE.resx">
+      <DependentUpon>FrmPagoAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPagos.resx">
+      <DependentUpon>FrmPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPuestoAE.resx">
+      <DependentUpon>FrmPuestoAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPuestos.resx">
+      <DependentUpon>FrmPuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSectorAE.resx">
+      <DependentUpon>FrmSectorAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSectores.resx">
+      <DependentUpon>FrmSectores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\people_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ciudades.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alarm_clock_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\place_marker_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\create_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\update_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\first_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\last_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SegundoParcial.Entidades\SegundoParcial.Entidades.csproj">
+      <Project>{FBA8B840-F43F-4273-BD63-F8E131679EDC}</Project>
+      <Name>SegundoParcial.Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SegundoParcial.Servicios\SegundoParcial.Servicios.csproj">
+      <Project>{237A6AEC-6F93-407F-9E65-BFC8F3BD9D2D}</Project>
+      <Name>SegundoParcial.Servicios</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\first_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\first_48px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_64px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagen2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_40px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_36px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_64px2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_36px2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_64px3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_36px3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_64px4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_64px5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_40px2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\todo_list_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_36px4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_64px6.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
