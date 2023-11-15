@@ -36,8 +36,6 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.Cancelarbutton = new System.Windows.Forms.Button();
             this.Okbutton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ImportetextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +81,7 @@
             // Cancelarbutton
             // 
             this.Cancelarbutton.Image = global::SegundoParcial.Windows.Properties.Resources.cancel_64px6;
-            this.Cancelarbutton.Location = new System.Drawing.Point(285, 190);
+            this.Cancelarbutton.Location = new System.Drawing.Point(310, 161);
             this.Cancelarbutton.Name = "Cancelarbutton";
             this.Cancelarbutton.Size = new System.Drawing.Size(121, 59);
             this.Cancelarbutton.TabIndex = 5;
@@ -93,7 +91,7 @@
             // Okbutton
             // 
             this.Okbutton.Image = global::SegundoParcial.Windows.Properties.Resources.ok_36px4;
-            this.Okbutton.Location = new System.Drawing.Point(45, 190);
+            this.Okbutton.Location = new System.Drawing.Point(36, 161);
             this.Okbutton.Name = "Okbutton";
             this.Okbutton.Size = new System.Drawing.Size(121, 59);
             this.Okbutton.TabIndex = 4;
@@ -101,30 +99,12 @@
             this.Okbutton.UseVisualStyleBackColor = true;
             this.Okbutton.Click += new System.EventHandler(this.Okbutton_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 136);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Importe:";
-            // 
-            // ImportetextBox
-            // 
-            this.ImportetextBox.Location = new System.Drawing.Point(110, 136);
-            this.ImportetextBox.Name = "ImportetextBox";
-            this.ImportetextBox.Size = new System.Drawing.Size(336, 20);
-            this.ImportetextBox.TabIndex = 7;
-            // 
             // FrmPagoAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 307);
+            this.ClientSize = new System.Drawing.Size(458, 230);
             this.ControlBox = false;
-            this.Controls.Add(this.ImportetextBox);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.Cancelarbutton);
             this.Controls.Add(this.Okbutton);
             this.Controls.Add(this.FechadateTimePicker);
@@ -149,7 +129,5 @@
         private System.Windows.Forms.Button Okbutton;
         private System.Windows.Forms.Button Cancelarbutton;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox ImportetextBox;
     }
 }

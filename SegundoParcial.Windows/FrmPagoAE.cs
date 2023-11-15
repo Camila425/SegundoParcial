@@ -1,4 +1,5 @@
 ﻿using SegundoParcial.Entidades.Entidades;
+using SegundoParcial.Entidades.Enums;
 using SegundoParcial.Windows.Helpers;
 using System;
 using System.Windows.Forms;
@@ -17,12 +18,11 @@ namespace SegundoParcial.Windows
         {
             return Pago;
         }
-
+        private EstadoPago estadoPago;
         private void Cancelarbutton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
-
         private void Okbutton_Click(object sender, EventArgs e)
         {
             if (ValidarDatos())
@@ -33,7 +33,7 @@ namespace SegundoParcial.Windows
                 }
                 Pago.EmpleadoId = (int)EmpleadocomboBox.SelectedValue;
                 Pago.Fecha = FechadateTimePicker.Value;
-                Pago.Importe = double.Parse(ImportetextBox.Text); 
+                estadoPago = EstadoPago.Impago;
                 DialogResult = DialogResult.OK;
             }
         }
@@ -58,6 +58,11 @@ namespace SegundoParcial.Windows
                 FechadateTimePicker.Value = Pago.Fecha;
                
             }
+        }
+
+        public void SetPago(Pago pago)
+        {
+            this.Pago = pago;
         }
     }
 }

@@ -1,84 +1,133 @@
-﻿using SegundoParcial.Datos.Interfaces;
-using SegundoParcial.Datos.Repositorios;
+﻿using SegundoParcial.Datos.Repositorios;
 using SegundoParcial.Entidades.Entidades;
 using SegundoParcial.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace SegundoParcial.Servicios.Servicios
 {
     public class ServiciosSectores : IServiciosSectores
     {
-        private readonly IRepositorioSectores repositorio;
         public ServiciosSectores()
         {
-            repositorio = new RepositorioSectores();
         }
 
         public void Borrar(int sectorId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                repositorio.Borrar(sectorId);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    unitOfWork.Sectores.Borrar(sectorId);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    unitOfWork?.Rollback();
+                    throw;
+                } 
             }
         }
 
         public bool EstaRelacionado(Sector sector)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.EstaRelacionado(sector);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Sectores.EstaRelacionado(sector);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public bool Existe(Sector sector)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.Existe(sector);
+                try
+                {
+                    return unitOfWork.Sectores.Existe(sector);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
-            catch (Exception)
+        }
+
+        public int GetCantidad()
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                throw;
+                try
+                {
+                    return unitOfWork.Sectores.GetCantidad();
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public List<Sector> GetSectores()
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetSectores();
+                try
+                {
+                    return unitOfWork.Sectores.GetSectores();
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
-            catch (Exception)
+        }
+
+        public List<Sector> GetSectorPorPagina(int registrosPorPagina, int paginaActual)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                throw;
+                try
+                {
+                    var lista = unitOfWork.Sectores.GetSectorPorPagina(registrosPorPagina, paginaActual);
+                    return lista;
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public void Guardar(Sector sector)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                if (sector.SectorId == 0)
+                try
                 {
-                    repositorio.Agregar(sector);
+                    if (sector.SectorId == 0)
+                    {
+                        unitOfWork.Sectores.Agregar(sector);
+                    }
+                    else
+                    {
+                        unitOfWork.Sectores.Editar(sector);
+                    }
+                    unitOfWork.Commit();
                 }
-                else
+                catch (Exception)
                 {
-                    repositorio.Editar(sector);
+                    unitOfWork.Rollback();
+                    unitOfWork.Dispose();
+
                 }
-            }
-            catch (Exception)
-            {
-                throw;
             }
         }
     }

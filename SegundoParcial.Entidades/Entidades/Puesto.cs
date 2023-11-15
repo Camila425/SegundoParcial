@@ -10,7 +10,7 @@ namespace SegundoParcial.Entidades.Entidades
     {
         public int PuestoId { get; set; }
         public string NombrePuesto { get; set; }
-        public double Sueldo { get; set; }
+        public double SueldoPorHora { get; set; }
 
         public object Clone()
         {

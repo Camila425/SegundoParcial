@@ -1,9 +1,5 @@
 ﻿using SegundoParcial.Entidades.Entidades;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SegundoParcial.Datos.Interfaces
 {
@@ -14,6 +10,8 @@ namespace SegundoParcial.Datos.Interfaces
         void Editar(Sector sector);
         bool EstaRelacionado(Sector sector);
         bool Existe(Sector sector);
+        int GetCantidad();
         List<Sector> GetSectores();
+        List<Sector> GetSectorPorPagina(int registrosPorPagina, int paginaActual);
     }
 }

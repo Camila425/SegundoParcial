@@ -18,7 +18,7 @@ namespace SegundoParcial.Windows
         int paginaActual = 1;
         int registros = 0;
         int paginas = 0;
-        int registrosPorPagina = 12;
+        int registrosPorPagina = 10;
         int? PuestoFiltro=null ;
         bool filtroOn = false;
 
@@ -131,7 +131,7 @@ namespace SegundoParcial.Windows
                 }
                 else
                 {
-                    MessageBox.Show("Empleado Existe!", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Empleado Relacionado!!", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -166,7 +166,7 @@ namespace SegundoParcial.Windows
                     serviciosempleado.Guardar(empleado);
                     GridHelper.Setearfila(r, empleado);
                     MessageBox.Show("Registro editado", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    MostrarPaginado();
+                    RecargarGrilla();
                 }
                 else
                 {
@@ -194,10 +194,10 @@ namespace SegundoParcial.Windows
                 try
                 {
                     filtroOn = true;
-                    var empleado = frm.GetEmpleado();
-                    PuestoFiltro = empleado.PuestoId;
+                    var puesto = frm.GetPuesto();
+                    PuestoFiltro = puesto.PuestoId;
                     BuscartoolStripButton.BackColor = Color.Red;
-                    registros = serviciosempleado.GetCantidad(empleado.PuestoId);
+                    registros = serviciosempleado.GetCantidad(puesto.PuestoId);
                     paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
                     MostrarPaginado();
                 }

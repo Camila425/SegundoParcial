@@ -53,6 +53,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDetallePago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetallePago.Designer.cs">
+      <DependentUpon>FrmDetallePago.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAsistenciaAE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,12 @@
     </Compile>
     <Compile Include="FrmAsistencias.Designer.cs">
       <DependentUpon>FrmAsistencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscarEmpleado.Designer.cs">
+      <DependentUpon>FrmBuscarEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmBuscarPuesto.cs">
       <SubType>Form</SubType>
@@ -160,11 +172,17 @@
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmDetallePago.resx">
+      <DependentUpon>FrmDetallePago.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAsistenciaAE.resx">
       <DependentUpon>FrmAsistenciaAE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAsistencias.resx">
       <DependentUpon>FrmAsistencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscarEmpleado.resx">
+      <DependentUpon>FrmBuscarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBuscarPuesto.resx">
       <DependentUpon>FrmBuscarPuesto.cs</DependentUpon>
@@ -343,6 +361,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cancel_64px6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home_50px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_garage_door_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_garage_door_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_garage_door_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_36px5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_64px7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_40px3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

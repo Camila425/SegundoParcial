@@ -35,14 +35,11 @@
             this.FechadateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.EmpleadocomboBox = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.DnitextBox = new System.Windows.Forms.TextBox();
             this.Cancelarbutton = new System.Windows.Forms.Button();
             this.Registrarbutton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.HoradateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.HoraEntradadateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.HoraSalidadateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
@@ -80,7 +77,7 @@
             this.ImageniconPictureBox.IconSize = 198;
             this.ImageniconPictureBox.Location = new System.Drawing.Point(-1, 2);
             this.ImageniconPictureBox.Name = "ImageniconPictureBox";
-            this.ImageniconPictureBox.Size = new System.Drawing.Size(198, 272);
+            this.ImageniconPictureBox.Size = new System.Drawing.Size(198, 251);
             this.ImageniconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ImageniconPictureBox.TabIndex = 5;
             this.ImageniconPictureBox.TabStop = false;
@@ -113,29 +110,11 @@
             this.EmpleadocomboBox.Size = new System.Drawing.Size(245, 21);
             this.EmpleadocomboBox.TabIndex = 3;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(362, 107);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Dni";
-            // 
-            // DnitextBox
-            // 
-            this.DnitextBox.Location = new System.Drawing.Point(425, 104);
-            this.DnitextBox.Name = "DnitextBox";
-            this.DnitextBox.ReadOnly = true;
-            this.DnitextBox.Size = new System.Drawing.Size(245, 20);
-            this.DnitextBox.TabIndex = 5;
-            // 
             // Cancelarbutton
             // 
             this.Cancelarbutton.BackColor = System.Drawing.Color.RosyBrown;
             this.Cancelarbutton.ForeColor = System.Drawing.Color.Black;
-            this.Cancelarbutton.Location = new System.Drawing.Point(539, 294);
+            this.Cancelarbutton.Location = new System.Drawing.Point(540, 239);
             this.Cancelarbutton.Name = "Cancelarbutton";
             this.Cancelarbutton.Size = new System.Drawing.Size(131, 65);
             this.Cancelarbutton.TabIndex = 11;
@@ -147,7 +126,7 @@
             // 
             this.Registrarbutton.BackColor = System.Drawing.Color.RosyBrown;
             this.Registrarbutton.ForeColor = System.Drawing.Color.Black;
-            this.Registrarbutton.Location = new System.Drawing.Point(351, 294);
+            this.Registrarbutton.Location = new System.Drawing.Point(260, 239);
             this.Registrarbutton.Name = "Registrarbutton";
             this.Registrarbutton.Size = new System.Drawing.Size(131, 65);
             this.Registrarbutton.TabIndex = 10;
@@ -160,7 +139,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.DarkGray;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(354, 233);
+            this.label5.Location = new System.Drawing.Point(362, 194);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 8;
@@ -171,7 +150,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.DarkGray;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(353, 191);
+            this.label6.Location = new System.Drawing.Point(362, 148);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 6;
@@ -181,20 +160,10 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // HoradateTimePicker
-            // 
-            this.HoradateTimePicker.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.HoradateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HoradateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.HoradateTimePicker.Location = new System.Drawing.Point(15, 306);
-            this.HoradateTimePicker.Name = "HoradateTimePicker";
-            this.HoradateTimePicker.Size = new System.Drawing.Size(182, 31);
-            this.HoradateTimePicker.TabIndex = 1;
-            // 
             // HoraEntradadateTimePicker
             // 
             this.HoraEntradadateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.HoraEntradadateTimePicker.Location = new System.Drawing.Point(417, 191);
+            this.HoraEntradadateTimePicker.Location = new System.Drawing.Point(426, 148);
             this.HoraEntradadateTimePicker.Name = "HoraEntradadateTimePicker";
             this.HoraEntradadateTimePicker.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.HoraEntradadateTimePicker.ShowUpDown = true;
@@ -204,7 +173,7 @@
             // HoraSalidadateTimePicker
             // 
             this.HoraSalidadateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.HoraSalidadateTimePicker.Location = new System.Drawing.Point(417, 233);
+            this.HoraSalidadateTimePicker.Location = new System.Drawing.Point(426, 188);
             this.HoraSalidadateTimePicker.Name = "HoraSalidadateTimePicker";
             this.HoraSalidadateTimePicker.ShowUpDown = true;
             this.HoraSalidadateTimePicker.Size = new System.Drawing.Size(245, 20);
@@ -215,7 +184,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.DarkGray;
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(361, 138);
+            this.label8.Location = new System.Drawing.Point(362, 107);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 15;
@@ -224,7 +193,7 @@
             // FechahoydateTimePicker
             // 
             this.FechahoydateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.FechahoydateTimePicker.Location = new System.Drawing.Point(425, 138);
+            this.FechahoydateTimePicker.Location = new System.Drawing.Point(425, 107);
             this.FechahoydateTimePicker.Name = "FechahoydateTimePicker";
             this.FechahoydateTimePicker.ShowUpDown = true;
             this.FechahoydateTimePicker.Size = new System.Drawing.Size(245, 20);
@@ -235,18 +204,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(682, 371);
+            this.ClientSize = new System.Drawing.Size(682, 315);
+            this.ControlBox = false;
             this.Controls.Add(this.FechahoydateTimePicker);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.HoraSalidadateTimePicker);
             this.Controls.Add(this.HoraEntradadateTimePicker);
-            this.Controls.Add(this.HoradateTimePicker);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Registrarbutton);
             this.Controls.Add(this.Cancelarbutton);
-            this.Controls.Add(this.DnitextBox);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.EmpleadocomboBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.FechadateTimePicker);
@@ -272,14 +239,11 @@
         private System.Windows.Forms.DateTimePicker FechadateTimePicker;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox EmpleadocomboBox;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox DnitextBox;
         private System.Windows.Forms.Button Cancelarbutton;
         private System.Windows.Forms.Button Registrarbutton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.DateTimePicker HoradateTimePicker;
         private System.Windows.Forms.DateTimePicker HoraEntradadateTimePicker;
         public System.Windows.Forms.DateTimePicker HoraSalidadateTimePicker;
         private System.Windows.Forms.DateTimePicker FechahoydateTimePicker;

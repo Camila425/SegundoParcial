@@ -1,14 +1,7 @@
-﻿using SegundoParcial.Entidades.Dtos.Asistencias;
-using SegundoParcial.Entidades.Dtos.Empleados;
-using SegundoParcial.Entidades.Dtos.Horarios;
+﻿using SegundoParcial.Entidades.Dtos.Empleados;
 using SegundoParcial.Entidades.Entidades;
 using SegundoParcial.Servicios.Interfaces;
 using SegundoParcial.Servicios.Servicios;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SegundoParcial.Windows.Helpers

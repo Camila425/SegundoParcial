@@ -42,13 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\Asistencias\AsistenciaDto.cs" />
+    <Compile Include="Dtos\DetallePago\DetallePagoDto.cs" />
     <Compile Include="Dtos\Empleados\EmpleadoDto.cs" />
     <Compile Include="Dtos\Horarios\HorarioDto.cs" />
-    <Compile Include="Dtos\Pagos\PagoDto.cs" />
+    <Compile Include="Dtos\Pagos\PagoDetalleDto.cs" />
+    <Compile Include="Dtos\Pagos\PagoListDto.cs" />
     <Compile Include="Entidades\Asistencia.cs" />
     <Compile Include="Entidades\Ciudad.cs" />
+    <Compile Include="Entidades\DetallePagos.cs" />
     <Compile Include="Entidades\Empleado.cs" />
     <Compile Include="Entidades\Horario.cs" />
+    <Compile Include="Entidades\ItemsSueldos.cs" />
     <Compile Include="Entidades\Pago.cs" />
     <Compile Include="Entidades\Puesto.cs" />
     <Compile Include="Entidades\Sector.cs" />
@@ -57,5 +61,6 @@
     <Compile Include="Enums\Estados.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

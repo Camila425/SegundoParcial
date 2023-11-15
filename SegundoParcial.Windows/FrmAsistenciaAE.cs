@@ -27,10 +27,12 @@ namespace SegundoParcial.Windows
                     asistencia = new Asistencia();
                 }
                 asistencia.empleadoId = (int)EmpleadocomboBox.SelectedValue;
-                asistencia.Dni = DnitextBox.Text;
+                //asistencia.Dni = DnitextBox.Text;
                 asistencia.Fecha = FechahoydateTimePicker.Value;
-                asistencia.HoraEntrada =TimeSpan.Parse(HoradateTimePicker.Value.ToShortTimeString());
+                asistencia.HoraEntrada =TimeSpan.Parse(HoraEntradadateTimePicker.Value.ToShortTimeString());
                 asistencia.HoraSalida = TimeSpan.Parse( HoraSalidadateTimePicker.Value.ToShortTimeString());
+                HoraSalidadateTimePicker.Enabled = false;
+
                 DialogResult = DialogResult.OK;
             }
         }
@@ -44,11 +46,7 @@ namespace SegundoParcial.Windows
                 errorProvider1.SetError(EmpleadocomboBox, "Debe seleccionar un empleado");
 
             }
-            //if (string.IsNullOrEmpty(DnitextBox.Text))
-            //{
-            //    valido = false;
-            //    errorProvider1.SetError(DnitextBox, "ingresar el dni");
-            //}
+
             return valido;
 
         }
@@ -64,10 +62,16 @@ namespace SegundoParcial.Windows
             CombosHelper.CargarComboEmpleados(ref EmpleadocomboBox);
             if (asistencia != null)
             {
+
                 EmpleadocomboBox.SelectedValue = asistencia.empleadoId;
-                DnitextBox.Text = asistencia.Dni;
-                FechadateTimePicker.Value = asistencia.Fecha;
-                HoradateTimePicker.Value = DateTime.Parse(asistencia.HoraEntrada.ToString());
+                EmpleadocomboBox.Enabled = false;
+
+                FechahoydateTimePicker.Value = asistencia.Fecha;
+                FechahoydateTimePicker.Enabled = false;
+               
+                HoraEntradadateTimePicker.Value =DateTime.Parse( asistencia.HoraEntrada.ToString());
+                HoraEntradadateTimePicker.Enabled = false;
+
                 HoraSalidadateTimePicker.Value = DateTime.Parse(asistencia.HoraSalida.ToString());
             }
 

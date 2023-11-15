@@ -13,6 +13,13 @@ namespace SegundoParcial.Windows
     {
         private readonly IServiciosHorarios servicioHorario;
         private List<HorarioDto> listaHorario;
+
+        int paginaActual = 1;
+        int registros = 0;
+        int paginas = 0;
+        int registrosPorPagina = 5;
+        int? TipoHorario = null;
+
         public FrmHorarios()
         {
             InitializeComponent();
@@ -28,13 +35,21 @@ namespace SegundoParcial.Windows
         {
             try
             {
-                listaHorario = servicioHorario.GetHorarios(null);
-                MostrarDatosEnGrilla();
+                registros = servicioHorario.GetCantidad();
+                paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
+                MostrarPaginado();
             }
             catch (Exception)
             {
                 throw;
             }
+        }
+
+
+        private void MostrarPaginado()
+        {
+            listaHorario = servicioHorario.GetHorarioPorPagina(registrosPorPagina, paginaActual, TipoHorario);
+            MostrarDatosEnGrilla();
         }
 
         private void MostrarDatosEnGrilla()
@@ -46,6 +61,9 @@ namespace SegundoParcial.Windows
                 GridHelper.Setearfila(r, horario);
                 GridHelper.AgregarFila(DatosdataGridView, r);
             }
+            Registroslabel.Text = registros.ToString();
+            PaginaActuallabel.Text = paginaActual.ToString();
+            Paginaslabel.Text = paginas.ToString();
         }
 
 
@@ -105,6 +123,7 @@ namespace SegundoParcial.Windows
                 servicioHorario.Borrar(horario.HorarioId);
                 GridHelper.QuitarFila(DatosdataGridView, r);
                 MessageBox.Show("registro borrado", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RecargarGrilla();
             }
             catch (Exception ex)
             {
@@ -138,6 +157,7 @@ namespace SegundoParcial.Windows
                     servicioHorario.Guardar(Horario);
                     GridHelper.Setearfila(r, Horario);
                     MessageBox.Show("Registro editado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RecargarGrilla();
                 }
                 else
                 {
@@ -150,6 +170,38 @@ namespace SegundoParcial.Windows
                 GridHelper.Setearfila(r, HorarioCopia);
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonPrimero_Click(object sender, EventArgs e)
+        {
+            paginaActual = 1;
+            MostrarPaginado();
+        }
+
+        private void buttonAnterior_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == 1)
+            {
+                return;
+            }
+            paginaActual--;
+            MostrarPaginado();
+        }
+
+        private void buttonSiguiente_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == paginas)
+            {
+                return;
+            }
+            paginaActual++;
+            MostrarPaginado();
+        }
+
+        private void buttonUltimo_Click(object sender, EventArgs e)
+        {
+            paginaActual = paginas;
+            MostrarPaginado();
         }
     }
 }

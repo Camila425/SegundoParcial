@@ -30,8 +30,6 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.DatosdataGridView = new System.Windows.Forms.DataGridView();
-            this.colnombrePuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colsueldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonUltimo = new System.Windows.Forms.Button();
             this.buttonSiguiente = new System.Windows.Forms.Button();
             this.buttonAnterior = new System.Windows.Forms.Button();
@@ -48,6 +46,8 @@
             this.BorrartoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.EditartoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.CerrartoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.colnombrePuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colsueldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -98,21 +98,6 @@
             this.DatosdataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DatosdataGridView.Size = new System.Drawing.Size(800, 326);
             this.DatosdataGridView.TabIndex = 0;
-            // 
-            // colnombrePuesto
-            // 
-            this.colnombrePuesto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colnombrePuesto.HeaderText = "Nombre Puesto";
-            this.colnombrePuesto.Name = "colnombrePuesto";
-            this.colnombrePuesto.ReadOnly = true;
-            // 
-            // colsueldo
-            // 
-            this.colsueldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colsueldo.HeaderText = "Sueldo";
-            this.colsueldo.Name = "colsueldo";
-            this.colsueldo.ReadOnly = true;
-            this.colsueldo.Width = 65;
             // 
             // buttonUltimo
             // 
@@ -275,6 +260,20 @@
             this.CerrartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.CerrartoolStripButton.Click += new System.EventHandler(this.CerrartoolStripButton_Click);
             // 
+            // colnombrePuesto
+            // 
+            this.colnombrePuesto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colnombrePuesto.HeaderText = "Nombre Puesto";
+            this.colnombrePuesto.Name = "colnombrePuesto";
+            this.colnombrePuesto.ReadOnly = true;
+            // 
+            // colsueldo
+            // 
+            this.colsueldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colsueldo.HeaderText = "Sueldo Por Hora";
+            this.colsueldo.Name = "colsueldo";
+            this.colsueldo.ReadOnly = true;
+            // 
             // FrmPuestos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,8 +307,6 @@
         private System.Windows.Forms.ToolStripButton BorrartoolStripButton;
         private System.Windows.Forms.ToolStripButton EditartoolStripButton;
         private System.Windows.Forms.ToolStripButton CerrartoolStripButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colnombrePuesto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colsueldo;
         private System.Windows.Forms.Button buttonUltimo;
         private System.Windows.Forms.Button buttonSiguiente;
         private System.Windows.Forms.Button buttonAnterior;
@@ -320,5 +317,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Registroslabel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colnombrePuesto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colsueldo;
     }
 }

@@ -30,12 +30,6 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.DatosdataGridView = new System.Windows.Forms.DataGridView();
-            this.colEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.coldni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colfecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHoraEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHoraSalida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonUltimo = new System.Windows.Forms.Button();
             this.buttonSiguiente = new System.Windows.Forms.Button();
             this.buttonAnterior = new System.Windows.Forms.Button();
@@ -49,12 +43,20 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.NuevotoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.EditartoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.BorrartoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.BuscartoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.ActualizartoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.BuscartoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.ActualizartoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.colEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coldni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colfecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHoraEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colhorasalida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colhorastrabajadas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,8 +88,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.Registroslabel);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 392);
-            this.splitContainer1.SplitterDistance = 277;
+            this.splitContainer1.Size = new System.Drawing.Size(800, 322);
+            this.splitContainer1.SplitterDistance = 227;
             this.splitContainer1.TabIndex = 25;
             // 
             // DatosdataGridView
@@ -100,57 +102,15 @@
             this.coldni,
             this.colfecha,
             this.colHoraEntrada,
-            this.colHoraSalida,
-            this.ColEstado});
+            this.colhorasalida,
+            this.colhorastrabajadas});
             this.DatosdataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DatosdataGridView.Location = new System.Drawing.Point(0, 0);
             this.DatosdataGridView.Name = "DatosdataGridView";
             this.DatosdataGridView.ReadOnly = true;
             this.DatosdataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DatosdataGridView.Size = new System.Drawing.Size(800, 277);
+            this.DatosdataGridView.Size = new System.Drawing.Size(800, 227);
             this.DatosdataGridView.TabIndex = 0;
-            // 
-            // colEmpleado
-            // 
-            this.colEmpleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colEmpleado.HeaderText = "Empleado";
-            this.colEmpleado.Name = "colEmpleado";
-            this.colEmpleado.ReadOnly = true;
-            // 
-            // coldni
-            // 
-            this.coldni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.coldni.HeaderText = "Dni";
-            this.coldni.Name = "coldni";
-            this.coldni.ReadOnly = true;
-            // 
-            // colfecha
-            // 
-            this.colfecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colfecha.HeaderText = "Fecha";
-            this.colfecha.Name = "colfecha";
-            this.colfecha.ReadOnly = true;
-            // 
-            // colHoraEntrada
-            // 
-            this.colHoraEntrada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colHoraEntrada.HeaderText = "Hora Entrada";
-            this.colHoraEntrada.Name = "colHoraEntrada";
-            this.colHoraEntrada.ReadOnly = true;
-            // 
-            // colHoraSalida
-            // 
-            this.colHoraSalida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colHoraSalida.HeaderText = "Hora Salida";
-            this.colHoraSalida.Name = "colHoraSalida";
-            this.colHoraSalida.ReadOnly = true;
-            // 
-            // ColEstado
-            // 
-            this.ColEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColEstado.HeaderText = "Estado";
-            this.ColEstado.Name = "ColEstado";
-            this.ColEstado.ReadOnly = true;
             // 
             // buttonUltimo
             // 
@@ -256,10 +216,12 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NuevotoolStripButton,
             this.EditartoolStripButton,
+            this.toolStripSeparator3,
             this.BorrartoolStripButton,
             this.toolStripSeparator1,
             this.toolStripButton1,
             this.BuscartoolStripButton,
+            this.toolStripSeparator4,
             this.ActualizartoolStripButton,
             this.toolStripSeparator2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -270,25 +232,30 @@
             // 
             // NuevotoolStripButton
             // 
-            this.NuevotoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.create_36px;
+            this.NuevotoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.open_garage_door_36px;
             this.NuevotoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.NuevotoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.NuevotoolStripButton.Name = "NuevotoolStripButton";
-            this.NuevotoolStripButton.Size = new System.Drawing.Size(113, 55);
-            this.NuevotoolStripButton.Text = "Registrar Asistencia";
+            this.NuevotoolStripButton.Size = new System.Drawing.Size(116, 55);
+            this.NuevotoolStripButton.Text = "Registrar  Asistencia";
             this.NuevotoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.NuevotoolStripButton.Click += new System.EventHandler(this.NuevotoolStripButton_Click);
             // 
             // EditartoolStripButton
             // 
-            this.EditartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.edit_36px;
+            this.EditartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.exit_36px;
             this.EditartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.EditartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditartoolStripButton.Name = "EditartoolStripButton";
-            this.EditartoolStripButton.Size = new System.Drawing.Size(91, 55);
-            this.EditartoolStripButton.Text = "Registrar Salida";
+            this.EditartoolStripButton.Size = new System.Drawing.Size(94, 55);
+            this.EditartoolStripButton.Text = "Registrar  Salida";
             this.EditartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.EditartoolStripButton.Click += new System.EventHandler(this.EditartoolStripButton_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 58);
             // 
             // BorrartoolStripButton
             // 
@@ -300,26 +267,6 @@
             this.BorrartoolStripButton.Text = "Borrar";
             this.BorrartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BorrartoolStripButton.Click += new System.EventHandler(this.BorrartoolStripButton_Click);
-            // 
-            // BuscartoolStripButton
-            // 
-            this.BuscartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.filter_36px;
-            this.BuscartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BuscartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BuscartoolStripButton.Name = "BuscartoolStripButton";
-            this.BuscartoolStripButton.Size = new System.Drawing.Size(102, 55);
-            this.BuscartoolStripButton.Text = "Buscar Empleado";
-            this.BuscartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // ActualizartoolStripButton
-            // 
-            this.ActualizartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.update_36px;
-            this.ActualizartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.ActualizartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ActualizartoolStripButton.Name = "ActualizartoolStripButton";
-            this.ActualizartoolStripButton.Size = new System.Drawing.Size(63, 55);
-            this.ActualizartoolStripButton.Text = "Actualizar";
-            this.ActualizartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator1
             // 
@@ -336,16 +283,85 @@
             this.toolStripButton1.Text = "Buscar Fechas";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // BuscartoolStripButton
+            // 
+            this.BuscartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.filter_36px;
+            this.BuscartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BuscartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BuscartoolStripButton.Name = "BuscartoolStripButton";
+            this.BuscartoolStripButton.Size = new System.Drawing.Size(102, 55);
+            this.BuscartoolStripButton.Text = "Buscar Empleado";
+            this.BuscartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.BuscartoolStripButton.Click += new System.EventHandler(this.BuscartoolStripButton_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 58);
+            // 
+            // ActualizartoolStripButton
+            // 
+            this.ActualizartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.update_36px;
+            this.ActualizartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.ActualizartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ActualizartoolStripButton.Name = "ActualizartoolStripButton";
+            this.ActualizartoolStripButton.Size = new System.Drawing.Size(63, 55);
+            this.ActualizartoolStripButton.Text = "Actualizar";
+            this.ActualizartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.ActualizartoolStripButton.Click += new System.EventHandler(this.ActualizartoolStripButton_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 58);
             // 
+            // colEmpleado
+            // 
+            this.colEmpleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colEmpleado.HeaderText = "Empleado";
+            this.colEmpleado.Name = "colEmpleado";
+            this.colEmpleado.ReadOnly = true;
+            // 
+            // coldni
+            // 
+            this.coldni.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.coldni.HeaderText = "Dni";
+            this.coldni.Name = "coldni";
+            this.coldni.ReadOnly = true;
+            // 
+            // colfecha
+            // 
+            this.colfecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colfecha.HeaderText = "Fecha";
+            this.colfecha.Name = "colfecha";
+            this.colfecha.ReadOnly = true;
+            // 
+            // colHoraEntrada
+            // 
+            this.colHoraEntrada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colHoraEntrada.HeaderText = "Hora Entrada";
+            this.colHoraEntrada.Name = "colHoraEntrada";
+            this.colHoraEntrada.ReadOnly = true;
+            // 
+            // colhorasalida
+            // 
+            this.colhorasalida.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colhorasalida.HeaderText = "Hora Salida";
+            this.colhorasalida.Name = "colhorasalida";
+            this.colhorasalida.ReadOnly = true;
+            // 
+            // colhorastrabajadas
+            // 
+            this.colhorastrabajadas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colhorastrabajadas.HeaderText = "H.Trabajadas";
+            this.colhorastrabajadas.Name = "colhorastrabajadas";
+            this.colhorastrabajadas.ReadOnly = true;
+            // 
             // FrmAsistencias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 380);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "FrmAsistencias";
@@ -374,12 +390,6 @@
         private System.Windows.Forms.ToolStripButton EditartoolStripButton;
         private System.Windows.Forms.ToolStripButton BuscartoolStripButton;
         private System.Windows.Forms.ToolStripButton ActualizartoolStripButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEmpleado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn coldni;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colfecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHoraEntrada;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHoraSalida;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColEstado;
         private System.Windows.Forms.Button buttonUltimo;
         private System.Windows.Forms.Button buttonSiguiente;
         private System.Windows.Forms.Button buttonAnterior;
@@ -393,5 +403,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEmpleado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn coldni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colfecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHoraEntrada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colhorasalida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colhorastrabajadas;
     }
 }

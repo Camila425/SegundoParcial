@@ -1,120 +1,150 @@
-﻿using SegundoParcial.Datos.Interfaces;
-using SegundoParcial.Datos.Repositorios;
+﻿using SegundoParcial.Datos.Repositorios;
 using SegundoParcial.Entidades.Entidades;
 using SegundoParcial.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace SegundoParcial.Servicios.Servicios
 {
     public class ServiciosPuestos : IServiciosPuestos
     {
-        private readonly IRepositorioPuesto repositorio;
         public ServiciosPuestos()
         {
-            repositorio = new RepositorioPuestos();
         }
 
         public void Borrar(int puestoId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                repositorio.Borrar(puestoId);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    unitOfWork.Puesto.Borrar(puestoId);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    unitOfWork?.Rollback();
+                    throw;
+                } 
             }
         }
 
         public bool EstaRelacionado(Puesto puesto)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.EstaRelacionado(puesto);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Puesto.EstaRelacionado(puesto);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public bool Existe(Puesto puesto)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.Existe(puesto);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    bool existe= unitOfWork.Puesto.Existe(puesto);
+                    return existe;
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public int GetCantidad()
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetCantidad();
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    var cantidad= unitOfWork.Puesto.GetCantidad();
+                    return cantidad;
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public Puesto GetPuestoPorId(int puestoId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetPuestoPorId(puestoId);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Puesto.GetPuestoPorId(puestoId);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public List<Puesto> GetPuestoPorPagina(int registrosPorPagina, int paginaActual)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetPuestoPorPagina(registrosPorPagina, paginaActual);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    var  lista=unitOfWork.Puesto.GetPuestoPorPagina(registrosPorPagina, paginaActual);
+                    return lista;
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public List<Puesto> GetPuestos()
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetPuestos();
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    var Lista= unitOfWork.Puesto.GetPuestos();
+                    return Lista;
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public void Guardar(Puesto puesto)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                if (puesto.PuestoId == 0)
+                try
                 {
-                    repositorio.Agregar(puesto);
+                    if (puesto.PuestoId == 0)
+                    {
+                        unitOfWork.Puesto.Agregar(puesto);
+                    }
+                    else
+                    {
+                        unitOfWork.Puesto.Editar(puesto);
+                    }
+                    unitOfWork.Commit();
                 }
-                else
+                catch (Exception)
                 {
-                    repositorio.Editar(puesto);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
+                    unitOfWork.Rollback();
+                    unitOfWork.Dispose();
+                } 
             }
         }
     }

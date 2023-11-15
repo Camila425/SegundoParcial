@@ -3,112 +3,148 @@ using SegundoParcial.Datos.Interfaces;
 using SegundoParcial.Entidades.Dtos.Horarios;
 using SegundoParcial.Entidades.Entidades;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 
 namespace SegundoParcial.Datos.Repositorios
 {
-    public class RepositorioHorarios:IRepositorioHorario
+    public class RepositorioHorarios : IRepositorioHorario
     {
-        private readonly string CadenaConexion;
-        public RepositorioHorarios()
+        private readonly IDbTransaction transaction;
+        public RepositorioHorarios(IDbTransaction Transaction)
         {
-            CadenaConexion = ConfigurationManager.ConnectionStrings["MiConexion"].ToString();
+            transaction = Transaction;
         }
 
         public void Agregar(Horario horario)
         {
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-                string insertQuery = @"INSERT INTO Horarios (HoraInicio,HoraFin,DiasLaborales,TipoDeHorarioId)
+            string insertQuery = @"INSERT INTO Horarios (HoraInicio,HoraFin,DiasLaborales,TipoDeHorarioId)
                                     VALUES (@HoraInicio,@HoraFin,@DiasLaborales,@TipoDeHorarioId); SELECT SCOPE_IDENTITY()";
-                int ID = conn.QuerySingle<int>(insertQuery,horario);
-                horario.HorarioId = ID;
-            }
+            int ID = transaction.Connection.QuerySingle<int>(insertQuery,horario , transaction: transaction);
+            horario.HorarioId = ID;
+
         }
 
         public void Borrar(int horarioId)
         {
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-                string deleteQuery = "DELETE FROM Horarios WHERE HorarioId=@HorarioId";
-                conn.Execute(deleteQuery, new { horarioId = horarioId });
-            }
+
+            string deleteQuery = "DELETE FROM Horarios WHERE HorarioId=@HorarioId";
+            transaction.Connection.Execute(deleteQuery, new { horarioId = horarioId }, transaction: transaction);
+
         }
 
         public void Editar(Horario horario)
         {
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-                string updateQuery = "update Horarios SET HoraInicio=@HoraInicio,HoraFin=@HoraFin,TipoDeHorarioId=@TipoDeHorarioId WHERE HorarioId=@HorarioId";
-                conn.Execute(updateQuery,horario);
-            }
+
+            string updateQuery = "update Horarios SET HoraInicio=@HoraInicio,HoraFin=@HoraFin,TipoDeHorarioId=@TipoDeHorarioId WHERE HorarioId=@HorarioId";
+            transaction.Connection.Execute(updateQuery, horario, transaction: transaction);
+
         }
 
         public bool Existe(Horario horario)
         {
             var cantidad = 0;
-            using (var conn = new SqlConnection(CadenaConexion))
+            string selectQuery;
+            if (horario.HorarioId == 0)
             {
-                string selectQuery;
-                if (horario.HorarioId == 0)
-                {
-                    selectQuery = "SELECT COUNT(*) FROM Horarios WHERE DiasLaborales=@DiasLaborales";
-                    cantidad = conn.ExecuteScalar<int>(selectQuery, horario);
-                }
-                else
-                {
-                    selectQuery = "SELECT COUNT(*) FROM Horarios WHERE DiasLaborales=@DiasLaborales AND HorarioId!=@HorarioId";
-                    cantidad = conn.ExecuteScalar<int>(selectQuery, horario);
-                }
+                selectQuery = "SELECT COUNT(*) FROM Horarios  WHERE HoraInicio=@HoraInicio";
             }
+            else
+            {
+                selectQuery = "SELECT COUNT(*) FROM Horarios  WHERE HoraInicio=@HoraInicio AND HorarioId!=@HorarioId";
+            }
+            cantidad = transaction.Connection.ExecuteScalar<int>(selectQuery, horario, transaction: transaction);
             return cantidad > 0;
+        }
+
+        public int GetCantidad()
+        {
+            int cantidad = 0;
+            string selectQuery = "SELECT COUNT(*) FROM Horarios";
+            cantidad = transaction.Connection.ExecuteScalar<int>(selectQuery, transaction: transaction);
+            return cantidad;
         }
 
         public Horario GetHorarioPorId(int horarioId)
         {
             Horario horario = null;
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-                string selectQuery = @"SELECT HorarioId, HoraInicio, HoraFin,DiasLaborales,TipoDeHorarioId
+            string selectQuery = @"SELECT HorarioId, HoraInicio, HoraFin,DiasLaborales,TipoDeHorarioId
                                        FROM Horarios WHERE HorarioId=@HorarioId";
-                horario = conn.QuerySingleOrDefault<Horario>(selectQuery,new { horarioId = horarioId });
-            }
+            horario = transaction.Connection.QuerySingleOrDefault<Horario>(selectQuery,
+                new { horarioId = horarioId }, transaction: transaction);
             return horario;
+        }
+
+        public List<HorarioDto> GetHorarioPorPagina(int cantidad, int pagina, int? TipoHorario)
+        {
+            List<HorarioDto> listaHorario = new List<HorarioDto>();
+            if (TipoHorario == null)
+            {
+                string selectQuery = @"SELECT HorarioId, t.TipoDeHorarioId,t.TipoHorario ,HoraInicio,HoraFin
+                                       FROM Horarios h inner JOIN TiposDeHorarios t ON t.TipoDeHorarioId=h.TipoDeHorarioId
+									   order by t.TipoHorario
+                                      offset @cantidadRegistros ROWS 
+                                      FETCH NEXT @cantidadPorPagina ROWS ONLY";
+                var registroSeteados = cantidad * (pagina - 1);
+                listaHorario = transaction.Connection.Query<HorarioDto>(selectQuery,
+                new
+                {
+                    cantidadRegistros = registroSeteados,
+                    cantidadPorPagina = cantidad,
+
+                },transaction:transaction).ToList();
+            }
+            else
+            {
+                string selectQuery = @"SELECT HorarioId, t.TipoDeHorarioId,t.TipoHorario ,HoraInicio,HoraFin
+                                       FROM Horarios h inner JOIN TiposDeHorarios t ON t.TipoDeHorarioId=h.TipoDeHorarioId
+                                       where t.TipoDeHorarioId=@TipoDeHorarioId
+									   order by t.TipoHorario
+                                      OFFSET @cantidadRegistros ROWS 
+                                      FETCH NEXT @cantidadPorPagina ROWS ONLY";
+                var registroSeteados = cantidad * (pagina - 1);
+
+                listaHorario = transaction.Connection.Query<HorarioDto>(selectQuery,
+                new
+                {
+                    TipoHorario = TipoHorario.Value,
+                    cantidadRegistros = registroSeteados,
+                    cantidadPorPagina = cantidad
+                },transaction:transaction).ToList();
+            }
+
+            return listaHorario;
         }
 
         public List<HorarioDto> GetHorarios(int? TipoDeHorarioId)
         {
             List<HorarioDto> lista = new List<HorarioDto>();
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
+
                 string selectQuery;
                 if (TipoDeHorarioId == null)
                 {
                     selectQuery = @"SELECT HorarioId, t.TipoDeHorarioId,t.TipoHorario ,HoraInicio,HoraFin
                         FROM Horarios h inner JOIN TiposDeHorarios t ON t.TipoDeHorarioId=h.TipoDeHorarioId";
-                    lista = conn.Query<HorarioDto>(selectQuery).ToList();
+                    lista = transaction.Connection.Query<HorarioDto>(selectQuery,transaction:transaction).ToList();
                 }
                 else
                 {
                     selectQuery = "SELECT HorarioId, t.TipoHorario, HoraInicio,HoraFin FROM Horarios h " +
                         "INNER JOIN TiposDeHorarios t ON t.TipoDeHorarioId=h.TipoDeHorarioId " +
                         "WHERE h.TipoDeHorarioId=@TipoDeHorarioId";
-                    lista = conn.Query<HorarioDto>(selectQuery, new { TipoDeHorarioId = TipoDeHorarioId }).ToList();
+                    lista = transaction.Connection.Query<HorarioDto>(selectQuery, 
+                        new { TipoDeHorarioId = TipoDeHorarioId },transaction:transaction).ToList();
                 }
-            }
+            
             return lista;
         }
 
         public List<TipoDeHorario> GetTipoHorarios()
         {
             List<TipoDeHorario> lista = new List<TipoDeHorario>();
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
                 string selectQuery = "select TipoDeHorarioId,TipoHorario from TiposDeHorarios order by TipoHorario";
-                lista = conn.Query<TipoDeHorario>(selectQuery).ToList();
-            }
+                lista = transaction.Connection.Query<TipoDeHorario>(selectQuery,transaction:transaction).ToList();
+            
             return lista;
         }
     }

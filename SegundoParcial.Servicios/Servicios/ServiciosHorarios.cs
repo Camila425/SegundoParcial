@@ -1,97 +1,150 @@
-﻿using SegundoParcial.Datos.Interfaces;
-using SegundoParcial.Datos.Repositorios;
+﻿using SegundoParcial.Datos.Repositorios;
 using SegundoParcial.Entidades.Dtos.Horarios;
 using SegundoParcial.Entidades.Entidades;
 using SegundoParcial.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace SegundoParcial.Servicios.Servicios
 {
     public class ServiciosHorarios:IServiciosHorarios
     {
-        private readonly IRepositorioHorario repositorio;
         public ServiciosHorarios()
         {
-            repositorio = new RepositorioHorarios();
         }
 
         public void Borrar(int horarioId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                repositorio.Borrar(horarioId);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    unitOfWork.Horario.Borrar(horarioId);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    unitOfWork?.Rollback();
+                    throw;
+                } 
             }
         }
 
         public bool Existe(Horario horario)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.Existe(horario);
+                try
+                {
+                    return unitOfWork.Horario.Existe(horario);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
-            catch (Exception)
+        }
+
+        public int GetCantidad()
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                throw;
+                try
+                {
+                    return unitOfWork.Horario.GetCantidad();
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public Horario GetHorarioPorId(int horarioId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetHorarioPorId(horarioId);
+                try
+                {
+                    return unitOfWork.Horario.GetHorarioPorId(horarioId);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
-            catch (Exception)
+        }
+
+        public List<HorarioDto> GetHorarioPorPagina(int registrosPorPagina, int paginaActual,int? TipoHorario)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                throw;
+                try
+                {
+                    var lista = unitOfWork.Horario.GetHorarioPorPagina(registrosPorPagina, paginaActual, TipoHorario);
+                    return lista;
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public List<HorarioDto> GetHorarios(int? TipoDeHorarioId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetHorarios( TipoDeHorarioId);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Horario.GetHorarios(TipoDeHorarioId);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public List<TipoDeHorario> GetTipoHorarios()
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetTipoHorarios();
-            }
-            catch (Exception)
-            {
-                throw;
+
+                try
+                {
+                    return unitOfWork.Horario.GetTipoHorarios();
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public void Guardar(Horario horario)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                if (horario.HorarioId == 0)
+                try
                 {
-                    repositorio.Agregar(horario);
+                    if (horario.HorarioId == 0)
+                    {
+                        unitOfWork.Horario.Agregar(horario);
+                    }
+                    else
+                    {
+                        unitOfWork.Horario.Editar(horario);
+                    }
+                    unitOfWork.Commit();
                 }
-                else
+                catch (Exception)
                 {
-                    repositorio.Editar(horario);
+                    unitOfWork.Rollback();
+                    unitOfWork.Dispose();
+
                 }
-            }
-            catch (Exception)
-            {
-                throw;
             }
         }
     }

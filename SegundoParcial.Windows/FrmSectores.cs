@@ -12,6 +12,10 @@ namespace SegundoParcial.Windows
     {
         private readonly IServiciosSectores serviciosSectores;
         private List<Sector> listaSectores;
+        int paginaActual = 1;
+        int registros = 0;
+        int paginas = 0;
+        int registrosPorPagina = 5;
         public FrmSectores()
         {
             InitializeComponent();
@@ -31,13 +35,20 @@ namespace SegundoParcial.Windows
         {
             try
             {
-                listaSectores = serviciosSectores.GetSectores();
-                MostrarDatosEnGrilla();
+                registros = serviciosSectores.GetCantidad();
+                paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
+                MostrarPaginado();
             }
             catch (Exception)
             {
                 throw;
             }
+        }
+
+        private void MostrarPaginado()
+        {
+            listaSectores = serviciosSectores.GetSectorPorPagina(registrosPorPagina, paginaActual);
+            MostrarDatosEnGrilla();
         }
         private void MostrarDatosEnGrilla()
         {
@@ -48,6 +59,9 @@ namespace SegundoParcial.Windows
                 GridHelper.Setearfila(r, ciudad);
                 GridHelper.AgregarFila(DatosdataGridView, r);
             }
+            Registroslabel.Text = registros.ToString();
+            PaginaActuallabel.Text = paginaActual.ToString();
+            Paginaslabel.Text = paginas.ToString();
         }
 
         private void NuevotoolStripButton_Click(object sender, EventArgs e)
@@ -68,6 +82,7 @@ namespace SegundoParcial.Windows
                     GridHelper.Setearfila(r, Sector);
                     GridHelper.AgregarFila(DatosdataGridView, r);
                     MessageBox.Show("registro agregado", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RecargarGrilla();
                 }
                 else
                 {
@@ -104,6 +119,7 @@ namespace SegundoParcial.Windows
                     serviciosSectores.Guardar(sector);
                     GridHelper.Setearfila(r, sector);
                     MessageBox.Show("Registro editado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RecargarGrilla();
                 }
                 else
                 {
@@ -150,6 +166,38 @@ namespace SegundoParcial.Windows
             {
                 MessageBox.Show(ex.Message, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonPrimero_Click(object sender, EventArgs e)
+        {
+            paginaActual = 1;
+            MostrarPaginado();
+        }
+
+        private void buttonAnterior_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == 1)
+            {
+                return;
+            }
+            paginaActual--;
+            MostrarPaginado();
+        }
+
+        private void buttonSiguiente_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == paginas)
+            {
+                return;
+            }
+            paginaActual++;
+            MostrarPaginado();
+        }
+
+        private void buttonUltimo_Click(object sender, EventArgs e)
+        {
+            paginaActual = paginas;
+            MostrarPaginado();
         }
     }
 }

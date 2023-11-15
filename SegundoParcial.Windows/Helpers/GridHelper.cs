@@ -1,9 +1,11 @@
 ﻿using SegundoParcial.Entidades.Dtos.Asistencias;
+using SegundoParcial.Entidades.Dtos.DetallePgo;
 using SegundoParcial.Entidades.Dtos.Empleados;
 using SegundoParcial.Entidades.Dtos.Horarios;
 using SegundoParcial.Entidades.Dtos.Pagos;
 using SegundoParcial.Entidades.Entidades;
 using SegundoParcial.Entidades.Enums;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace SegundoParcial.Windows.Helpers
@@ -38,7 +40,7 @@ namespace SegundoParcial.Windows.Helpers
                 break;
                 case Puesto puesto:
                     r.Cells[0].Value = puesto.NombrePuesto;
-                    r.Cells[1].Value = puesto.Sueldo;
+                    r.Cells[1].Value = puesto.SueldoPorHora;
                 break;
                 case EmpleadoDto empleado:
                     r.Cells[0].Value = empleado.Nombre;
@@ -53,15 +55,17 @@ namespace SegundoParcial.Windows.Helpers
                     r.Cells[2].Value = asistencia.Fecha.ToShortDateString();
                     r.Cells[3].Value = asistencia.HoraEntrada;
                     r.Cells[4].Value = asistencia.HoraSalida;
-                    r.Cells[5].Value = asistencia.Estado=Estados.Asistio;
+                    r.Cells[5].Value = asistencia.HorasTrabajadas;
                     break;
-                case PagoDto pago:
-                    r.Cells[0].Value = pago.PagoId;
-                    r.Cells[1].Value = pago.Nombre;
-                    r.Cells[2].Value = pago.Fecha.ToShortDateString();
-                    r.Cells[3].Value = pago.Importe;
-                    r.Cells[4].Value = pago.estadoPago.ToString();
-
+                case PagoListDto pago:
+                    r.Cells[0].Value = pago.Nombre;
+                    r.Cells[1].Value = pago.Fecha.ToShortDateString();
+                    r.Cells[2].Value = pago.SueldoPorHora.ToString("C2");
+                    r.Cells[3].Value = pago.estadoPago=EstadoPago.Impago;
+                    break;
+                case DetallePagoDto detallePago:
+                    r.Cells[0].Value = detallePago.PagoId;
+                    r.Cells[1].Value = detallePago.puesto.SueldoPorHora * detallePago.asistencia.HorasTrabajadas;
                     break;
             }
             r.Tag = obj;
@@ -75,6 +79,19 @@ namespace SegundoParcial.Windows.Helpers
         public static void QuitarFila(DataGridView DatosdataGridView, DataGridViewRow r)
         {
             DatosdataGridView.Rows.Remove(r);
+        }
+
+
+        public static void MostrarDatosEnGrilla<T>(DataGridView DatosdataGridView, List<T> lista) where T :class
+        {
+            GridHelper.LimpiarGrilla(DatosdataGridView);
+            foreach (var obj in lista)
+            {
+                DataGridViewRow r = GridHelper.ConstruirFila(DatosdataGridView);
+                GridHelper.Setearfila(r, obj);
+                GridHelper.AgregarFila(DatosdataGridView, r);
+            }
+
         }
     }
 }

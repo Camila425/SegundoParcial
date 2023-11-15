@@ -1,54 +1,64 @@
-﻿using SegundoParcial.Datos.Interfaces;
-using SegundoParcial.Datos.Repositorios;
+﻿using SegundoParcial.Datos.Repositorios;
 using SegundoParcial.Entidades.Dtos.Empleados;
 using SegundoParcial.Entidades.Entidades;
 using SegundoParcial.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace SegundoParcial.Servicios.Servicios
 {
     public class ServiciosEmpleados : IServiciosEmpleados
     {
-        private readonly IRepositorioEmpleado repositorio;
         public ServiciosEmpleados()
         {
-            repositorio = new RepositorioEmpleados();
         }
 
         public void Borrar(int empleadoId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                repositorio.Borrar(empleadoId);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    unitOfWork.Empleado.Borrar(empleadoId);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    unitOfWork?.Rollback();
+                    throw;
+                }
             }
         }
 
         public bool EstaRelacionado(Empleado empleado)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.EstaRelacionado(empleado);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Empleado.EstaRelacionado(empleado);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public bool Existe(Empleado empleado)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.Existe(empleado);
-            }
-            catch (Exception)
-            {
-                throw;
+
+                try
+                {
+                    return unitOfWork.Empleado.Existe(empleado);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
@@ -56,82 +66,102 @@ namespace SegundoParcial.Servicios.Servicios
 
         public int GetCantidad()
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetCantidad();
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Empleado.GetCantidad();
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public int GetCantidad(int? PuestoId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetCantidad(PuestoId);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Empleado.GetCantidad(PuestoId);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public List<EmpleadoDto> GetEmpleado(int? PuestoId, int? SectorId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetEmpleado(PuestoId,SectorId);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Empleado.GetEmpleado(PuestoId, SectorId);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public Empleado GetEmpleadoPorId(int empleadoId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetEmpleadoPorId(empleadoId);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Empleado.GetEmpleadoPorId(empleadoId);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public List<EmpleadoDto> GetEmpleadoPorPagina(int registrosPorPagina, int paginaActual, int? PuestoId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                var lista= repositorio.GetEmpleadoPorPagina(registrosPorPagina, paginaActual,PuestoId);
-                return lista;
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    var lista = unitOfWork.Empleado.GetEmpleadoPorPagina(registrosPorPagina, paginaActual, PuestoId);
+                    return lista;
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
        
         public void Guardar(Empleado empleado)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                if (empleado.EmpleadoId==0)
+                try
                 {
-                    repositorio.Agregar(empleado);
+                    if (empleado.EmpleadoId == 0)
+                    {
+                        unitOfWork.Empleado.Agregar(empleado);
+                    }
+                    else
+                    {
+                        unitOfWork.Empleado.Editar(empleado);
+                    }
+                    unitOfWork.Commit();
                 }
-                else
+                catch (Exception)
                 {
-                    repositorio.Editar(empleado);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
+                    unitOfWork.Rollback();
+                    unitOfWork.Dispose();
+                } 
             }
         }
     }

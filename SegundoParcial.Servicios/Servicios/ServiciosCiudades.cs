@@ -1,108 +1,132 @@
-﻿using SegundoParcial.Datos.Interfaces;
-using SegundoParcial.Datos.Repositorios;
+﻿using SegundoParcial.Datos.Repositorios;
 using SegundoParcial.Entidades.Entidades;
 using SegundoParcial.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace SegundoParcial.Servicios.Servicios
 {
     public class ServiciosCiudades : IServiciosCiudades
     {
-        private readonly IRepositorioCiudad repositorio;
         public ServiciosCiudades()
         {
-            repositorio = new RepositorioCiudades();
         }
 
         public void Borrar(int ciudadId)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                repositorio.Borrar(ciudadId);
+                try
+                {
+                    unitOfWork.Ciudad.Borrar(ciudadId);
+                    unitOfWork.Commit();
+                }
+                catch (Exception)
+                {
+                    unitOfWork?.Rollback();
+                    throw;
+                }
             }
-            catch (Exception)
-            {
-                throw;
-            }        
         }
 
         public bool EstaRelacionada(Ciudad ciudad)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.EstaRelacionada(ciudad);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Ciudad.EstaRelacionada(ciudad);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public bool Existe(Ciudad ciudad)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.Existe(ciudad);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Ciudad.Existe(ciudad);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public int GetCantidad()
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetCantidad();
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Ciudad.GetCantidad();
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public List<Ciudad> GetCiudades()
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetCiudades();
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Ciudad.GetCiudades();
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public List<Ciudad> GetCiudadesPorPagina(int cantidad, int paginaActual)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                return repositorio.GetCiudadesPorPagina(cantidad, paginaActual);
-            }
-            catch (Exception)
-            {
-                throw;
+                try
+                {
+                    return unitOfWork.Ciudad.GetCiudadesPorPagina(cantidad, paginaActual);
+                }
+                catch (Exception)
+                {
+                    throw;
+                } 
             }
         }
 
         public void Guardar(Ciudad ciudad)
         {
-            try
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-                if (ciudad.CiudadId == 0)
+                try
                 {
-                    repositorio.Agregar(ciudad);
+                    if (ciudad.CiudadId == 0)
+                    {
+                        unitOfWork.Ciudad.Agregar(ciudad);
+                    }
+                    else
+                    {
+                        unitOfWork.Ciudad.Editar(ciudad);
+                    }
+                    unitOfWork.Commit();
                 }
-                else
+                catch (Exception)
                 {
-                    repositorio.Editar(ciudad);
+                    unitOfWork.Rollback();
+                    unitOfWork.Dispose();
+
                 }
-            }
-            catch (Exception)
-            {
-                throw;
             }
         }
     }

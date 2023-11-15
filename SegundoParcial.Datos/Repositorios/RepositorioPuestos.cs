@@ -2,131 +2,108 @@
 using SegundoParcial.Datos.Interfaces;
 using SegundoParcial.Entidades.Entidades;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 
 namespace SegundoParcial.Datos.Repositorios
 {
     public class RepositorioPuestos : IRepositorioPuesto
     {
-        private readonly string CadenaConexion;
-        public RepositorioPuestos()
+        private readonly IDbTransaction transaction;
+        public RepositorioPuestos(IDbTransaction Transaction)
         {
-            CadenaConexion = ConfigurationManager.ConnectionStrings["MiConexion"].ToString();
+            transaction = Transaction;
         }
 
         public void Agregar(Puesto puesto)
         {
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-                string insertQuery = "INSERT INTO Puestos(NombrePuesto,Sueldo) VALUES(@NombrePuesto,@Sueldo); SELECT SCOPE_IDENTITY()";
-                int ID = conn.QuerySingle<int>(insertQuery, puesto);
-                puesto.PuestoId = ID;
-            }
+
+            string insertQuery = "INSERT INTO Puestos(NombrePuesto,SueldoPorHora) VALUES(@NombrePuesto,@SueldoPorHora); SELECT SCOPE_IDENTITY()";
+            int ID = transaction.Connection.QuerySingle<int>(insertQuery, puesto, transaction: transaction);
+            puesto.PuestoId = ID;
+
         }
 
         public void Borrar(int puestoId)
         {
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-                string deleteQuery = "DELETE FROM Puestos WHERE PuestoId=@PuestoId";
-                conn.Execute(deleteQuery, new { puestoId=puestoId });
-            }
+
+            string deleteQuery = "DELETE FROM Puestos WHERE PuestoId=@PuestoId";
+            transaction.Connection.Execute(deleteQuery, new { puestoId = puestoId }, transaction: transaction);
+
         }
 
         public void Editar(Puesto puesto)
         {
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-                string updateQuery = "update Puestos SET NombrePuesto=@NombrePuesto,Sueldo=@Sueldo WHERE PuestoId=@PuestoId";
-                conn.Execute(updateQuery, puesto);
-            }
+
+            string updateQuery = "update Puestos SET NombrePuesto=@NombrePuesto,SueldoPorHora=@SueldoPorHora WHERE PuestoId=@PuestoId";
+            transaction.Connection.Execute(updateQuery, puesto, transaction: transaction);
+
         }
 
         public bool Existe(Puesto puesto)
         {
             var cantidad = 0;
-            using (var conn = new SqlConnection(CadenaConexion))
+            string selectQuery;
+            if (puesto.PuestoId == 0)
             {
-                string selectQuery;
-                if (puesto.PuestoId == 0)
-                {
-                    selectQuery = "SELECT COUNT(*) FROM Puestos WHERE NombrePuesto=@NombrePuesto";
-                    cantidad = conn.ExecuteScalar<int>(selectQuery, puesto);
-                }
-                else
-                {
-                    selectQuery = "SELECT COUNT(*) FROM Puestos WHERE NombrePuesto=@NombrePuesto AND PuestoId!=@PuestoId";
-                    cantidad = conn.ExecuteScalar<int>(selectQuery, puesto);
-                }
+                selectQuery = "SELECT COUNT(*) FROM Puestos WHERE NombrePuesto=@NombrePuesto";
             }
+            else
+            {
+                selectQuery = "SELECT COUNT(*) FROM Puestos WHERE NombrePuesto=@NombrePuesto AND PuestoId!=@PuestoId";
+            }
+            cantidad = transaction.Connection.ExecuteScalar<int>(selectQuery, puesto, transaction: transaction);
+
             return cantidad > 0;
         }
 
         public int GetCantidad()
         {
             int cantidad = 0;
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-
-                string selectQuery = "SELECT COUNT(*) FROM Puestos";
-                cantidad = conn.ExecuteScalar<int>(selectQuery);
-            }
+            string selectQuery = "SELECT COUNT(*) FROM Puestos";
+            cantidad = transaction.Connection.ExecuteScalar<int>(selectQuery, transaction: transaction);
             return cantidad;
         }
 
         public List<Puesto> GetPuestoPorPagina(int cantidad, int pagina)
         {
             List<Puesto> listapuesto = new List<Puesto>();
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-
-                string selectQuery = @"SELECT PuestoId, NombrePuesto, Sueldo FROM Puestos
+            string selectQuery = @"SELECT PuestoId, NombrePuesto, SueldoPorHora FROM Puestos
                     ORDER BY NombrePuesto
                     OFFSET @cantidadRegistros ROWS 
                     FETCH NEXT @cantidadPorPagina ROWS ONLY";
 
-                 listapuesto = conn.Query<Puesto>(selectQuery,
-                 new
-                 {
-                   cantidadRegistros = (pagina - 1) * cantidad,
-                   cantidadPorPagina = cantidad
-                 }).ToList();
-            }
+            listapuesto = transaction.Connection.Query<Puesto>(selectQuery,
+            new
+            {
+                cantidadRegistros = (pagina - 1) * cantidad,
+                cantidadPorPagina = cantidad
+            }, transaction: transaction).ToList();
             return listapuesto;
         }
 
         public Puesto GetPuestoPorId(int puestoId)
         {
             Puesto puesto = null;
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-                string selectQuery = @"SELECT PuestoId,NombrePuesto,Sueldo FROM Puestos WHERE PuestoId=@PuestoId";
-                puesto = conn.QuerySingleOrDefault<Puesto>(selectQuery, new { puestoId = puestoId });
-            }
+            string selectQuery = @"SELECT PuestoId,NombrePuesto,SueldoPorHora FROM Puestos WHERE PuestoId=@PuestoId";
+            puesto = transaction.Connection.QuerySingleOrDefault<Puesto>(selectQuery, new { puestoId = puestoId }, transaction: transaction);
             return puesto;
         }
 
         public List<Puesto> GetPuestos()
         {
             List<Puesto> lista = new List<Puesto>();
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
-                string selectQuery = "select PuestoId,NombrePuesto,Sueldo from Puestos order by NombrePuesto";
-                lista = conn.Query<Puesto>(selectQuery).ToList();
-            }
+
+            string selectQuery = "select PuestoId,NombrePuesto,SueldoPorHora from Puestos order by NombrePuesto";
+            lista = transaction.Connection.Query<Puesto>(selectQuery,transaction:transaction).ToList();
             return lista;
         }
 
         public bool EstaRelacionado(Puesto puesto)
         {
             int cantidad = 0;
-            using (var conn = new SqlConnection(CadenaConexion))
-            {
                 string selectQuery = "SELECT COUNT(*) FROM Empleados WHERE PuestoId=@PuestoId";
-                cantidad = conn.QuerySingle<int>(selectQuery, new { PuestoId = puesto.PuestoId });
-            }
+                cantidad = transaction.Connection.QuerySingle<int>(selectQuery, new { PuestoId = puesto.PuestoId },transaction:transaction);
             return cantidad > 0;
         }
     }

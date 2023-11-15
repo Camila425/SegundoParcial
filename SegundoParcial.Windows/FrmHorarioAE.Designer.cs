@@ -37,8 +37,6 @@
             this.Cancelarbutton = new System.Windows.Forms.Button();
             this.OKbutton = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label4 = new System.Windows.Forms.Label();
-            this.DiasLaboralestextBox = new System.Windows.Forms.TextBox();
             this.HorariocomboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -92,9 +90,9 @@
             // Cancelarbutton
             // 
             this.Cancelarbutton.Image = global::SegundoParcial.Windows.Properties.Resources.cancel_64px2;
-            this.Cancelarbutton.Location = new System.Drawing.Point(234, 225);
+            this.Cancelarbutton.Location = new System.Drawing.Point(264, 199);
             this.Cancelarbutton.Name = "Cancelarbutton";
-            this.Cancelarbutton.Size = new System.Drawing.Size(102, 56);
+            this.Cancelarbutton.Size = new System.Drawing.Size(145, 56);
             this.Cancelarbutton.TabIndex = 7;
             this.Cancelarbutton.Text = "Cancelar";
             this.Cancelarbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -104,9 +102,9 @@
             // OKbutton
             // 
             this.OKbutton.Image = global::SegundoParcial.Windows.Properties.Resources.ok_36px1;
-            this.OKbutton.Location = new System.Drawing.Point(78, 225);
+            this.OKbutton.Location = new System.Drawing.Point(57, 199);
             this.OKbutton.Name = "OKbutton";
-            this.OKbutton.Size = new System.Drawing.Size(102, 56);
+            this.OKbutton.Size = new System.Drawing.Size(129, 56);
             this.OKbutton.TabIndex = 6;
             this.OKbutton.Text = "OK";
             this.OKbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -116,22 +114,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 182);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Dias Lab.";
-            // 
-            // DiasLaboralestextBox
-            // 
-            this.DiasLaboralestextBox.Location = new System.Drawing.Point(78, 182);
-            this.DiasLaboralestextBox.Name = "DiasLaboralestextBox";
-            this.DiasLaboralestextBox.Size = new System.Drawing.Size(388, 20);
-            this.DiasLaboralestextBox.TabIndex = 9;
             // 
             // HorariocomboBox
             // 
@@ -146,10 +128,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 293);
+            this.ClientSize = new System.Drawing.Size(470, 275);
+            this.ControlBox = false;
             this.Controls.Add(this.HorariocomboBox);
-            this.Controls.Add(this.DiasLaboralestextBox);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.Cancelarbutton);
             this.Controls.Add(this.OKbutton);
             this.Controls.Add(this.label3);
@@ -158,6 +139,7 @@
             this.Controls.Add(this.HoraIniciodateTimePicker);
             this.Controls.Add(this.label1);
             this.Name = "FrmHorarioAE";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmHorarioAE";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -175,8 +157,6 @@
         private System.Windows.Forms.Button OKbutton;
         private System.Windows.Forms.Button Cancelarbutton;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.TextBox DiasLaboralestextBox;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox HorariocomboBox;
     }
 }

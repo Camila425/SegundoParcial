@@ -10,7 +10,9 @@ namespace SegundoParcial.Datos.Interfaces
         void Borrar(int horarioId);
         void Editar(Horario horario);
         bool Existe(Horario horario);
+        int GetCantidad();
         Horario GetHorarioPorId(int horarioId);
+        List<HorarioDto> GetHorarioPorPagina(int registrosPorPagina, int paginaActual, int? tipoHorario);
         List<HorarioDto> GetHorarios(int? TipoDeHorarioId);
         List<TipoDeHorario> GetTipoHorarios();
     }

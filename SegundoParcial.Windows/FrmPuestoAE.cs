@@ -27,7 +27,7 @@ namespace SegundoParcial.Windows
             if (Puesto != null)
             {
                 PuestotextBox.Text = Puesto.NombrePuesto;
-                SueldotextBox.Text =Puesto.Sueldo.ToString();
+                SueldotextBox.Text =Puesto.SueldoPorHora.ToString();
             }
         }
 
@@ -40,7 +40,7 @@ namespace SegundoParcial.Windows
                     Puesto = new Puesto();
                 }
                 Puesto.NombrePuesto = PuestotextBox.Text;
-                Puesto.Sueldo = double.Parse(SueldotextBox.Text);
+                Puesto.SueldoPorHora = double.Parse(SueldotextBox.Text);
                 DialogResult = DialogResult.OK;
             }
         }

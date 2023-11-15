@@ -143,6 +143,16 @@ namespace SegundoParcial.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cancel_64px7 {
+            get {
+                object obj = ResourceManager.GetObject("cancel_64px7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ciudades {
             get {
                 object obj = ResourceManager.GetObject("ciudades", resourceCulture);
@@ -176,6 +186,16 @@ namespace SegundoParcial.Windows.Properties {
         internal static System.Drawing.Bitmap edit_36px {
             get {
                 object obj = ResourceManager.GetObject("edit_36px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit_36px {
+            get {
+                object obj = ResourceManager.GetObject("exit_36px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +246,16 @@ namespace SegundoParcial.Windows.Properties {
         internal static System.Drawing.Bitmap home_50px {
             get {
                 object obj = ResourceManager.GetObject("home_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_50px1 {
+            get {
+                object obj = ResourceManager.GetObject("home_50px1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -303,6 +333,16 @@ namespace SegundoParcial.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap money_40px3 {
+            get {
+                object obj = ResourceManager.GetObject("money_40px3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap next_48px {
             get {
                 object obj = ResourceManager.GetObject("next_48px", resourceCulture);
@@ -356,6 +396,46 @@ namespace SegundoParcial.Windows.Properties {
         internal static System.Drawing.Bitmap ok_36px4 {
             get {
                 object obj = ResourceManager.GetObject("ok_36px4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ok_36px5 {
+            get {
+                object obj = ResourceManager.GetObject("ok_36px5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_garage_door_36px {
+            get {
+                object obj = ResourceManager.GetObject("open_garage_door_36px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_garage_door_40px {
+            get {
+                object obj = ResourceManager.GetObject("open_garage_door_40px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap open_garage_door_50px {
+            get {
+                object obj = ResourceManager.GetObject("open_garage_door_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

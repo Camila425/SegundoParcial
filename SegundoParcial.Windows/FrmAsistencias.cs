@@ -5,6 +5,7 @@ using SegundoParcial.Servicios.Servicios;
 using SegundoParcial.Windows.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SegundoParcial.Windows
@@ -17,9 +18,10 @@ namespace SegundoParcial.Windows
         int paginaActual = 1;
         int registros = 0;
         int paginas = 0;
-        int registrosPorPagina = 12;
+        int registrosPorPagina = 14;
         int? EmpleadoFiltro = null;
-       
+        bool filtroOn = false;
+
 
         public FrmAsistencias()
         {
@@ -78,13 +80,11 @@ namespace SegundoParcial.Windows
             {
                 return;
             }
+            var asistencia = frm.GetAsistencia();
+
             try
             {
-                var asistencia = frm.GetAsistencia();
                 servicioAsistencia.Guardar(asistencia);
-                DataGridViewRow r = GridHelper.ConstruirFila(DatosdataGridView);
-                GridHelper.Setearfila(r, asistencia);
-                GridHelper.AgregarFila(DatosdataGridView, r);
                 MessageBox.Show("registro agregado", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RecargarGrilla();
             }
@@ -115,7 +115,7 @@ namespace SegundoParcial.Windows
                 }
                 asistencia = frm.GetAsistencia();
                 
-                    servicioAsistencia.Guardar(asistencia);
+                    servicioAsistencia.Editar(asistencia);
                     GridHelper.Setearfila(r, asistencia);
                     MessageBox.Show("Registro editado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RecargarGrilla();
@@ -185,6 +185,45 @@ namespace SegundoParcial.Windows
         {
             paginaActual = paginas;
             MostrarPaginado();
+        }
+
+        private void BuscartoolStripButton_Click(object sender, EventArgs e)
+        {
+            if (!filtroOn)
+            {
+                FrmBuscarEmpleado frm = new FrmBuscarEmpleado() { Text = "Seleccionar Empleado" };
+                DialogResult dr = frm.ShowDialog(this);
+                if (dr == DialogResult.Cancel)
+                {
+                    return;
+                }
+                try
+                {
+                    filtroOn = true;
+                    var empleado = frm.GetEmpleado();
+                    EmpleadoFiltro = empleado.EmpleadoId;
+                    BuscartoolStripButton.BackColor = Color.Red;
+                    registros = servicioAsistencia.GetCantidad(empleado.EmpleadoId);
+                    paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
+                    MostrarPaginado();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Quite el filtro", "advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void ActualizartoolStripButton_Click(object sender, EventArgs e)
+        {
+            filtroOn = false;
+            EmpleadoFiltro = null;
+            RecargarGrilla();
+            BuscartoolStripButton.BackColor = Color.White;
         }
     }
 }

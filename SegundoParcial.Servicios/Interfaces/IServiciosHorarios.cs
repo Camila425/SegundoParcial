@@ -8,7 +8,9 @@ namespace SegundoParcial.Servicios.Interfaces
     {
         void Borrar(int horarioId);
         bool Existe(Horario horario);
+        int GetCantidad();
         Horario GetHorarioPorId(int horarioId);
+        List<HorarioDto> GetHorarioPorPagina(int registrosPorPagina, int paginaActual,int? TipoHorario);
         List<HorarioDto> GetHorarios(int? TipoDeHorarioId);
         List<TipoDeHorario> GetTipoHorarios();
         void Guardar(Horario horario);

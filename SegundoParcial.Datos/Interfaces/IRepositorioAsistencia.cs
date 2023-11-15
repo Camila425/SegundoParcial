@@ -13,5 +13,6 @@ namespace SegundoParcial.Datos.Interfaces
         List<AsistenciaDto> GetAsistenciaPorPagina(int registrosPorPagina, int paginaActual, int? EmpleadoId);
         List<AsistenciaDto> GetAsistencias(int? EmpleadoId);
         int GetCantidad();
+        int GetCantidad(int? empleadoId);
     }
 }

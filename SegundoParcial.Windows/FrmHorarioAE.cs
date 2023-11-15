@@ -36,7 +36,6 @@ namespace SegundoParcial.Windows
 
                 Horario.HoraInicio = HoraIniciodateTimePicker.Value.TimeOfDay;
                 Horario.HoraFin = HoraSalidadateTimePicker.Value.TimeOfDay;
-                Horario.DiasLaborales = DiasLaboralestextBox.Text;
                 DialogResult = DialogResult.OK;
             }
         }
@@ -49,9 +48,9 @@ namespace SegundoParcial.Windows
             {
                 HorariocomboBox.SelectedValue = Horario.HorarioId;
 
-                //HoraIniciodateTimePicker.Value(TimeSpan)= Horario.HoraInicio;
-                //HoraSalidadateTimePicker.Value=(TimeSpan) Horario.HoraFin;
-                DiasLaboralestextBox.Text = Horario.DiasLaborales;
+                HoraIniciodateTimePicker.Value = DateTime.Parse(Horario.HoraInicio.ToString());
+                HoraSalidadateTimePicker.Value = DateTime.Parse(Horario.HoraFin.ToString());
+
             }
         }
 

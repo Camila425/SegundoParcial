@@ -28,7 +28,7 @@ namespace SegundoParcial.Windows
             if (PuestocomboBox.SelectedIndex == 0)
             {
                 valido = false;
-                errorProvider1.SetError(PuestocomboBox, " seleccionar un empleado");
+                errorProvider1.SetError(PuestocomboBox, " seleccionar un Puesto");
             }
             return valido;
         }
@@ -38,7 +38,7 @@ namespace SegundoParcial.Windows
             DialogResult = DialogResult.Cancel;
         }
 
-        public Puesto GetEmpleado()
+        public Puesto GetPuesto()
         {
             return PuestoSeleccionado;   
         }
