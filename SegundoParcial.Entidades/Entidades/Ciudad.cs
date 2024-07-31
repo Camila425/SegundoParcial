@@ -4,7 +4,7 @@ namespace SegundoParcial.Entidades.Entidades
 {
     public class Ciudad : ICloneable
     {
-        //ciudades
+        //ciudades, ciudadid
         public int CiudadId { get; set; }
         public string NombreCiudad { get; set; }
         public object Clone()
