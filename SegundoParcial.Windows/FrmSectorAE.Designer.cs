@@ -60,9 +60,9 @@
             // Cancelarbutton
             // 
             this.Cancelarbutton.Image = global::SegundoParcial.Windows.Properties.Resources.cancel_64px1;
-            this.Cancelarbutton.Location = new System.Drawing.Point(253, 146);
+            this.Cancelarbutton.Location = new System.Drawing.Point(240, 146);
             this.Cancelarbutton.Name = "Cancelarbutton";
-            this.Cancelarbutton.Size = new System.Drawing.Size(102, 56);
+            this.Cancelarbutton.Size = new System.Drawing.Size(125, 56);
             this.Cancelarbutton.TabIndex = 3;
             this.Cancelarbutton.Text = "Cancelar";
             this.Cancelarbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -72,9 +72,9 @@
             // OKbutton
             // 
             this.OKbutton.Image = global::SegundoParcial.Windows.Properties.Resources.ok_36px;
-            this.OKbutton.Location = new System.Drawing.Point(74, 146);
+            this.OKbutton.Location = new System.Drawing.Point(53, 146);
             this.OKbutton.Name = "OKbutton";
-            this.OKbutton.Size = new System.Drawing.Size(102, 56);
+            this.OKbutton.Size = new System.Drawing.Size(132, 56);
             this.OKbutton.TabIndex = 2;
             this.OKbutton.Text = "Ok";
             this.OKbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -85,6 +85,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(422, 228);
             this.Controls.Add(this.Cancelarbutton);
             this.Controls.Add(this.OKbutton);

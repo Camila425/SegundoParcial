@@ -66,8 +66,6 @@ namespace SegundoParcial.Windows
             Paginaslabel.Text = paginas.ToString();
         }
 
-
-
         private void CerrartoolStripButton_Click_1(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

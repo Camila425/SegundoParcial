@@ -1,4 +1,5 @@
-﻿using SegundoParcial.Entidades.Entidades;
+﻿using SegundoParcial.Entidades.Dtos.Horarios;
+using SegundoParcial.Entidades.Entidades;
 using SegundoParcial.Windows.Helpers;
 using System;
 using System.Windows.Forms;
@@ -27,10 +28,9 @@ namespace SegundoParcial.Windows
                     asistencia = new Asistencia();
                 }
                 asistencia.empleadoId = (int)EmpleadocomboBox.SelectedValue;
-                //asistencia.Dni = DnitextBox.Text;
                 asistencia.Fecha = FechahoydateTimePicker.Value;
-                asistencia.HoraEntrada =TimeSpan.Parse(HoraEntradadateTimePicker.Value.ToShortTimeString());
-                asistencia.HoraSalida = TimeSpan.Parse( HoraSalidadateTimePicker.Value.ToShortTimeString());
+                asistencia.HoraEntrada = TimeSpan.Parse(HoraEntradadateTimePicker.Value.ToShortTimeString());
+                asistencia.HoraSalida = TimeSpan.Parse(HoraSalidadateTimePicker.Value.ToShortTimeString());
                 HoraSalidadateTimePicker.Enabled = false;
 
                 DialogResult = DialogResult.OK;
@@ -46,9 +46,7 @@ namespace SegundoParcial.Windows
                 errorProvider1.SetError(EmpleadocomboBox, "Debe seleccionar un empleado");
 
             }
-
             return valido;
-
         }
 
         private void FrmAsistenciaAE_Load(object sender, EventArgs e)
@@ -68,19 +66,39 @@ namespace SegundoParcial.Windows
 
                 FechahoydateTimePicker.Value = asistencia.Fecha;
                 FechahoydateTimePicker.Enabled = false;
-               
-                HoraEntradadateTimePicker.Value =DateTime.Parse( asistencia.HoraEntrada.ToString());
+
+                HoraEntradadateTimePicker.Value = DateTime.Parse(asistencia.HoraEntrada.ToString());
                 HoraEntradadateTimePicker.Enabled = false;
+                if (asistencia.HoraSalida == null)
+                { 
 
-                HoraSalidadateTimePicker.Value = DateTime.Parse(asistencia.HoraSalida.ToString());
+                    DateTime fechaActual = DateTime.Now;
+                    DateTime fechaConHoraSalida;
+                    if (asistencia.HoraSalida.HasValue)
+                    {
+                        fechaConHoraSalida = fechaActual.Date + asistencia.HoraSalida.Value;
+                    }
+                    else
+                    {
+                        fechaConHoraSalida = fechaActual.Date;
+                    }
+
+                    HoraSalidadateTimePicker.Value = fechaConHoraSalida=DateTime.Now;
+                    label5.Visible = asistencia != null;
+                    HoraSalidadateTimePicker.Visible = asistencia.HoraSalida == null;
+                }
+                else
+                {
+                    label5.Visible = asistencia != null;
+                    HoraSalidadateTimePicker.Visible = asistencia.HoraSalida != null;
+                    HoraSalidadateTimePicker.Value =DateTime.Parse((asistencia.HoraSalida).ToString());
+                }
             }
-
         }
         public Asistencia GetAsistencia()
         {
             return asistencia;
         }
-
         public void SetAsistencia(Asistencia asistencia)
         {
             this.asistencia = asistencia;

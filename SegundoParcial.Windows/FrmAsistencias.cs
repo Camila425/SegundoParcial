@@ -1,5 +1,6 @@
 ﻿using SegundoParcial.Entidades.Dtos.Asistencias;
 using SegundoParcial.Entidades.Entidades;
+using SegundoParcial.Entidades.Enums;
 using SegundoParcial.Servicios.Interfaces;
 using SegundoParcial.Servicios.Servicios;
 using SegundoParcial.Windows.Helpers;
@@ -13,20 +14,21 @@ namespace SegundoParcial.Windows
     public partial class FrmAsistencias : Form
     {
         private readonly IServiciosAsistencias servicioAsistencia;
+        private readonly IServiciosPagos serviciosPagos;
         private List<AsistenciaDto> listaAsistencia;
 
         int paginaActual = 1;
         int registros = 0;
         int paginas = 0;
-        int registrosPorPagina = 14;
+        int registrosPorPagina = 9;
         int? EmpleadoFiltro = null;
         bool filtroOn = false;
-
 
         public FrmAsistencias()
         {
             InitializeComponent();
             servicioAsistencia = new ServiciosAsistencias();
+            serviciosPagos = new ServiciosPagos();
         }
 
         private void CerrartoolStripButton_Click(object sender, EventArgs e)
@@ -54,7 +56,7 @@ namespace SegundoParcial.Windows
         }
         private void MostrarPaginado()
         {
-            listaAsistencia = servicioAsistencia.GetAsistenciaPorPagina(registrosPorPagina, paginaActual,EmpleadoFiltro);
+            listaAsistencia = servicioAsistencia.GetAsistenciaPorPagina(registrosPorPagina, paginaActual, EmpleadoFiltro);
             MostrarDatosEnGrilla();
         }
 
@@ -64,7 +66,9 @@ namespace SegundoParcial.Windows
             foreach (var horario in listaAsistencia)
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(DatosdataGridView);
+
                 GridHelper.Setearfila(r, horario);
+
                 GridHelper.AgregarFila(DatosdataGridView, r);
             }
             Registroslabel.Text = registros.ToString();
@@ -76,24 +80,48 @@ namespace SegundoParcial.Windows
         {
             FrmAsistenciaAE frm = new FrmAsistenciaAE() { Text = "Registrar Asistencia" };
             DialogResult dr = frm.ShowDialog(this);
+
             if (dr == DialogResult.Cancel)
             {
                 return;
             }
+
             var asistencia = frm.GetAsistencia();
 
             try
             {
+                //si existe una asistencia con el mismo nombre la misma fecha y todavia no registro su salida 
+                // la horasalida es null no lo puedo guardar
+
+
+                //if (servicioAsistencia.Existe(asistencia))
+                //{
+                //    MessageBox.Show("Debe registrar la salida para volver a ingresar","Mensaje", MessageBoxButtons.OK
+                //        , MessageBoxIcon.Error);
+                //    return;
+                //}
+
                 servicioAsistencia.Guardar(asistencia);
-                MessageBox.Show("registro agregado", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //agrego el pago
+                var pago = new Pago();
+
+                pago.AsistenciaId = asistencia.AsistenciaId;
+                pago.Fecha = DateTime.Now;
+                pago.EstadoPago = EstadoPago.Impago;
+                pago.EmpleadoId = asistencia.empleadoId;
+                pago.ImporteTotal = asistencia.ImporteTotal;
+                 
+                serviciosPagos.Guardar(pago);
+
+                MessageBox.Show("Registro agregado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RecargarGrilla();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void EditartoolStripButton_Click(object sender, EventArgs e)
         {
             if (DatosdataGridView.SelectedRows.Count == 0)
@@ -114,11 +142,21 @@ namespace SegundoParcial.Windows
                     return;
                 }
                 asistencia = frm.GetAsistencia();
-                
-                    servicioAsistencia.Editar(asistencia);
-                    GridHelper.Setearfila(r, asistencia);
-                    MessageBox.Show("Registro editado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    RecargarGrilla();
+
+                servicioAsistencia.Editar(asistencia);
+                var pago = new Pago();
+
+                pago.AsistenciaId = asistencia.AsistenciaId;
+                pago.Fecha = DateTime.Now;
+                pago.EstadoPago = EstadoPago.Impago;
+                pago.EmpleadoId = asistencia.empleadoId;
+                pago.ImporteTotal = asistencia.ImporteTotal;
+
+                serviciosPagos.Editar(asistencia,pago);
+
+                GridHelper.Setearfila(r, asistencia);
+                MessageBox.Show("Salida Registrada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RecargarGrilla();
             }
             catch (Exception ex)
             {

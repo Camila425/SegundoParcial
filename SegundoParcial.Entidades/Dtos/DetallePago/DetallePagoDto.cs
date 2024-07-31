@@ -9,7 +9,6 @@ namespace SegundoParcial.Entidades.Dtos.DetallePgo
 
         public int EmpleadoId { get; set; }
         public int PagoId { get; set; }
-
         public DateTime Fecha { get; set; }
         public TimeSpan HoraEntrada { get; set; }
         public TimeSpan HoraSalida { get; set; }
@@ -17,14 +16,11 @@ namespace SegundoParcial.Entidades.Dtos.DetallePgo
         public double HorasExtras { get; set; }
         public double ObraSocial { get; set; }
         public double Descuentos { get; set; }
-        public double importe { get; set; }
+        public double importe => puesto.SueldoPorHora * asistencia.HorasTrabajadas;
+
         public Puesto puesto { get; set; } = new Puesto();
         public Asistencia asistencia { get; set; } = new Asistencia();
 
-        public double CalcularImporte()
-        {
-            return importe = puesto.SueldoPorHora * asistencia.HorasTrabajadas;
-        }
 
 
 

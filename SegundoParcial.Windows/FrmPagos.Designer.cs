@@ -30,10 +30,11 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.DatosdataGridView = new System.Windows.Forms.DataGridView();
-            this.btnUltimo = new System.Windows.Forms.Button();
-            this.btnSiguiente = new System.Windows.Forms.Button();
-            this.btnAnterior = new System.Windows.Forms.Button();
-            this.btnPrimero = new System.Windows.Forms.Button();
+            this.colpagoid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colempleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colfecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colImporteTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Paginaslabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.PaginaActuallabel = new System.Windows.Forms.Label();
@@ -41,19 +42,19 @@
             this.Registroslabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.NuevotoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.RealizarPagoEmpleadobutton = new System.Windows.Forms.Button();
+            this.btnUltimo = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnPrimero = new System.Windows.Forms.Button();
             this.BorrartoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.EditartoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.BuscartoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.ActualizartoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.DetalletoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.colempleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colfecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colImporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AnularPagotoolStripButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -65,7 +66,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 58);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 63);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -75,6 +76,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.RosyBrown;
             this.splitContainer1.Panel2.Controls.Add(this.btnUltimo);
             this.splitContainer1.Panel2.Controls.Add(this.btnSiguiente);
             this.splitContainer1.Panel2.Controls.Add(this.btnAnterior);
@@ -85,8 +87,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.Registroslabel);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 392);
-            this.splitContainer1.SplitterDistance = 324;
+            this.splitContainer1.Size = new System.Drawing.Size(800, 387);
+            this.splitContainer1.SplitterDistance = 319;
             this.splitContainer1.TabIndex = 25;
             // 
             // DatosdataGridView
@@ -95,57 +97,54 @@
             this.DatosdataGridView.AllowUserToDeleteRows = false;
             this.DatosdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DatosdataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colpagoid,
             this.colempleado,
             this.colfecha,
-            this.colImporte,
+            this.colImporteTotal,
             this.colEstado});
             this.DatosdataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DatosdataGridView.Location = new System.Drawing.Point(0, 0);
             this.DatosdataGridView.Name = "DatosdataGridView";
             this.DatosdataGridView.ReadOnly = true;
             this.DatosdataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DatosdataGridView.Size = new System.Drawing.Size(800, 324);
+            this.DatosdataGridView.Size = new System.Drawing.Size(800, 319);
             this.DatosdataGridView.TabIndex = 0;
             // 
-            // btnUltimo
+            // colpagoid
             // 
-            this.btnUltimo.Image = global::SegundoParcial.Windows.Properties.Resources.last_48px;
-            this.btnUltimo.Location = new System.Drawing.Point(524, 11);
-            this.btnUltimo.Name = "btnUltimo";
-            this.btnUltimo.Size = new System.Drawing.Size(75, 32);
-            this.btnUltimo.TabIndex = 59;
-            this.btnUltimo.UseVisualStyleBackColor = true;
-            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            this.colpagoid.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colpagoid.HeaderText = "Pago ID";
+            this.colpagoid.Name = "colpagoid";
+            this.colpagoid.ReadOnly = true;
             // 
-            // btnSiguiente
+            // colempleado
             // 
-            this.btnSiguiente.Image = global::SegundoParcial.Windows.Properties.Resources.next_48px;
-            this.btnSiguiente.Location = new System.Drawing.Point(443, 11);
-            this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(75, 32);
-            this.btnSiguiente.TabIndex = 60;
-            this.btnSiguiente.UseVisualStyleBackColor = true;
-            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.colempleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colempleado.HeaderText = "Empleado";
+            this.colempleado.Name = "colempleado";
+            this.colempleado.ReadOnly = true;
             // 
-            // btnAnterior
+            // colfecha
             // 
-            this.btnAnterior.Image = global::SegundoParcial.Windows.Properties.Resources.previous_48px;
-            this.btnAnterior.Location = new System.Drawing.Point(362, 11);
-            this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(75, 32);
-            this.btnAnterior.TabIndex = 61;
-            this.btnAnterior.UseVisualStyleBackColor = true;
-            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            this.colfecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colfecha.HeaderText = "Fecha";
+            this.colfecha.Name = "colfecha";
+            this.colfecha.ReadOnly = true;
             // 
-            // btnPrimero
+            // colImporteTotal
             // 
-            this.btnPrimero.Image = global::SegundoParcial.Windows.Properties.Resources.first_48px;
-            this.btnPrimero.Location = new System.Drawing.Point(281, 11);
-            this.btnPrimero.Name = "btnPrimero";
-            this.btnPrimero.Size = new System.Drawing.Size(75, 32);
-            this.btnPrimero.TabIndex = 62;
-            this.btnPrimero.UseVisualStyleBackColor = true;
-            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
+            this.colImporteTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colImporteTotal.HeaderText = "Importe Total";
+            this.colImporteTotal.Name = "colImporteTotal";
+            this.colImporteTotal.ReadOnly = true;
+            // 
+            // colEstado
+            // 
+            this.colEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.Name = "colEstado";
+            this.colEstado.ReadOnly = true;
+            this.colEstado.Width = 65;
             // 
             // Paginaslabel
             // 
@@ -208,139 +207,160 @@
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.RosyBrown;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NuevotoolStripButton,
             this.BorrartoolStripButton,
             this.EditartoolStripButton,
             this.toolStripSeparator2,
             this.BuscartoolStripButton,
-            this.toolStripButton1,
             this.ActualizartoolStripButton,
             this.toolStripSeparator1,
-            this.DetalletoolStripButton});
+            this.DetalletoolStripButton,
+            this.AnularPagotoolStripButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 58);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 63);
             this.toolStrip1.TabIndex = 24;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // NuevotoolStripButton
+            // toolStripSeparator2
             // 
-            this.NuevotoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.create_36px;
-            this.NuevotoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.NuevotoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.NuevotoolStripButton.Name = "NuevotoolStripButton";
-            this.NuevotoolStripButton.Size = new System.Drawing.Size(46, 55);
-            this.NuevotoolStripButton.Text = "Nuevo";
-            this.NuevotoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.NuevotoolStripButton.Click += new System.EventHandler(this.NuevotoolStripButton_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 63);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 63);
+            // 
+            // RealizarPagoEmpleadobutton
+            // 
+            this.RealizarPagoEmpleadobutton.Image = global::SegundoParcial.Windows.Properties.Resources.money_40px6;
+            this.RealizarPagoEmpleadobutton.Location = new System.Drawing.Point(649, 11);
+            this.RealizarPagoEmpleadobutton.Name = "RealizarPagoEmpleadobutton";
+            this.RealizarPagoEmpleadobutton.Size = new System.Drawing.Size(139, 46);
+            this.RealizarPagoEmpleadobutton.TabIndex = 26;
+            this.RealizarPagoEmpleadobutton.Text = "Pagar";
+            this.RealizarPagoEmpleadobutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.RealizarPagoEmpleadobutton.UseVisualStyleBackColor = true;
+            this.RealizarPagoEmpleadobutton.Click += new System.EventHandler(this.RealizarPagoEmpleadobutton_Click);
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Image = global::SegundoParcial.Windows.Properties.Resources.last_30px;
+            this.btnUltimo.Location = new System.Drawing.Point(524, 11);
+            this.btnUltimo.Name = "btnUltimo";
+            this.btnUltimo.Size = new System.Drawing.Size(75, 32);
+            this.btnUltimo.TabIndex = 59;
+            this.btnUltimo.UseVisualStyleBackColor = true;
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Image = global::SegundoParcial.Windows.Properties.Resources.next_50px;
+            this.btnSiguiente.Location = new System.Drawing.Point(443, 11);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(75, 32);
+            this.btnSiguiente.TabIndex = 60;
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Image = global::SegundoParcial.Windows.Properties.Resources.previous_50px;
+            this.btnAnterior.Location = new System.Drawing.Point(362, 11);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 32);
+            this.btnAnterior.TabIndex = 61;
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnPrimero
+            // 
+            this.btnPrimero.Image = global::SegundoParcial.Windows.Properties.Resources.firs;
+            this.btnPrimero.Location = new System.Drawing.Point(281, 11);
+            this.btnPrimero.Name = "btnPrimero";
+            this.btnPrimero.Size = new System.Drawing.Size(75, 32);
+            this.btnPrimero.TabIndex = 62;
+            this.btnPrimero.UseVisualStyleBackColor = true;
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
             // 
             // BorrartoolStripButton
             // 
+            this.BorrartoolStripButton.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.BorrartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.delete_36px;
             this.BorrartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.BorrartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BorrartoolStripButton.Name = "BorrartoolStripButton";
-            this.BorrartoolStripButton.Size = new System.Drawing.Size(43, 55);
+            this.BorrartoolStripButton.Size = new System.Drawing.Size(54, 60);
             this.BorrartoolStripButton.Text = "Borrar";
             this.BorrartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.BorrartoolStripButton.Click += new System.EventHandler(this.BorrartoolStripButton_Click);
             // 
             // EditartoolStripButton
             // 
+            this.EditartoolStripButton.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.EditartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.edit_36px;
             this.EditartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.EditartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditartoolStripButton.Name = "EditartoolStripButton";
-            this.EditartoolStripButton.Size = new System.Drawing.Size(41, 55);
+            this.EditartoolStripButton.Size = new System.Drawing.Size(52, 60);
             this.EditartoolStripButton.Text = "Editar";
             this.EditartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.EditartoolStripButton.Click += new System.EventHandler(this.EditartoolStripButton_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 58);
-            // 
             // BuscartoolStripButton
             // 
+            this.BuscartoolStripButton.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.BuscartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.filter_36px;
             this.BuscartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.BuscartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BuscartoolStripButton.Name = "BuscartoolStripButton";
-            this.BuscartoolStripButton.Size = new System.Drawing.Size(102, 55);
+            this.BuscartoolStripButton.Size = new System.Drawing.Size(128, 60);
             this.BuscartoolStripButton.Text = "Buscar Empleado";
             this.BuscartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = global::SegundoParcial.Windows.Properties.Resources.filter_36px;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(80, 55);
-            this.toolStripButton1.Text = "Buscar Fecha";
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.BuscartoolStripButton.Click += new System.EventHandler(this.BuscartoolStripButton_Click);
             // 
             // ActualizartoolStripButton
             // 
+            this.ActualizartoolStripButton.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.ActualizartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.update_36px;
             this.ActualizartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.ActualizartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ActualizartoolStripButton.Name = "ActualizartoolStripButton";
-            this.ActualizartoolStripButton.Size = new System.Drawing.Size(63, 55);
+            this.ActualizartoolStripButton.Size = new System.Drawing.Size(79, 60);
             this.ActualizartoolStripButton.Text = "Actualizar";
             this.ActualizartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 58);
+            this.ActualizartoolStripButton.Click += new System.EventHandler(this.ActualizartoolStripButton_Click);
             // 
             // DetalletoolStripButton
             // 
+            this.DetalletoolStripButton.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.DetalletoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.todo_list_36px;
             this.DetalletoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.DetalletoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DetalletoolStripButton.Name = "DetalletoolStripButton";
-            this.DetalletoolStripButton.Size = new System.Drawing.Size(83, 55);
+            this.DetalletoolStripButton.Size = new System.Drawing.Size(106, 60);
             this.DetalletoolStripButton.Text = "Detalle Pago  ";
             this.DetalletoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.DetalletoolStripButton.Click += new System.EventHandler(this.DetalletoolStripButton_Click);
             // 
-            // colempleado
+            // AnularPagotoolStripButton
             // 
-            this.colempleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colempleado.HeaderText = "Empleado";
-            this.colempleado.Name = "colempleado";
-            this.colempleado.ReadOnly = true;
-            // 
-            // colfecha
-            // 
-            this.colfecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colfecha.HeaderText = "Fecha";
-            this.colfecha.Name = "colfecha";
-            this.colfecha.ReadOnly = true;
-            // 
-            // colImporte
-            // 
-            this.colImporte.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colImporte.HeaderText = "Sueldo";
-            this.colImporte.Name = "colImporte";
-            this.colImporte.ReadOnly = true;
-            // 
-            // colEstado
-            // 
-            this.colEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.colEstado.HeaderText = "Estado";
-            this.colEstado.Name = "colEstado";
-            this.colEstado.ReadOnly = true;
-            this.colEstado.Width = 65;
+            this.AnularPagotoolStripButton.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.AnularPagotoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.cancel_35px;
+            this.AnularPagotoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.AnularPagotoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AnularPagotoolStripButton.Name = "AnularPagotoolStripButton";
+            this.AnularPagotoolStripButton.Size = new System.Drawing.Size(93, 60);
+            this.AnularPagotoolStripButton.Text = "Anular Pago";
+            this.AnularPagotoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.AnularPagotoolStripButton.Click += new System.EventHandler(this.AnularPagotoolStripButton_Click);
             // 
             // FrmPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.RealizarPagoEmpleadobutton);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "FrmPagos";
@@ -374,18 +394,19 @@
         private System.Windows.Forms.Label Registroslabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton NuevotoolStripButton;
         private System.Windows.Forms.ToolStripButton BorrartoolStripButton;
         private System.Windows.Forms.ToolStripButton EditartoolStripButton;
         private System.Windows.Forms.ToolStripButton BuscartoolStripButton;
         private System.Windows.Forms.ToolStripButton ActualizartoolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton DetalletoolStripButton;
+        private System.Windows.Forms.Button RealizarPagoEmpleadobutton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colpagoid;
         private System.Windows.Forms.DataGridViewTextBoxColumn colempleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn colfecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colImporte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colImporteTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEstado;
+        private System.Windows.Forms.ToolStripButton AnularPagotoolStripButton;
     }
 }

@@ -33,7 +33,7 @@ namespace SegundoParcial.Windows
                 }
                 Pago.EmpleadoId = (int)EmpleadocomboBox.SelectedValue;
                 Pago.Fecha = FechadateTimePicker.Value;
-                estadoPago = EstadoPago.Impago;
+                Pago.ImporteTotal =int.Parse(ImporteTotaltextBox.Text);
                 DialogResult = DialogResult.OK;
             }
         }
@@ -56,7 +56,7 @@ namespace SegundoParcial.Windows
             {
                 EmpleadocomboBox.SelectedValue = Pago.EmpleadoId;
                 FechadateTimePicker.Value = Pago.Fecha;
-               
+                ImporteTotaltextBox.Text = Pago.ImporteTotal.ToString();
             }
         }
 

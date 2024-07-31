@@ -68,6 +68,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.RosyBrown;
             this.splitContainer1.Panel2.Controls.Add(this.buttonUltimo);
             this.splitContainer1.Panel2.Controls.Add(this.buttonSiguiente);
             this.splitContainer1.Panel2.Controls.Add(this.buttonAnterior);
@@ -106,7 +107,7 @@
             // 
             // buttonUltimo
             // 
-            this.buttonUltimo.Image = global::SegundoParcial.Windows.Properties.Resources.last_48px;
+            this.buttonUltimo.Image = global::SegundoParcial.Windows.Properties.Resources.last_30px;
             this.buttonUltimo.Location = new System.Drawing.Point(524, 11);
             this.buttonUltimo.Name = "buttonUltimo";
             this.buttonUltimo.Size = new System.Drawing.Size(75, 32);
@@ -116,7 +117,7 @@
             // 
             // buttonSiguiente
             // 
-            this.buttonSiguiente.Image = global::SegundoParcial.Windows.Properties.Resources.next_48px;
+            this.buttonSiguiente.Image = global::SegundoParcial.Windows.Properties.Resources.next_50px;
             this.buttonSiguiente.Location = new System.Drawing.Point(443, 11);
             this.buttonSiguiente.Name = "buttonSiguiente";
             this.buttonSiguiente.Size = new System.Drawing.Size(75, 32);
@@ -126,7 +127,7 @@
             // 
             // buttonAnterior
             // 
-            this.buttonAnterior.Image = global::SegundoParcial.Windows.Properties.Resources.previous_48px;
+            this.buttonAnterior.Image = global::SegundoParcial.Windows.Properties.Resources.previous_50px;
             this.buttonAnterior.Location = new System.Drawing.Point(362, 11);
             this.buttonAnterior.Name = "buttonAnterior";
             this.buttonAnterior.Size = new System.Drawing.Size(75, 32);
@@ -136,7 +137,7 @@
             // 
             // buttonPrimero
             // 
-            this.buttonPrimero.Image = global::SegundoParcial.Windows.Properties.Resources.first_48px1;
+            this.buttonPrimero.Image = global::SegundoParcial.Windows.Properties.Resources.firs;
             this.buttonPrimero.Location = new System.Drawing.Point(281, 11);
             this.buttonPrimero.Name = "buttonPrimero";
             this.buttonPrimero.Size = new System.Drawing.Size(75, 32);

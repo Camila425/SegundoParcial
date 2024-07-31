@@ -69,7 +69,7 @@
             // 
             // ImageniconPictureBox
             // 
-            this.ImageniconPictureBox.BackColor = System.Drawing.Color.DarkGray;
+            this.ImageniconPictureBox.BackColor = System.Drawing.Color.RosyBrown;
             this.ImageniconPictureBox.ForeColor = System.Drawing.Color.Black;
             this.ImageniconPictureBox.IconChar = FontAwesome.Sharp.IconChar.Person;
             this.ImageniconPictureBox.IconColor = System.Drawing.Color.Black;
@@ -112,7 +112,7 @@
             // 
             // Cancelarbutton
             // 
-            this.Cancelarbutton.BackColor = System.Drawing.Color.RosyBrown;
+            this.Cancelarbutton.BackColor = System.Drawing.Color.LightGray;
             this.Cancelarbutton.ForeColor = System.Drawing.Color.Black;
             this.Cancelarbutton.Location = new System.Drawing.Point(540, 239);
             this.Cancelarbutton.Name = "Cancelarbutton";
@@ -124,7 +124,7 @@
             // 
             // Registrarbutton
             // 
-            this.Registrarbutton.BackColor = System.Drawing.Color.RosyBrown;
+            this.Registrarbutton.BackColor = System.Drawing.Color.LightGray;
             this.Registrarbutton.ForeColor = System.Drawing.Color.Black;
             this.Registrarbutton.Location = new System.Drawing.Point(260, 239);
             this.Registrarbutton.Name = "Registrarbutton";
@@ -144,6 +144,7 @@
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 8;
             this.label5.Text = "H Salida";
+            this.label5.Visible = false;
             // 
             // label6
             // 
@@ -178,6 +179,7 @@
             this.HoraSalidadateTimePicker.ShowUpDown = true;
             this.HoraSalidadateTimePicker.Size = new System.Drawing.Size(245, 20);
             this.HoraSalidadateTimePicker.TabIndex = 9;
+            this.HoraSalidadateTimePicker.Visible = false;
             // 
             // label8
             // 
@@ -203,7 +205,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkGray;
+            this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(682, 315);
             this.ControlBox = false;
             this.Controls.Add(this.FechahoydateTimePicker);

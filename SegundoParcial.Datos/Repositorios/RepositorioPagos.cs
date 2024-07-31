@@ -4,6 +4,7 @@ using SegundoParcial.Entidades.Dtos.Pagos;
 using SegundoParcial.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 
@@ -16,60 +17,64 @@ namespace SegundoParcial.Datos.Repositorios
         {
             transaction = Transaction;
         }
-        public void Editar(Pago pago)
-        {
-            string updateQuery = @"update Pagos SET EmpleadoId=@EmpleadoId,Fecha=@Fecha,Importe=@Importe
-                                   WHERE PagoId=@PagoId";
-            transaction.Connection.Execute(updateQuery, pago, transaction: transaction);
-        }
 
         public void Agregar(Pago pago)
         {
-            try
-            {
-                string insertQuery = @"INSERT INTO Pagos(EmpleadoId, Fecha, Importe, EstadoPago)
-                               VALUES(@EmpleadoId, @Fecha, @Importe, @EstadoPago); SELECT SCOPE_IDENTITY()";
-                int ID = transaction.Connection.QuerySingle<int>(insertQuery, pago, transaction: transaction);
-                pago.PagoId = ID;
+            string insertQuery = @"INSERT INTO pagos(EmpleadoId,Fecha, EstadoPago,AsistenciaId,ImporteTotal)
+                                    VALUES (@EmpleadoId, @Fecha,@EstadoPago,@AsistenciaId,@ImporteTotal); 
+                                   SELECT SCOPE_IDENTITY()";
 
-                pago.Detalles.Add(new DetallePagos
-                {
-                    DetallePagoId=pago.DetallePagoId,
-                    PagoId = pago.PagoId,
-                    Importe = pago.CalcularImporte()
-                }) ;
-
-                foreach (var detalle in pago.Detalles)
-                {
-                    detalle.DetallePagoId = pago.DetallePagoId;
-                    detalle.PagoId = pago.PagoId;
-                    AgregarDetallePago(pago.PagoId, detalle);
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            int ID = transaction.Connection.QuerySingle<int>(insertQuery, pago, transaction: transaction);
+            pago.PagoId = ID;
+            GuardarItemDetallePago(pago);
         }
 
-        private void AgregarDetallePago(int pagoId, DetallePagos detalle)
+        private void GuardarItemDetallePago(Pago pago)
         {
             try
             {
-                string insertQuery = @"INSERT INTO DetallePagos(PagoId, Importe)
-                           VALUES(@PagoId, @Importe); SELECT SCOPE_IDENTITY()";
+                string insertQuery = @"INSERT INTO ItemsDetallePago (PagoId, Fecha, Sueldo, Total)
+                               VALUES (@PagoId, @Fecha, @Sueldo, @Total); SELECT SCOPE_IDENTITY()";
 
-                detalle.PagoId = pagoId;
-
-                transaction.Connection.Execute(insertQuery, detalle, transaction: transaction);
+                double sueldo = pago.ImporteTotal;
+                double total = pago.ImporteTotal * 1.1;
+                int itemDetallePagoId = transaction.Connection.QuerySingle<int>(insertQuery, new
+                {
+                    PagoId = pago.PagoId,
+                    Fecha = pago.Fecha,
+                    Sueldo = sueldo,
+                    Total = total
+                }, transaction: transaction);
+                ItemsDetallePago itemsDetallePago = new ItemsDetallePago();
+                itemsDetallePago.ItemDetallePagoId = itemDetallePagoId;
+                GuardarDetallePago(itemsDetallePago, pago);
             }
-            catch ( Exception)
+            catch (Exception)
             {
-
-                throw;
+                transaction.Rollback();
             }
         }
 
+        private void GuardarDetallePago(ItemsDetallePago detallepago, Pago pago)
+        {
+            try
+            {
+                string insertQuery = @"INSERT INTO DetallePagos(ItemDetallePagoId,PagoId,EmpleadoId,ImporteTotal)
+                               VALUES (@ItemDetallePagoId,@PagoId,@EmpleadoId,@ImporteTotal)";
+                transaction.Connection.Execute(insertQuery, new
+                {
+                    ItemDetallePagoId = detallepago.ItemDetallePagoId,
+                    PagoId = pago.PagoId,
+                    EmpleadoId = pago.EmpleadoId,
+                    ImporteTotal = pago.ImporteTotal
+                }, transaction: transaction);
+                transaction.Commit();
+            }
+            catch (Exception)
+            {
+                transaction.Rollback();
+            }
+        }
 
         public void Borrar(int pagoId)
         {
@@ -77,8 +82,8 @@ namespace SegundoParcial.Datos.Repositorios
             transaction.Connection.Execute(deleteQuery, new { PagoId = pagoId }, transaction: transaction);
         }
 
-     
-        public bool EstaRelacionado(PagoListDto pago)
+
+        public bool EstaRelacionado(Pago pago)
         {
             int cantidad = 0;
             string selectQuery = "SELECT COUNT(*) FROM DetallePagos WHERE PagoId=@PagoId";
@@ -89,34 +94,30 @@ namespace SegundoParcial.Datos.Repositorios
         public int GetCantidad(int? empleadoId)
         {
             int cantidad = 0;
-            string selectQuery = "select count (*)  from pagos";
-            cantidad = transaction.Connection.ExecuteScalar<int>(selectQuery, transaction: transaction);
-
-            return cantidad;
-        }
-
-        public List<PagoListDto> GetPago(int? EmpleadoId)
-        {
-            List<PagoListDto> lista = new List<PagoListDto>();
             string selectQuery;
-            if (EmpleadoId == null)
+            if (empleadoId == null)
             {
-                selectQuery = @"SELECT e.Nombre, SUM(SueldoPorHora)
-                                        FROM Pagos p inner join Empleados e on p.EmpleadoId=e.empleadoId
-                                        GROUP BY e.Nombre
-									    ORDER by e.Nombre";
-                lista = transaction.Connection.Query<PagoListDto>(selectQuery, transaction: transaction).ToList();
+                selectQuery = "SELECT COUNT(*) FROM Pagos ";
+                cantidad = transaction.Connection.ExecuteScalar<int>(selectQuery, transaction: transaction);
             }
             else
             {
-                selectQuery = @"SELECT e.Nombre, SUM(SueldoPorHora)
-                                       FROM Pagos p inner join Empleados e on p.EmpleadoId=e.empleadoId
-                                        GROUP BY e.Nombre
-									    ORDER by e.Nombre";
-                lista = transaction.Connection.Query<PagoListDto>(selectQuery,
-                 new { EmpleadoId = EmpleadoId }, transaction: transaction).ToList();
+                selectQuery = @"SELECT COUNT(*) FROM Pagos WHERE empleadoId=@empleadoId";
+                cantidad = transaction.Connection.ExecuteScalar<int>(selectQuery,
+                    new { empleadoId = empleadoId }, transaction: transaction);
             }
+            return cantidad;
+        }
 
+        public List<PagoListDto> GetPago()
+        {
+            List<PagoListDto> lista = new List<PagoListDto>();
+
+            string selectQuery = @"SELECT e.Nombre, pt.SueldoPorHora,p.PagoId,e.Dni,p.Fecha,p.AsistenciaId,p.ImporteTotal,e.Dni
+                                   FROM Pagos p INNER JOIN Empleados e ON p.EmpleadoId = e.empleadoId
+                                   INNER JOIN Puestos pt ON e.PuestoId = pt.PuestoId
+                                   ORDER BY p.PagoId,e.Nombre";
+            lista = transaction.Connection.Query<PagoListDto>(selectQuery, transaction: transaction).ToList();
             return lista;
         }
 
@@ -124,22 +125,24 @@ namespace SegundoParcial.Datos.Repositorios
 
         public PagoListDto GetPagoPorId(int PagoId)
         {
-            string selectQuery = @"SELECT PagoId, e.nombre,Fecha,p.Importe,EstadoPago,e.Dni
-                                       FROM Pagos p inner join empleados e on p.EmpleadoId=e.empleadoId
-									    WHERE PagoId=@PagoId";
+            string selectQuery = @"SELECT p.PagoId,e.Nombre,p.Fecha,EstadoPago,pt.SueldoPorHora,pt.NombrePuesto,e.empleadoId,
+                                   p.ImporteTotal,e.Dni FROM Pagos p inner join Empleados e on e.empleadoId=p.EmpleadoId
+								   inner join Puestos pt on e.PuestoId=pt.PuestoId  where p.PagoId=@PagoId";
             var pagoListDto = transaction.Connection.QuerySingle<PagoListDto>(selectQuery,
           new { @PagoId = PagoId }, transaction: transaction);
             return pagoListDto;
         }
 
+
         public Pago GetPagosPorId(int pagoId)
         {
-            string selectQuery = @"SELECT PagoId, e.nombre,Fecha,p.Importe,EstadoPago,e.Dni
-                                       FROM Pagos p inner join empleados e on p.EmpleadoId=e.empleadoId
-									    WHERE PagoId=@PagoId";
-            var pagoListDto = transaction.Connection.QuerySingle<Pago>(selectQuery,
-          new { @PagoId = pagoId }, transaction: transaction);
-            return pagoListDto;
+            Pago pago = null;
+            string selectQuery = @" SELECT p.PagoId, e.nombre,Fecha,EstadoPago,e.Dni,p.AsistenciaId,p.ImporteTotal,e.empleadoId,pt.SueldoPorHora
+                                   FROM Pagos p inner join empleados e on p.EmpleadoId=e.empleadoId
+								inner join Puestos pt on e.PuestoId=pt.PuestoId WHERE p.PagoId=@PagoId";
+            pago = transaction.Connection.QuerySingleOrDefault<Pago>(selectQuery,
+                new { PagoId = pagoId }, transaction: transaction);
+            return pago;
         }
 
         public List<PagoListDto> GetPagosPorPagina(int cantidad, int pagina, int? empleadoid)
@@ -147,13 +150,13 @@ namespace SegundoParcial.Datos.Repositorios
             List<PagoListDto> listaPago = new List<PagoListDto>();
             if (empleadoid == null)
             {
-                string selectQuery = @"SELECT e.Nombre, SueldoPorHora,PagoId,e.Dni,p.Fecha
-                                       FROM Pagos p
-                                      INNER JOIN Empleados e ON p.EmpleadoId = e.empleadoId
-                                      INNER JOIN Puestos pt ON e.PuestoId = pt.PuestoId
-                                      ORDER BY e.Nombre
-                                     OFFSET @cantidadRegistros ROWS 
-                                     FETCH NEXT @cantidadPorPagina ROWS ONLY";
+                string selectQuery = @"SELECT p.PagoId, e.Nombre,pt.SueldoPorHora,p.Fecha,e.empleadoId,pt.NombrePuesto,
+                                       p.ImporteTotal,p.EstadoPago 
+									   FROM pagos p INNER JOIN Empleados e ON p.EmpleadoId = e.empleadoId
+                                       INNER JOIN Asistencias a ON p.AsistenciaId = a.AsistenciaId
+                                       INNER JOIN  Puestos pt ON e.PuestoId = pt.PuestoId
+                                        ORDER BY p.PagoId,e.Nombre
+                                       OFFSET @cantidadRegistros ROWS FETCH NEXT @cantidadPorPagina ROWS ONLY";
                 var registroSeteados = cantidad * (pagina - 1);
                 listaPago = transaction.Connection.Query<PagoListDto>(selectQuery,
                 new
@@ -165,16 +168,17 @@ namespace SegundoParcial.Datos.Repositorios
             }
             else
             {
-                string selectQuery = @"SELECT e.Nombre, SueldoPorHora,PagoId,e.Dni,p.Fecha
-                                       FROM Pagos p
-                                      INNER JOIN Empleados e ON p.EmpleadoId = e.empleadoId
-                                      INNER JOIN Puestos pt ON e.PuestoId = pt.PuestoId
-                                      where e.EmpleadoId = @EmpleadoId and pt.PuestoId = @PuestoId
-                                      ORDER BY e.Nombre
-                                     OFFSET @cantidadRegistros ROWS 
-                                     FETCH NEXT @cantidadPorPagina ROWS ONLY";
-                var registroSeteados = cantidad * (pagina - 1);
 
+                string selectQuery = @"SELECT p.PagoId, e.Nombre,pt.SueldoPorHora,p.Fecha,e.empleadoId,pt.NombrePuesto,
+                                       p.ImporteTotal,p.EstadoPago 
+									   FROM pagos p INNER JOIN Empleados e ON p.EmpleadoId = e.empleadoId
+                                       INNER JOIN Asistencias a ON p.AsistenciaId = a.AsistenciaId
+                                       INNER JOIN  Puestos pt ON e.PuestoId = pt.PuestoId
+                                      where e.EmpleadoId = @EmpleadoId
+ 
+                                        ORDER BY p.PagoId,e.Nombre
+                                       OFFSET @cantidadRegistros ROWS FETCH NEXT @cantidadPorPagina ROWS ONLY";
+                var registroSeteados = cantidad * (pagina - 1);
 
                 listaPago = transaction.Connection.Query<PagoListDto>(selectQuery,
                 new
@@ -184,19 +188,139 @@ namespace SegundoParcial.Datos.Repositorios
                     cantidadPorPagina = cantidad
                 }, transaction: transaction).ToList();
             }
+            transaction.Commit();
             return listaPago;
         }
 
-        public double GetSueldoPorHora(int empleadoId)
+        public void AgregarDetalles(Pago pago)
         {
-            string selectQuery = @"SELECT SUM(p.SueldoPorHora*a.HorasTrabajadas) as sueldoPorHora 
-                FROM Asistencias a inner join Empleados e  on a.empleadoId=e.empleadoId
-				                   inner join Puestos p on e.PuestoId=p.PuestoId
-				 WHERE e.empleadoId=@empleadoId";
-            var SueldoPorHora = transaction.Connection.ExecuteScalar<double>(selectQuery,
-                new { @empleadoId }, transaction: transaction);
+            string insertDetalleQuery = @"INSERT INTO ItemsDetallePago(ItemDetallePagoId,HorasTrabajadas,
+                                          HorasExtras, Descuentos, SueldoPorHora, Jubilacion, ObraSocial, PagoId)
+                                         VALUES(@ItemDetallePagoId,@HorasTrabajadas, @HorasExtras, @Descuentos,
+                                         @SueldoPorHora, @Jubilacion,@ObraSocial, @PagoId); SELECT SCOPE_IDENTITY()";
+            int ID = transaction.Connection.QuerySingle<int>(insertDetalleQuery, pago, transaction: transaction);
+            pago.PagoId = ID;
+        }
 
-            return SueldoPorHora;
+        public void Editar(Asistencia asistencia, Pago pago)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+                using (var transaction = unitOfWork.BeginTransaction())
+                {
+                    try
+                    {
+                        string updateQuery = @"UPDATE Pagos SET  Fecha = @Fecha,EmpleadoId=@EmpleadoId,
+                       ImporteTotal = (a.HorasTrabajadas * pt.SueldoPorHora * 0.90)
+                       FROM  Pagos p INNER JOIN Asistencias a ON p.AsistenciaId = a.AsistenciaId
+                       INNER JOIN Empleados e ON p.EmpleadoId = e.EmpleadoId
+                       INNER JOIN Puestos pt ON e.PuestoId = pt.PuestoId
+                       WHERE  p.AsistenciaId = @AsistenciaId";
+                        transaction.Connection.Execute(updateQuery, pago, transaction: transaction);
+
+                        transaction.Commit();
+                        EditarItemsDetallPago(asistencia, pago);
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Error al editar el pago", ex);
+                    }
+                }
+            }
+        }
+
+        private void EditarItemsDetallPago(Asistencia asistencia, Pago pago)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+
+                try
+                {
+                    string updateItemsDetallePagoQuery = @"UPDATE ItemsDetallePago SET Sueldo = p.ImporteTotal / 0.90, 
+                                                           Total = p.ImporteTotal
+                                                          FROM ItemsDetallePago idp INNER JOIN Pagos p ON 
+                                                          idp.PagoId = p.PagoId
+                                                          WHERE p.AsistenciaId = @AsistenciaId";
+                    transaction.Connection.Execute(updateItemsDetallePagoQuery, new { AsistenciaId = asistencia.AsistenciaId }
+                    , transaction: transaction);
+                    DetallePagos detallePagos = new DetallePagos();
+                    EditarDetallPago(asistencia);
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw new Exception("Error al editar la asistencia", ex);
+                }
+            }
+        }
+
+        private void EditarDetallPago(Asistencia asistencia)
+        {
+            try
+            {
+                string updateDetallePagosQuery = @"UPDATE DetallePagos SET ImporteTotal = p.ImporteTotal
+                                                   FROM DetallePagos dp INNER JOIN ItemsDetallePago idp 
+                                                   ON dp.ItemDetallePagoId = idp.ItemDetallePagoId
+                                                   INNER JOIN Pagos p ON idp.PagoId = p.PagoId
+                                                   WHERE p.AsistenciaId = @AsistenciaId";
+                transaction.Connection.Execute(updateDetallePagosQuery, new { AsistenciaId = asistencia.AsistenciaId}
+                , transaction: transaction);
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                throw new Exception("Error al editar detalle del pago", ex);
+            }
+        }
+
+        public void PagarAEmpleado(PagoListDto pago)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+                using (var transaction = unitOfWork.BeginTransaction())
+                {
+                    try
+                    {
+                        string updateQuery = @"UPDATE Pagos SET EstadoPago=1 WHERE pagoId=@pagoId";
+                        transaction.Connection.Execute(updateQuery, new{ pagoId = pago.PagoId}, transaction: transaction);
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }
+        }
+
+        public void Editar(Pago pago)
+        {
+            string updateQuery = @"update Pagos set EmpleadoId=@EmpleadoId,Fecha=@Fecha,
+              ImporteTotal=@ImporteTotal,EstadoPago=@EstadoPago, AsistenciaId=@AsistenciaId where PagoId=@PagoId";
+            transaction.Connection.Execute(updateQuery, pago, transaction: transaction);
+
+        }
+
+        public void AnularPago(PagoListDto pago)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+                using (var transaction = unitOfWork.BeginTransaction())
+                {
+                    try
+                    {
+                        string updateQuery = @"UPDATE Pagos SET EstadoPago=3 WHERE pagoId=@pagoId";
+                        transaction.Connection.Execute(updateQuery, new { pagoId = pago.PagoId }, transaction: transaction);
+                        transaction.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }
         }
     }
 }

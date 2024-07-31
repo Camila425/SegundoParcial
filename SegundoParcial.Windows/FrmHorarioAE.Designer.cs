@@ -57,7 +57,7 @@
             this.HoraIniciodateTimePicker.Location = new System.Drawing.Point(79, 85);
             this.HoraIniciodateTimePicker.Name = "HoraIniciodateTimePicker";
             this.HoraIniciodateTimePicker.ShowUpDown = true;
-            this.HoraIniciodateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.HoraIniciodateTimePicker.Size = new System.Drawing.Size(225, 20);
             this.HoraIniciodateTimePicker.TabIndex = 2;
             // 
             // HoraSalidadateTimePicker
@@ -66,7 +66,7 @@
             this.HoraSalidadateTimePicker.Location = new System.Drawing.Point(79, 128);
             this.HoraSalidadateTimePicker.Name = "HoraSalidadateTimePicker";
             this.HoraSalidadateTimePicker.ShowUpDown = true;
-            this.HoraSalidadateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.HoraSalidadateTimePicker.Size = new System.Drawing.Size(225, 20);
             this.HoraSalidadateTimePicker.TabIndex = 3;
             // 
             // label2
@@ -90,7 +90,7 @@
             // Cancelarbutton
             // 
             this.Cancelarbutton.Image = global::SegundoParcial.Windows.Properties.Resources.cancel_64px2;
-            this.Cancelarbutton.Location = new System.Drawing.Point(264, 199);
+            this.Cancelarbutton.Location = new System.Drawing.Point(257, 199);
             this.Cancelarbutton.Name = "Cancelarbutton";
             this.Cancelarbutton.Size = new System.Drawing.Size(145, 56);
             this.Cancelarbutton.TabIndex = 7;
@@ -102,7 +102,7 @@
             // OKbutton
             // 
             this.OKbutton.Image = global::SegundoParcial.Windows.Properties.Resources.ok_36px1;
-            this.OKbutton.Location = new System.Drawing.Point(57, 199);
+            this.OKbutton.Location = new System.Drawing.Point(95, 199);
             this.OKbutton.Name = "OKbutton";
             this.OKbutton.Size = new System.Drawing.Size(129, 56);
             this.OKbutton.TabIndex = 6;
@@ -117,18 +117,20 @@
             // 
             // HorariocomboBox
             // 
+            this.HorariocomboBox.BackColor = System.Drawing.SystemColors.Control;
             this.HorariocomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.HorariocomboBox.FormattingEnabled = true;
             this.HorariocomboBox.Location = new System.Drawing.Point(79, 38);
             this.HorariocomboBox.Name = "HorariocomboBox";
-            this.HorariocomboBox.Size = new System.Drawing.Size(387, 21);
+            this.HorariocomboBox.Size = new System.Drawing.Size(399, 21);
             this.HorariocomboBox.TabIndex = 10;
             // 
             // FrmHorarioAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 275);
+            this.BackColor = System.Drawing.Color.RosyBrown;
+            this.ClientSize = new System.Drawing.Size(500, 275);
             this.ControlBox = false;
             this.Controls.Add(this.HorariocomboBox);
             this.Controls.Add(this.Cancelarbutton);
@@ -140,7 +142,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmHorarioAE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmHorarioAE";
+            this.Text = " Horarios";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

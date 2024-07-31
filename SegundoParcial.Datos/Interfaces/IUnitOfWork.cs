@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Data;
 
 namespace SegundoParcial.Datos.Interfaces
 {
     public interface IUnitOfWork: IDisposable
     {
-        void BeginTransaction();
+        IDbTransaction BeginTransaction();
         void Commit();
         void Rollback();
         IRepositorioPuesto Puesto { get; }
@@ -15,7 +16,7 @@ namespace SegundoParcial.Datos.Interfaces
         IRepositorioDetallePago DetallePago { get; }
         IRepositorioCiudad Ciudad { get; }
         IRepositorioAsistencia Asistencia { get; }
-        IRepositorioItemsSueldo ItemsSueldo { get; }
+        IRepositorioItemsDetallePago ItemsDetallePago { get; }
 
 
 

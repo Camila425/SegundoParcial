@@ -14,7 +14,6 @@ namespace SegundoParcial.Datos.Repositorios
         {
             transaction = Transaction;
         }
-
         public void Agregar(Ciudad ciudad)
         {
 
@@ -26,18 +25,14 @@ namespace SegundoParcial.Datos.Repositorios
 
         public void Borrar(int ciudadId)
         {
-
             string deleteQuery = "DELETE FROM Ciudades WHERE CiudadId=@CiudadId";
             transaction.Connection.Execute(deleteQuery, new { ciudadId = ciudadId }, transaction: transaction);
-
         }
 
         public void Editar(Ciudad ciudad)
         {
-
             string updateQuery = "update Ciudades SET NombreCiudad=@NombreCiudad WHERE CiudadId=@CiudadId";
             transaction.Connection.Execute(updateQuery, ciudad, transaction: transaction);
-
         }
 
         public bool EstaRelacionada(Ciudad ciudad)
@@ -80,7 +75,6 @@ namespace SegundoParcial.Datos.Repositorios
             List<Ciudad> lista = new List<Ciudad>();
                 string selectQuery = "select CiudadId,NombreCiudad from Ciudades order by NombreCiudad";
                 lista = transaction.Connection.Query<Ciudad>(selectQuery,transaction:transaction).ToList();
-            
             return lista;
         }
 
@@ -92,7 +86,6 @@ namespace SegundoParcial.Datos.Repositorios
                 var cantidadRegistros = cantidad * (paginaActual - 1);
                 lista = transaction.Connection.Query<Ciudad>(selectQuery,
                     new { cantidadRegistros, cantidad },transaction:transaction).ToList();
-            
             return lista;
         }
     }

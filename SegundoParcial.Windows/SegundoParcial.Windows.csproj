@@ -36,9 +36,11 @@
     <Reference Include="FontAwesome.Sharp, Version=6.3.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.Sharp.6.3.0\lib\net472\FontAwesome.Sharp.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -53,12 +55,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmDetallePago.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmDetallePago.Designer.cs">
-      <DependentUpon>FrmDetallePago.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmAsistenciaAE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +90,12 @@
     </Compile>
     <Compile Include="FrmCiudades.Designer.cs">
       <DependentUpon>FrmCiudades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDetallesDelPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetallesDelPago.Designer.cs">
+      <DependentUpon>FrmDetallesDelPago.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmEmpleados.cs">
       <SubType>Form</SubType>
@@ -172,9 +174,6 @@
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmDetallePago.resx">
-      <DependentUpon>FrmDetallePago.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmAsistenciaAE.resx">
       <DependentUpon>FrmAsistenciaAE.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCiudades.resx">
       <DependentUpon>FrmCiudades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetallesDelPago.resx">
+      <DependentUpon>FrmDetallesDelPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEmpleados.resx">
       <DependentUpon>FrmEmpleados.cs</DependentUpon>
@@ -219,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPuestos.resx">
       <DependentUpon>FrmPuestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRealizarPago.resx">
+      <DependentUpon>FrmRealizarPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSectorAE.resx">
       <DependentUpon>FrmSectorAE.cs</DependentUpon>
@@ -299,6 +304,10 @@
     <None Include="Resources\last_48px.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SegundoParcial.Datos\SegundoParcial.Datos.csproj">
+      <Project>{F741DCEA-44D3-4FB1-B636-CD3B491A6DBE}</Project>
+      <Name>SegundoParcial.Datos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SegundoParcial.Entidades\SegundoParcial.Entidades.csproj">
       <Project>{FBA8B840-F43F-4273-BD63-F8E131679EDC}</Project>
       <Name>SegundoParcial.Entidades</Name>
@@ -385,6 +394,72 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\money_40px3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\firs.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_50px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\last_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huawei_logo_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huawei.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\huawei1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_40px4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_40px5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit_36px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\organization_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\organization_100px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\organization_120px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money_40px6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_30px1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_35px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

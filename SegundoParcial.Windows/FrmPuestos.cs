@@ -162,7 +162,6 @@ namespace SegundoParcial.Windows
                 else
                 {
                     MessageBox.Show("registro relacionado", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
                 }
             }
             catch (Exception ex)

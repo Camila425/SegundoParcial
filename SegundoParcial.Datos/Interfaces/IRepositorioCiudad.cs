@@ -5,6 +5,7 @@ namespace SegundoParcial.Datos.Interfaces
 {
     public interface IRepositorioCiudad
     {
+        //ciudades
         void Agregar(Ciudad ciudad);
         void Borrar(int ciudadId);
         void Editar(Ciudad ciudad);

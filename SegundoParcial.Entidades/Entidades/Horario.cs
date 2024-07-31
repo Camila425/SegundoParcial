@@ -11,7 +11,6 @@ namespace SegundoParcial.Entidades.Entidades
         public int HorarioId { get; set; }
         public TimeSpan HoraInicio { get; set; }
         public TimeSpan HoraFin { get; set; }
-        public string DiasLaborales { get; set; }
         public int TipoDeHorarioId { get; set; }
         public TipoDeHorario tipoHorario { get; set; }
 

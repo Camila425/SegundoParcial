@@ -18,27 +18,22 @@ namespace SegundoParcial.Datos.Repositorios
 
         public void Agregar(Horario horario)
         {
-            string insertQuery = @"INSERT INTO Horarios (HoraInicio,HoraFin,DiasLaborales,TipoDeHorarioId)
-                                    VALUES (@HoraInicio,@HoraFin,@DiasLaborales,@TipoDeHorarioId); SELECT SCOPE_IDENTITY()";
+            string insertQuery = @"INSERT INTO Horarios (HoraInicio,HoraFin,TipoDeHorarioId)
+                                    VALUES (@HoraInicio,@HoraFin,@TipoDeHorarioId); SELECT SCOPE_IDENTITY()";
             int ID = transaction.Connection.QuerySingle<int>(insertQuery,horario , transaction: transaction);
             horario.HorarioId = ID;
-
         }
 
         public void Borrar(int horarioId)
         {
-
             string deleteQuery = "DELETE FROM Horarios WHERE HorarioId=@HorarioId";
             transaction.Connection.Execute(deleteQuery, new { horarioId = horarioId }, transaction: transaction);
-
         }
 
         public void Editar(Horario horario)
         {
-
             string updateQuery = "update Horarios SET HoraInicio=@HoraInicio,HoraFin=@HoraFin,TipoDeHorarioId=@TipoDeHorarioId WHERE HorarioId=@HorarioId";
             transaction.Connection.Execute(updateQuery, horario, transaction: transaction);
-
         }
 
         public bool Existe(Horario horario)
@@ -68,7 +63,7 @@ namespace SegundoParcial.Datos.Repositorios
         public Horario GetHorarioPorId(int horarioId)
         {
             Horario horario = null;
-            string selectQuery = @"SELECT HorarioId, HoraInicio, HoraFin,DiasLaborales,TipoDeHorarioId
+            string selectQuery = @"SELECT HorarioId, HoraInicio, HoraFin,TipoDeHorarioId
                                        FROM Horarios WHERE HorarioId=@HorarioId";
             horario = transaction.Connection.QuerySingleOrDefault<Horario>(selectQuery,
                 new { horarioId = horarioId }, transaction: transaction);
@@ -82,7 +77,7 @@ namespace SegundoParcial.Datos.Repositorios
             {
                 string selectQuery = @"SELECT HorarioId, t.TipoDeHorarioId,t.TipoHorario ,HoraInicio,HoraFin
                                        FROM Horarios h inner JOIN TiposDeHorarios t ON t.TipoDeHorarioId=h.TipoDeHorarioId
-									   order by t.TipoHorario
+									   order by h.HorarioId
                                       offset @cantidadRegistros ROWS 
                                       FETCH NEXT @cantidadPorPagina ROWS ONLY";
                 var registroSeteados = cantidad * (pagina - 1);
@@ -99,7 +94,7 @@ namespace SegundoParcial.Datos.Repositorios
                 string selectQuery = @"SELECT HorarioId, t.TipoDeHorarioId,t.TipoHorario ,HoraInicio,HoraFin
                                        FROM Horarios h inner JOIN TiposDeHorarios t ON t.TipoDeHorarioId=h.TipoDeHorarioId
                                        where t.TipoDeHorarioId=@TipoDeHorarioId
-									   order by t.TipoHorario
+									   order by h.HorarioId
                                       OFFSET @cantidadRegistros ROWS 
                                       FETCH NEXT @cantidadPorPagina ROWS ONLY";
                 var registroSeteados = cantidad * (pagina - 1);
@@ -112,7 +107,6 @@ namespace SegundoParcial.Datos.Repositorios
                     cantidadPorPagina = cantidad
                 },transaction:transaction).ToList();
             }
-
             return listaHorario;
         }
 
@@ -135,7 +129,6 @@ namespace SegundoParcial.Datos.Repositorios
                     lista = transaction.Connection.Query<HorarioDto>(selectQuery, 
                         new { TipoDeHorarioId = TipoDeHorarioId },transaction:transaction).ToList();
                 }
-            
             return lista;
         }
 
@@ -144,7 +137,6 @@ namespace SegundoParcial.Datos.Repositorios
             List<TipoDeHorario> lista = new List<TipoDeHorario>();
                 string selectQuery = "select TipoDeHorarioId,TipoHorario from TiposDeHorarios order by TipoHorario";
                 lista = transaction.Connection.Query<TipoDeHorario>(selectQuery,transaction:transaction).ToList();
-            
             return lista;
         }
     }

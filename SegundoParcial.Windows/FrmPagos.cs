@@ -1,4 +1,5 @@
-﻿using SegundoParcial.Entidades.Dtos.Pagos;
+﻿using SegundoParcial.Entidades.Dtos.PagoDetalleDto;
+using SegundoParcial.Entidades.Dtos.Pagos;
 using SegundoParcial.Entidades.Entidades;
 using SegundoParcial.Entidades.Enums;
 using SegundoParcial.Servicios.Interfaces;
@@ -6,6 +7,7 @@ using SegundoParcial.Servicios.Servicios;
 using SegundoParcial.Windows.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SegundoParcial.Windows
@@ -18,8 +20,10 @@ namespace SegundoParcial.Windows
         int paginaActual = 1;
         int registros = 0;
         int paginas = 0;
-        int registrosPorPagina = 14;
-        int? EmpleadoId = null;
+        int registrosPorPagina = 10;
+        int? EmpleadoFiltro = null;
+        bool filtroOn = false;
+        private PagoListDto pago = new PagoListDto();
 
         public FrmPagos()
         {
@@ -36,7 +40,7 @@ namespace SegundoParcial.Windows
         {
             try
             {
-                registros = serviciosPagos.GetCantidad(EmpleadoId);
+                registros = serviciosPagos.GetCantidad(EmpleadoFiltro);
                 paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
                 MostrarPaginado();
             }
@@ -48,7 +52,7 @@ namespace SegundoParcial.Windows
 
         private void MostrarPaginado()
         {
-            listaPago = serviciosPagos.GetPagosPorPagina(registrosPorPagina, paginaActual,EmpleadoId);
+            listaPago = serviciosPagos.GetPagosPorPagina(registrosPorPagina, paginaActual, EmpleadoFiltro);
             MostrarDatosEnGrilla();
         }
 
@@ -60,10 +64,10 @@ namespace SegundoParcial.Windows
         private void MostrarDatosEnGrilla()
         {
             GridHelper.LimpiarGrilla(DatosdataGridView);
-            foreach (var horario in listaPago)
+            foreach (var pago in listaPago)
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(DatosdataGridView);
-                GridHelper.Setearfila(r, horario);
+                GridHelper.Setearfila(r, pago);
                 GridHelper.AgregarFila(DatosdataGridView, r);
             }
             Registroslabel.Text = registros.ToString();
@@ -114,7 +118,7 @@ namespace SegundoParcial.Windows
                 {
                     return;
                 }
-                PagoListDto pago = serviciosPagos.GetPagoPorId(pagoDto.PagoId);
+                Pago pago = serviciosPagos.GetPagosPorId(pagoDto.PagoId);
 
                 if (!serviciosPagos.EstaRelacionado(pago))
                 {
@@ -155,12 +159,10 @@ namespace SegundoParcial.Windows
                     return;
                 }
                 pago = frm.GetPago();
-
-                serviciosPagos.Guardar(pago);
+                serviciosPagos.Editar(pago);
                 GridHelper.Setearfila(r, pago);
                 MessageBox.Show("Registro editado", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RecargarGrilla();
-
             }
             catch (Exception ex)
             {
@@ -169,7 +171,7 @@ namespace SegundoParcial.Windows
             }
         }
 
-       
+
 
         private void btnPrimero_Click(object sender, EventArgs e)
         {
@@ -212,13 +214,161 @@ namespace SegundoParcial.Windows
             var r = DatosdataGridView.SelectedRows[0];
             var PagoSeleccionado = (PagoListDto)r.Tag;
 
-            PagoDetalleDto pagoDetalleDto = serviciosPagos.GetPagoDetalle(PagoSeleccionado.PagoId);
+            PagoDetalleDto ItemDetalleDto = serviciosPagos.GetPagoDetalle(PagoSeleccionado.PagoId);
 
 
-            FrmDetallePago frm = new FrmDetallePago() { Text = "Detalle del Pago" };
-            frm.SetPagoDetalle(pagoDetalleDto);
+            FrmDetallesDelPago frm = new FrmDetallesDelPago() { Text = "Detalle del Pago" };
+            frm.SetPagoDetalle(ItemDetalleDto);
             DialogResult dr = frm.ShowDialog(this);
+        }
 
+        private void BuscartoolStripButton_Click(object sender, EventArgs e)
+        {
+            if (!filtroOn)
+            {
+                FrmBuscarEmpleado frm = new FrmBuscarEmpleado() { Text = "Seleccionar Empleado" };
+                DialogResult dr = frm.ShowDialog(this);
+                if (dr == DialogResult.Cancel)
+                {
+                    return;
+                }
+                try
+                {
+                    filtroOn = true;
+                    var empleado = frm.GetEmpleado();
+                    EmpleadoFiltro = empleado.EmpleadoId;
+                    BuscartoolStripButton.BackColor = Color.Red;
+                    registros = serviciosPagos.GetCantidad(empleado.EmpleadoId);
+                    paginas = FromHelper.CalcularPaginas(registros, registrosPorPagina);
+                    MostrarPaginado();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Quite el filtro", "advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void ActualizartoolStripButton_Click(object sender, EventArgs e)
+        {
+            filtroOn = false;
+            EmpleadoFiltro = null;
+            RecargarGrilla();
+            BuscartoolStripButton.BackColor = Color.White;
+        }
+        private void RealizarPagoEmpleadobutton_Click(object sender, EventArgs e)
+        {
+            if (DatosdataGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = DatosdataGridView.SelectedRows[0];
+            var pago = (PagoListDto)r.Tag;
+
+            if (pago.estadoPago == EstadoPago.Pago)
+            {
+                MessageBox.Show($"El pago de {pago.Nombre} ya esta pagado!",
+                    "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (pago.estadoPago == EstadoPago.Anulado)
+            {
+                MessageBox.Show($"El pago de {pago.Nombre} Fue Anulado!",
+                      "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (pago.estadoPago==EstadoPago.Impago)
+            {
+                FrmRealizarPago frm = new FrmRealizarPago() { Text = "pago del empleado" };
+                frm.SetImporteTotal(pago.ImporteTotal);
+                frm.SetNombre(pago.Nombre);
+                frm.SetNombrePuesto(pago.NombrePuesto);
+                frm.SetFecha(pago.Fecha);
+                DialogResult dr = frm.ShowDialog(this);
+                if (dr == DialogResult.Cancel)
+                {
+                    return;
+                }
+
+                try
+                {
+                    serviciosPagos.PagarAEmpleado(pago);
+                    MessageBox.Show("Pago Realizado", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SetearFila(r, pago);
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    RealizarPagoEmpleadobutton.Enabled = false;
+                }
+            }
+        }
+
+        private void SetearFila(DataGridViewRow r, PagoListDto pago)
+        {
+            r.Cells[0].Value = pago.PagoId;
+            r.Cells[1].Value = pago.Nombre;
+            r.Cells[2].Value = pago.Fecha.ToShortDateString();
+            r.Cells[3].Value = pago.ImporteTotal;
+            r.Cells[4].Value = pago.estadoPago = EstadoPago.Pago;
+            if (pago.estadoPago == EstadoPago.Pago)
+            {
+                r.Cells[4].Style.BackColor = Color.Green;
+            }
+        }
+
+        private void AnularPagotoolStripButton_Click(object sender, EventArgs e)
+        {
+            if (DatosdataGridView.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            var r = DatosdataGridView.SelectedRows[0];
+            var pago = (PagoListDto)r.Tag;
+
+            if (pago.estadoPago==EstadoPago.Pago)
+            {
+                MessageBox.Show($"El pago de {pago.Nombre} ya esta pagado y no puede ser anulado.",
+                    "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (pago.estadoPago == EstadoPago.Anulado)
+            {
+                MessageBox.Show($"El pago de {pago.Nombre} ya esta anulado!",
+                      "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (pago.estadoPago == EstadoPago.Impago)
+            {
+                DialogResult dr = MessageBox.Show($"¿Estas seguro de que quieres anular el pago de {pago.Nombre}" +
+                             $" por un importe de: {pago.ImporteTotal}?", "Mensaje", MessageBoxButtons.YesNo);
+
+                if (dr == DialogResult.Yes)
+                {
+                    serviciosPagos.AnularPago(pago);
+                    SetearFilaParaAnular(r, pago);
+                    DialogResult = DialogResult.OK;
+                }
+            }
+        }
+
+        private void SetearFilaParaAnular(DataGridViewRow r, PagoListDto pago)
+        {
+            r.Cells[0].Value = pago.PagoId;
+            r.Cells[1].Value = pago.Nombre;
+            r.Cells[2].Value = pago.Fecha.ToShortDateString();
+            r.Cells[3].Value = pago.ImporteTotal;
+            r.Cells[4].Value = pago.estadoPago = EstadoPago.Anulado;
+            if (pago.estadoPago == EstadoPago.Anulado)
+            {
+                r.Cells[4].Style.BackColor = Color.Orange;
+            }
         }
     }
 }

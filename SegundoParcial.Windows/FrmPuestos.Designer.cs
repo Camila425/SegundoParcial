@@ -30,6 +30,8 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.DatosdataGridView = new System.Windows.Forms.DataGridView();
+            this.colnombrePuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colsueldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonUltimo = new System.Windows.Forms.Button();
             this.buttonSiguiente = new System.Windows.Forms.Button();
             this.buttonAnterior = new System.Windows.Forms.Button();
@@ -46,8 +48,6 @@
             this.BorrartoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.EditartoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.CerrartoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.colnombrePuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colsueldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -69,6 +69,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.RosyBrown;
             this.splitContainer1.Panel2.Controls.Add(this.buttonUltimo);
             this.splitContainer1.Panel2.Controls.Add(this.buttonSiguiente);
             this.splitContainer1.Panel2.Controls.Add(this.buttonAnterior);
@@ -99,9 +100,23 @@
             this.DatosdataGridView.Size = new System.Drawing.Size(800, 326);
             this.DatosdataGridView.TabIndex = 0;
             // 
+            // colnombrePuesto
+            // 
+            this.colnombrePuesto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colnombrePuesto.HeaderText = "Nombre Puesto";
+            this.colnombrePuesto.Name = "colnombrePuesto";
+            this.colnombrePuesto.ReadOnly = true;
+            // 
+            // colsueldo
+            // 
+            this.colsueldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colsueldo.HeaderText = "Sueldo Por Hora";
+            this.colsueldo.Name = "colsueldo";
+            this.colsueldo.ReadOnly = true;
+            // 
             // buttonUltimo
             // 
-            this.buttonUltimo.Image = global::SegundoParcial.Windows.Properties.Resources.last_48px;
+            this.buttonUltimo.Image = global::SegundoParcial.Windows.Properties.Resources.last_30px;
             this.buttonUltimo.Location = new System.Drawing.Point(494, 12);
             this.buttonUltimo.Name = "buttonUltimo";
             this.buttonUltimo.Size = new System.Drawing.Size(75, 32);
@@ -111,7 +126,7 @@
             // 
             // buttonSiguiente
             // 
-            this.buttonSiguiente.Image = global::SegundoParcial.Windows.Properties.Resources.next_48px;
+            this.buttonSiguiente.Image = global::SegundoParcial.Windows.Properties.Resources.next_50px;
             this.buttonSiguiente.Location = new System.Drawing.Point(413, 12);
             this.buttonSiguiente.Name = "buttonSiguiente";
             this.buttonSiguiente.Size = new System.Drawing.Size(75, 32);
@@ -121,7 +136,7 @@
             // 
             // buttonAnterior
             // 
-            this.buttonAnterior.Image = global::SegundoParcial.Windows.Properties.Resources.previous_48px;
+            this.buttonAnterior.Image = global::SegundoParcial.Windows.Properties.Resources.previous_50px;
             this.buttonAnterior.Location = new System.Drawing.Point(332, 12);
             this.buttonAnterior.Name = "buttonAnterior";
             this.buttonAnterior.Size = new System.Drawing.Size(75, 32);
@@ -131,7 +146,7 @@
             // 
             // buttonPrimero
             // 
-            this.buttonPrimero.Image = global::SegundoParcial.Windows.Properties.Resources.first_48px1;
+            this.buttonPrimero.Image = global::SegundoParcial.Windows.Properties.Resources.first_30px;
             this.buttonPrimero.Location = new System.Drawing.Point(251, 12);
             this.buttonPrimero.Name = "buttonPrimero";
             this.buttonPrimero.Size = new System.Drawing.Size(75, 32);
@@ -259,20 +274,6 @@
             this.CerrartoolStripButton.Text = "Cerrar";
             this.CerrartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.CerrartoolStripButton.Click += new System.EventHandler(this.CerrartoolStripButton_Click);
-            // 
-            // colnombrePuesto
-            // 
-            this.colnombrePuesto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colnombrePuesto.HeaderText = "Nombre Puesto";
-            this.colnombrePuesto.Name = "colnombrePuesto";
-            this.colnombrePuesto.ReadOnly = true;
-            // 
-            // colsueldo
-            // 
-            this.colsueldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colsueldo.HeaderText = "Sueldo Por Hora";
-            this.colsueldo.Name = "colsueldo";
-            this.colsueldo.ReadOnly = true;
             // 
             // FrmPuestos
             // 

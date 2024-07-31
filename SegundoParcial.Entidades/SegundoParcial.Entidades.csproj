@@ -45,6 +45,7 @@
     <Compile Include="Dtos\DetallePago\DetallePagoDto.cs" />
     <Compile Include="Dtos\Empleados\EmpleadoDto.cs" />
     <Compile Include="Dtos\Horarios\HorarioDto.cs" />
+    <Compile Include="Dtos\ItemsDetallePago\ItemsDetallePagoDto.cs" />
     <Compile Include="Dtos\Pagos\PagoDetalleDto.cs" />
     <Compile Include="Dtos\Pagos\PagoListDto.cs" />
     <Compile Include="Entidades\Asistencia.cs" />
@@ -52,7 +53,7 @@
     <Compile Include="Entidades\DetallePagos.cs" />
     <Compile Include="Entidades\Empleado.cs" />
     <Compile Include="Entidades\Horario.cs" />
-    <Compile Include="Entidades\ItemsSueldos.cs" />
+    <Compile Include="Entidades\ItemsDetallePago.cs" />
     <Compile Include="Entidades\Pago.cs" />
     <Compile Include="Entidades\Puesto.cs" />
     <Compile Include="Entidades\Sector.cs" />

@@ -25,26 +25,21 @@ namespace SegundoParcial.Datos.Repositorios
                                       @HorarioId,@CiudadId,@PuestoId,@SectorId); SELECT SCOPE_IDENTITY()";
             int ID = transaction.Connection.ExecuteScalar<int>(insertQuery, empleado, transaction: transaction);
             empleado.EmpleadoId = ID;
-
         }
 
         public void Borrar(int empleadoId)
         {
-
             string deleteQuery = "DELETE FROM Empleados WHERE empleadoId=@empleadoId";
             transaction.Connection.Execute(deleteQuery, new { empleadoId }, transaction: transaction);
-
         }
 
         public void Editar(Empleado empleado)
         {
-
             string updateQuery = @"update Empleados SET Nombre=@Nombre,Sexo=@Sexo,FechaNacimiento=@FechaNacimiento,
                                        Direccion=@Direccion,Telefono=@Telefono,Dni=@Dni,HorarioId=@HorarioId,
                                      CiudadId=@CiudadId,PuestoId=@PuestoId,SectorId=@SectorId 
                                      WHERE empleadoId=@empleadoId";
             transaction.Connection.Execute(updateQuery, empleado, transaction: transaction);
-
         }
 
         public bool EstaRelacionado(Empleado empleado)
@@ -84,7 +79,6 @@ namespace SegundoParcial.Datos.Repositorios
             int cantidad = 0;
             string selectQuery = "SELECT COUNT(*) FROM Empleados";
             cantidad = transaction.Connection.ExecuteScalar<int>(selectQuery, transaction: transaction);
-
             return cantidad;
         }
 
@@ -103,7 +97,6 @@ namespace SegundoParcial.Datos.Repositorios
                 cantidad = transaction.Connection.ExecuteScalar<int>(selectQuery,
                     new { PuestoId = PuestoId }, transaction: transaction);
             }
-
             return cantidad;
         }
 
@@ -128,7 +121,6 @@ namespace SegundoParcial.Datos.Repositorios
                 lista = transaction.Connection.Query<EmpleadoDto>(selectQuery,
                     new { PuestoId = PuestoId, SectorId = SectorId }, transaction: transaction).ToList();
             }
-
             return lista;
         }
 
@@ -139,7 +131,6 @@ namespace SegundoParcial.Datos.Repositorios
                                        FROM Empleados WHERE empleadoId=@empleadoId";
             empleado = transaction.Connection.QuerySingleOrDefault<Empleado>(selectQuery,
                 new { empleadoId = empleadoId }, transaction: transaction);
-
             return empleado;
         }
 
@@ -163,7 +154,6 @@ namespace SegundoParcial.Datos.Repositorios
                 {
                     cantidadRegistros = registroSeteados,
                     cantidadPorPagina = cantidad,
-
                 },transaction:transaction).ToList();
             }
             else

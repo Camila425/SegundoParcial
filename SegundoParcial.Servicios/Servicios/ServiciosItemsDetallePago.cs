@@ -1,5 +1,5 @@
 ﻿using SegundoParcial.Datos.Repositorios;
-using SegundoParcial.Entidades.Entidades;
+using SegundoParcial.Entidades.Dtos.ItemsDetallePago;
 using SegundoParcial.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,19 +7,19 @@ using System.Configuration;
 
 namespace SegundoParcial.Servicios.Servicios
 {
-    public class ServiciosItemSueldo : IServiciosItemSueldo
+    public class ServiciosItemsDetallePago : IServiciosItemsDetallePago
     {
-        public ServiciosItemSueldo()
+        public ServiciosItemsDetallePago()
         {
         }
-        public List<ItemsSueldos> GetItemsSueldo()
+        public List<ItemsDetallePagoDto> GetItemsSueldo(int pagoid)
         {
             using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
 
                 try
                 {
-                    return unitOfWork.ItemsSueldo.GetItemsSueldo();
+                    return unitOfWork.ItemsDetallePago.GetItemsDetallePago(pagoid);
                 }
                 catch (Exception)
                 {
@@ -28,13 +28,13 @@ namespace SegundoParcial.Servicios.Servicios
             }
         }
 
-        public ItemsSueldos GetItemSueldoPorId(int itemsueldoId)
+        public ItemsDetallePagoDto GetItemSueldoPorId(int itemsueldoId)
         {
             using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
                 try
                 {
-                    return unitOfWork.ItemsSueldo.GetItemsSueldoPorId(itemsueldoId);
+                    return unitOfWork.ItemsDetallePago.GetItemsDetallePagoId(itemsueldoId);
                 }
                 catch (Exception)
                 {
@@ -42,5 +42,7 @@ namespace SegundoParcial.Servicios.Servicios
                 }
             }
         }
+
+        
     }
 }

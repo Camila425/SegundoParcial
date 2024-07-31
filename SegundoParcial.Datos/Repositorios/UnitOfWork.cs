@@ -25,7 +25,7 @@ namespace SegundoParcial.Datos.Repositorios
         public IRepositorioCiudad Ciudad { get; }
 
         public IRepositorioAsistencia Asistencia { get; }
-        public IRepositorioItemsSueldo ItemsSueldo { get; }
+        public IRepositorioItemsDetallePago ItemsDetallePago { get; }
 
 
         public UnitOfWork(string CadenaDeConexion)
@@ -45,18 +45,35 @@ namespace SegundoParcial.Datos.Repositorios
             Empleado = new RepositorioEmpleados(transaction);
             Ciudad = new RepositorioCiudades(transaction);
             Asistencia = new RepositorioAsistencias(transaction);
-            ItemsSueldo = new RepositorioItemSueldo(transaction);
+            ItemsDetallePago = new RepositorioItemsDetallePago(transaction);
 
 
         }
-        public void BeginTransaction()
+        //public void BeginTransaction()
+        //{
+        //    transaction = connection.BeginTransaction();
+        //}
+        public IDbTransaction BeginTransaction()
         {
-            transaction = connection.BeginTransaction();
+            if (transaction == null)
+            {
+                connection.Open();
+                transaction = connection.BeginTransaction();
+            }
+            return transaction;
         }
 
+        //public void Commit()
+        //{
+        //    transaction.Commit();
+        //}
         public void Commit()
         {
-            transaction.Commit();
+            if (transaction != null)
+            {
+                transaction.Commit();
+                connection.Close();
+            }
         }
 
         public void Dispose()
@@ -65,9 +82,17 @@ namespace SegundoParcial.Datos.Repositorios
             connection?.Dispose();
         }
 
+        //public void Rollback()
+        //{
+        //    transaction.Rollback();
+        //}
         public void Rollback()
         {
-            transaction.Rollback();
+            if (transaction != null)
+            {
+                transaction.Rollback();
+                connection.Close();
+            }
         }
     }
 }

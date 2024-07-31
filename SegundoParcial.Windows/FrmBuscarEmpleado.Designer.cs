@@ -58,7 +58,7 @@
             // Cancelarbutton
             // 
             this.Cancelarbutton.Image = global::SegundoParcial.Windows.Properties.Resources.cancel_64px5;
-            this.Cancelarbutton.Location = new System.Drawing.Point(243, 127);
+            this.Cancelarbutton.Location = new System.Drawing.Point(278, 127);
             this.Cancelarbutton.Name = "Cancelarbutton";
             this.Cancelarbutton.Size = new System.Drawing.Size(139, 63);
             this.Cancelarbutton.TabIndex = 7;
@@ -87,6 +87,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(454, 226);
             this.ControlBox = false;
             this.Controls.Add(this.EmpleadocomboBox);

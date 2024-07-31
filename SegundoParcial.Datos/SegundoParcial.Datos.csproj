@@ -50,7 +50,7 @@
     <Compile Include="Interfaces\IRepositorioDetallePago.cs" />
     <Compile Include="Interfaces\IRepositorioEmpleado.cs" />
     <Compile Include="Interfaces\IRepositorioHorario.cs" />
-    <Compile Include="Interfaces\IRepositorioItemsSueldo.cs" />
+    <Compile Include="Interfaces\IRepositorioItemsDetallePago.cs" />
     <Compile Include="Interfaces\IRepositorioPagos.cs" />
     <Compile Include="Interfaces\IRepositorioPuesto.cs" />
     <Compile Include="Interfaces\IRepositorioSectores.cs" />
@@ -61,7 +61,7 @@
     <Compile Include="Repositorios\RepositorioDetallePago.cs" />
     <Compile Include="Repositorios\RepositorioEmpleados.cs" />
     <Compile Include="Repositorios\RepositorioHorarios.cs" />
-    <Compile Include="Repositorios\RepositorioItemSueldo.cs" />
+    <Compile Include="Repositorios\RepositorioItemsDetallePago.cs" />
     <Compile Include="Repositorios\RepositorioPagos.cs" />
     <Compile Include="Repositorios\RepositorioPuestos.cs" />
     <Compile Include="Repositorios\RepositorioSectores.cs" />

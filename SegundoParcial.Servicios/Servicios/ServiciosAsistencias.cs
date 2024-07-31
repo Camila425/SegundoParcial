@@ -1,7 +1,6 @@
 ﻿using SegundoParcial.Datos.Repositorios;
 using SegundoParcial.Entidades.Dtos.Asistencias;
 using SegundoParcial.Entidades.Entidades;
-using SegundoParcial.Entidades.Enums;
 using SegundoParcial.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -108,70 +107,50 @@ namespace SegundoParcial.Servicios.Servicios
                 }
             }
         }
-
         public void Guardar(Asistencia asistencia)
         {
             using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
-
                 try
                 {
-
                     if (asistencia.AsistenciaId == 0)
                     {
                         unitOfWork.Asistencia.Agregar(asistencia);
+
                     }
-
-                    AgregarPagoYDetalles(unitOfWork, asistencia);
-
-                    unitOfWork.Commit();
+  
                 }
                 catch (Exception)
                 {
-                    unitOfWork.Rollback();
-                    unitOfWork.Dispose();
+                    throw;
                 }
+            }
+        }
+        public void Editar(Asistencia asistencia)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+                if (asistencia.AsistenciaId != 0)
+                {
+                    unitOfWork.Asistencia.Editar(asistencia);
 
-
+                }
             }
         }
 
-        private void AgregarPagoYDetalles(UnitOfWork unitOfWork, Asistencia asistencia)
-        {
-            var SueldoPorHora = unitOfWork.Pagos.GetSueldoPorHora(asistencia.empleadoId);
-            var pago = new Pago()
-            {
-
-                EmpleadoId = asistencia.empleadoId,
-                Fecha = DateTime.Now,
-                Importe = SueldoPorHora,
-                EstadoPago = EstadoPago.Impago
-            };
-
-            unitOfWork.Pagos.Agregar(pago);
-        }
-
-        public void Editar(Asistencia asistencia)
+        public bool Existe(Asistencia asistencia)
         {
             using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
                 try
                 {
-                    if (asistencia.AsistenciaId != 0)
-                    {
-                        unitOfWork.Asistencia.Editar(asistencia);
-                    }
-
-                    unitOfWork.Commit();
+                    return unitOfWork.Asistencia.Existe(asistencia);
                 }
                 catch (Exception)
                 {
-                    unitOfWork.Rollback();
-                    unitOfWork.Dispose();
+                    throw;
                 }
             }
         }
-
-     
     }
 }

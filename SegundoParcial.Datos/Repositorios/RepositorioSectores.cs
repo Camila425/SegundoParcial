@@ -43,14 +43,12 @@ namespace SegundoParcial.Datos.Repositorios
             int cantidad = 0;
             string selectQuery = "SELECT COUNT(*) FROM Empleados WHERE SectorId=@SectorId";
             cantidad = transaction.Connection.QuerySingle<int>(selectQuery, new { SectorId = sector.SectorId }, transaction: transaction);
-
             return cantidad > 0;
         }
 
         public bool Existe(Sector sector)
         {
             var cantidad = 0;
-
             string selectQuery;
             if (sector.SectorId == 0)
             {
@@ -69,7 +67,6 @@ namespace SegundoParcial.Datos.Repositorios
             int cantidad = 0;
             string selectQuery = "SELECT COUNT(*) FROM Sectores";
             cantidad = transaction.Connection.ExecuteScalar<int>(selectQuery, transaction: transaction);
-
             return cantidad;
         }
 
@@ -78,7 +75,6 @@ namespace SegundoParcial.Datos.Repositorios
             List<Sector> lista = new List<Sector>();
             string selectQuery = "select SectorId,NombreSector from Sectores order by NombreSector";
             lista = transaction.Connection.Query<Sector>(selectQuery, transaction: transaction).ToList();
-
             return lista;
         }
 

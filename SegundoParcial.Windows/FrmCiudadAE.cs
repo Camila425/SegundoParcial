@@ -53,7 +53,6 @@ namespace SegundoParcial.Windows
             }
             return valido;
         }
-
         public void SetCiudad(Ciudad ciudad)
         {
             this.ciudad = ciudad;

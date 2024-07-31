@@ -14,28 +14,26 @@ namespace SegundoParcial.Datos.Repositorios
         {
             transaction = Transaction;
         }
-
         public void Agregar(Puesto puesto)
         {
 
-            string insertQuery = "INSERT INTO Puestos(NombrePuesto,SueldoPorHora) VALUES(@NombrePuesto,@SueldoPorHora); SELECT SCOPE_IDENTITY()";
+            string insertQuery = "INSERT INTO Puestos(NombrePuesto,SueldoPorHora) VALUES(@NombrePuesto,@SueldoPorHora);" +
+                                 "SELECT SCOPE_IDENTITY()";
             int ID = transaction.Connection.QuerySingle<int>(insertQuery, puesto, transaction: transaction);
             puesto.PuestoId = ID;
-
         }
 
         public void Borrar(int puestoId)
         {
-
             string deleteQuery = "DELETE FROM Puestos WHERE PuestoId=@PuestoId";
             transaction.Connection.Execute(deleteQuery, new { puestoId = puestoId }, transaction: transaction);
-
         }
 
         public void Editar(Puesto puesto)
         {
 
-            string updateQuery = "update Puestos SET NombrePuesto=@NombrePuesto,SueldoPorHora=@SueldoPorHora WHERE PuestoId=@PuestoId";
+            string updateQuery = @"update Puestos SET NombrePuesto=@NombrePuesto,SueldoPorHora=@SueldoPorHora
+                                   WHERE PuestoId=@PuestoId";
             transaction.Connection.Execute(updateQuery, puesto, transaction: transaction);
 
         }
@@ -68,11 +66,8 @@ namespace SegundoParcial.Datos.Repositorios
         public List<Puesto> GetPuestoPorPagina(int cantidad, int pagina)
         {
             List<Puesto> listapuesto = new List<Puesto>();
-            string selectQuery = @"SELECT PuestoId, NombrePuesto, SueldoPorHora FROM Puestos
-                    ORDER BY NombrePuesto
-                    OFFSET @cantidadRegistros ROWS 
-                    FETCH NEXT @cantidadPorPagina ROWS ONLY";
-
+            string selectQuery = @"SELECT PuestoId, NombrePuesto, SueldoPorHora FROM Puestos ORDER BY NombrePuesto
+                                   OFFSET @cantidadRegistros ROWS FETCH NEXT @cantidadPorPagina ROWS ONLY";
             listapuesto = transaction.Connection.Query<Puesto>(selectQuery,
             new
             {

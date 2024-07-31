@@ -74,6 +74,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.RosyBrown;
             this.splitContainer1.Panel2.Controls.Add(this.buttonUltimo);
             this.splitContainer1.Panel2.Controls.Add(this.buttonSiguiente);
             this.splitContainer1.Panel2.Controls.Add(this.buttonAnterior);
@@ -144,8 +145,8 @@
             // 
             // buttonUltimo
             // 
-            this.buttonUltimo.Image = global::SegundoParcial.Windows.Properties.Resources.last_48px;
-            this.buttonUltimo.Location = new System.Drawing.Point(524, 11);
+            this.buttonUltimo.Image = global::SegundoParcial.Windows.Properties.Resources.last_30px;
+            this.buttonUltimo.Location = new System.Drawing.Point(686, 17);
             this.buttonUltimo.Name = "buttonUltimo";
             this.buttonUltimo.Size = new System.Drawing.Size(75, 32);
             this.buttonUltimo.TabIndex = 59;
@@ -154,8 +155,8 @@
             // 
             // buttonSiguiente
             // 
-            this.buttonSiguiente.Image = global::SegundoParcial.Windows.Properties.Resources.next_48px;
-            this.buttonSiguiente.Location = new System.Drawing.Point(443, 11);
+            this.buttonSiguiente.Image = global::SegundoParcial.Windows.Properties.Resources.next_50px;
+            this.buttonSiguiente.Location = new System.Drawing.Point(594, 17);
             this.buttonSiguiente.Name = "buttonSiguiente";
             this.buttonSiguiente.Size = new System.Drawing.Size(75, 32);
             this.buttonSiguiente.TabIndex = 60;
@@ -164,8 +165,8 @@
             // 
             // buttonAnterior
             // 
-            this.buttonAnterior.Image = global::SegundoParcial.Windows.Properties.Resources.previous_48px;
-            this.buttonAnterior.Location = new System.Drawing.Point(362, 11);
+            this.buttonAnterior.Image = global::SegundoParcial.Windows.Properties.Resources.previous_50px;
+            this.buttonAnterior.Location = new System.Drawing.Point(503, 17);
             this.buttonAnterior.Name = "buttonAnterior";
             this.buttonAnterior.Size = new System.Drawing.Size(75, 32);
             this.buttonAnterior.TabIndex = 61;
@@ -174,8 +175,8 @@
             // 
             // buttonPrimero
             // 
-            this.buttonPrimero.Image = global::SegundoParcial.Windows.Properties.Resources.first_48px;
-            this.buttonPrimero.Location = new System.Drawing.Point(281, 11);
+            this.buttonPrimero.Image = global::SegundoParcial.Windows.Properties.Resources.first_30px;
+            this.buttonPrimero.Location = new System.Drawing.Point(413, 17);
             this.buttonPrimero.Name = "buttonPrimero";
             this.buttonPrimero.Size = new System.Drawing.Size(75, 32);
             this.buttonPrimero.TabIndex = 62;

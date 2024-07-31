@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Application = System.Windows.Forms.Application;
 
 namespace SegundoParcial.Windows
 {
@@ -15,6 +16,8 @@ namespace SegundoParcial.Windows
         }
         private void AbrirFormulario(IconMenuItem menu, Form formulario)
         {
+            pictureBox1.Visible = false;
+
             if (menuActivo != null)
             {
                 menuActivo.BackColor = Color.White;
@@ -32,9 +35,9 @@ namespace SegundoParcial.Windows
             formulario.Dock = DockStyle.Fill;
 
             formularioActivo = formulario;
+
             Contenedorpanel.Controls.Add(formulario);
             formulario.Show();
-
         }
 
         private void EmpleadosiconMenuItem_Click(object sender, EventArgs e)
@@ -76,6 +79,11 @@ namespace SegundoParcial.Windows
         {
             AbrirFormulario((IconMenuItem)sender, new FrmPagos());
 
+        }
+
+        private void iconMenuItem1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

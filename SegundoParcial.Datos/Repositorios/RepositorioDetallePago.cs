@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using SegundoParcial.Datos.Interfaces;
-using SegundoParcial.Entidades.Dtos.DetallePgo;
+using SegundoParcial.Entidades.Dtos.ItemsDetallePago;
+using SegundoParcial.Entidades.Entidades;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -15,17 +16,25 @@ namespace SegundoParcial.Datos.Repositorios
             transaction = Transaction;
         }
 
-      
-        public List<DetallePagoDto> GetDetallePago(int PagoId)
+        public List<ItemsDetallePagoDto> GetDetallePago(int PagoId)
         {
-            List<DetallePagoDto> lista = new List<DetallePagoDto>();
-            string selectQuery = @"select DetallePagoId,PagoId,Importe from DetallePagos where PagoId=@PagoId";
-            lista = transaction.Connection.Query<DetallePagoDto>(selectQuery,
+            List<ItemsDetallePagoDto> lista = new List<ItemsDetallePagoDto>();
+
+            string selectQuery = @"select pagoid,SueldoPorHora,HorasExtras,Descuentos from ItemsSueldos where PagoId=@PagoId";
+            lista = transaction.Connection.Query<ItemsDetallePagoDto>(selectQuery,
                 new { @PagoId }, transaction: transaction).ToList();
 
             return lista;
         }
 
-       
+        public List<ItemsDetallePago> GetItemsDetallePago(int pagoId)
+        {
+            List<ItemsDetallePago> lista = new List<ItemsDetallePago>();
+
+            string selectQuery = @"select pagoid,SueldoPorHora,HorasExtras,Descuentos from ItemsSueldos where PagoId=@PagoId";
+            lista = transaction.Connection.Query<ItemsDetallePago>(selectQuery,
+                new { @pagoId }, transaction: transaction).ToList();
+            return lista;
+        }
     }
 }

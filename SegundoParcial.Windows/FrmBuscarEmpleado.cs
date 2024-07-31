@@ -32,7 +32,6 @@ namespace SegundoParcial.Windows
             }
         }
 
-
         private bool ValidarDatos()
         {
             bool valido = true;

@@ -31,12 +31,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.DatosdataGridView = new System.Windows.Forms.DataGridView();
             this.colsectores = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.NuevotoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.BorrartoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.EditartoolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.CerrartoolStripButton = new System.Windows.Forms.ToolStripButton();
             this.buttonUltimo = new System.Windows.Forms.Button();
             this.buttonSiguiente = new System.Windows.Forms.Button();
             this.buttonAnterior = new System.Windows.Forms.Button();
@@ -47,6 +41,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Registroslabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.NuevotoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.BorrartoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.EditartoolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.CerrartoolStripButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -68,6 +68,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.RosyBrown;
             this.splitContainer1.Panel2.Controls.Add(this.buttonUltimo);
             this.splitContainer1.Panel2.Controls.Add(this.buttonSiguiente);
             this.splitContainer1.Panel2.Controls.Add(this.buttonAnterior);
@@ -79,7 +80,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.Registroslabel);
             this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Size = new System.Drawing.Size(800, 392);
-            this.splitContainer1.SplitterDistance = 326;
+            this.splitContainer1.SplitterDistance = 325;
             this.splitContainer1.TabIndex = 25;
             // 
             // DatosdataGridView
@@ -94,7 +95,7 @@
             this.DatosdataGridView.Name = "DatosdataGridView";
             this.DatosdataGridView.ReadOnly = true;
             this.DatosdataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DatosdataGridView.Size = new System.Drawing.Size(800, 326);
+            this.DatosdataGridView.Size = new System.Drawing.Size(800, 325);
             this.DatosdataGridView.TabIndex = 0;
             // 
             // colsectores
@@ -104,73 +105,9 @@
             this.colsectores.Name = "colsectores";
             this.colsectores.ReadOnly = true;
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.BackColor = System.Drawing.Color.RosyBrown;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NuevotoolStripButton,
-            this.toolStripSeparator1,
-            this.BorrartoolStripButton,
-            this.EditartoolStripButton,
-            this.CerrartoolStripButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 58);
-            this.toolStrip1.TabIndex = 24;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // NuevotoolStripButton
-            // 
-            this.NuevotoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.create_36px;
-            this.NuevotoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.NuevotoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.NuevotoolStripButton.Name = "NuevotoolStripButton";
-            this.NuevotoolStripButton.Size = new System.Drawing.Size(46, 55);
-            this.NuevotoolStripButton.Text = "Nuevo";
-            this.NuevotoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.NuevotoolStripButton.Click += new System.EventHandler(this.NuevotoolStripButton_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 58);
-            // 
-            // BorrartoolStripButton
-            // 
-            this.BorrartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.delete_36px;
-            this.BorrartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.BorrartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.BorrartoolStripButton.Name = "BorrartoolStripButton";
-            this.BorrartoolStripButton.Size = new System.Drawing.Size(43, 55);
-            this.BorrartoolStripButton.Text = "Borrar";
-            this.BorrartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.BorrartoolStripButton.Click += new System.EventHandler(this.BorrartoolStripButton_Click);
-            // 
-            // EditartoolStripButton
-            // 
-            this.EditartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.edit_36px;
-            this.EditartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.EditartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EditartoolStripButton.Name = "EditartoolStripButton";
-            this.EditartoolStripButton.Size = new System.Drawing.Size(41, 55);
-            this.EditartoolStripButton.Text = "Editar";
-            this.EditartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.EditartoolStripButton.Click += new System.EventHandler(this.EditartoolStripButton_Click);
-            // 
-            // CerrartoolStripButton
-            // 
-            this.CerrartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.cancel_64px;
-            this.CerrartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.CerrartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CerrartoolStripButton.Name = "CerrartoolStripButton";
-            this.CerrartoolStripButton.Size = new System.Drawing.Size(43, 55);
-            this.CerrartoolStripButton.Text = "Cerrar";
-            this.CerrartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.CerrartoolStripButton.Click += new System.EventHandler(this.CerrartoolStripButton_Click);
-            // 
             // buttonUltimo
             // 
-            this.buttonUltimo.Image = global::SegundoParcial.Windows.Properties.Resources.last_48px;
+            this.buttonUltimo.Image = global::SegundoParcial.Windows.Properties.Resources.last_30px;
             this.buttonUltimo.Location = new System.Drawing.Point(494, 18);
             this.buttonUltimo.Name = "buttonUltimo";
             this.buttonUltimo.Size = new System.Drawing.Size(75, 32);
@@ -180,7 +117,7 @@
             // 
             // buttonSiguiente
             // 
-            this.buttonSiguiente.Image = global::SegundoParcial.Windows.Properties.Resources.next_48px;
+            this.buttonSiguiente.Image = global::SegundoParcial.Windows.Properties.Resources.next_50px1;
             this.buttonSiguiente.Location = new System.Drawing.Point(413, 18);
             this.buttonSiguiente.Name = "buttonSiguiente";
             this.buttonSiguiente.Size = new System.Drawing.Size(75, 32);
@@ -190,7 +127,7 @@
             // 
             // buttonAnterior
             // 
-            this.buttonAnterior.Image = global::SegundoParcial.Windows.Properties.Resources.previous_48px;
+            this.buttonAnterior.Image = global::SegundoParcial.Windows.Properties.Resources.previous_50px;
             this.buttonAnterior.Location = new System.Drawing.Point(332, 18);
             this.buttonAnterior.Name = "buttonAnterior";
             this.buttonAnterior.Size = new System.Drawing.Size(75, 32);
@@ -200,7 +137,7 @@
             // 
             // buttonPrimero
             // 
-            this.buttonPrimero.Image = global::SegundoParcial.Windows.Properties.Resources.first_48px;
+            this.buttonPrimero.Image = global::SegundoParcial.Windows.Properties.Resources.first_30px;
             this.buttonPrimero.Location = new System.Drawing.Point(251, 18);
             this.buttonPrimero.Name = "buttonPrimero";
             this.buttonPrimero.Size = new System.Drawing.Size(75, 32);
@@ -265,6 +202,70 @@
             this.label3.Size = new System.Drawing.Size(114, 13);
             this.label3.TabIndex = 65;
             this.label3.Text = "Cantidad de Registros:";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.Color.RosyBrown;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.NuevotoolStripButton,
+            this.toolStripSeparator1,
+            this.BorrartoolStripButton,
+            this.EditartoolStripButton,
+            this.CerrartoolStripButton});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(800, 58);
+            this.toolStrip1.TabIndex = 24;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // NuevotoolStripButton
+            // 
+            this.NuevotoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.create_36px;
+            this.NuevotoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.NuevotoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.NuevotoolStripButton.Name = "NuevotoolStripButton";
+            this.NuevotoolStripButton.Size = new System.Drawing.Size(46, 55);
+            this.NuevotoolStripButton.Text = "Nuevo";
+            this.NuevotoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.NuevotoolStripButton.Click += new System.EventHandler(this.NuevotoolStripButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 58);
+            // 
+            // BorrartoolStripButton
+            // 
+            this.BorrartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.delete_36px;
+            this.BorrartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.BorrartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BorrartoolStripButton.Name = "BorrartoolStripButton";
+            this.BorrartoolStripButton.Size = new System.Drawing.Size(43, 55);
+            this.BorrartoolStripButton.Text = "Borrar";
+            this.BorrartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.BorrartoolStripButton.Click += new System.EventHandler(this.BorrartoolStripButton_Click);
+            // 
+            // EditartoolStripButton
+            // 
+            this.EditartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.edit_36px;
+            this.EditartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.EditartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EditartoolStripButton.Name = "EditartoolStripButton";
+            this.EditartoolStripButton.Size = new System.Drawing.Size(41, 55);
+            this.EditartoolStripButton.Text = "Editar";
+            this.EditartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.EditartoolStripButton.Click += new System.EventHandler(this.EditartoolStripButton_Click);
+            // 
+            // CerrartoolStripButton
+            // 
+            this.CerrartoolStripButton.Image = global::SegundoParcial.Windows.Properties.Resources.cancel_64px;
+            this.CerrartoolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.CerrartoolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CerrartoolStripButton.Name = "CerrartoolStripButton";
+            this.CerrartoolStripButton.Size = new System.Drawing.Size(43, 55);
+            this.CerrartoolStripButton.Text = "Cerrar";
+            this.CerrartoolStripButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.CerrartoolStripButton.Click += new System.EventHandler(this.CerrartoolStripButton_Click);
             // 
             // FrmSectores
             // 

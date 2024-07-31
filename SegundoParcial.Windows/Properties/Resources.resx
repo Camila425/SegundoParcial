@@ -118,17 +118,92 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="imagen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cancel_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel_64px2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_64px2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ok_36px4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ok_36px4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="last_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\last_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="huawei_logo_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\huawei_logo_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="first_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\first_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_40px4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_40px4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_40px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_40px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next_50px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next_50px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel_64px5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_64px5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ok_36px5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ok_36px5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="last_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\last_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="organization_120px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\organization_120px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_40px3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_40px3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="previous_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\previous_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="edit_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="home_50px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home_50px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ciudades" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ciudades.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="first_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\first_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="huawei1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\huawei1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="create_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\create_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="images" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\images.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="organization_100px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\organization_100px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="todo_list_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\todo_list_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="open_garage_door_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open_garage_door_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ok_36px2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ok_36px2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -136,23 +211,62 @@
   <data name="filter_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\filter_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="open_garage_door_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open_garage_door_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="page_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\page_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ok_36px5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ok_36px5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="previous_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\previous_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exit_36px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit_36px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ok_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ok_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="create_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\create_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel_64px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_64px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="alarm_clock_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\alarm_clock_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="open_garage_door_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open_garage_door_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="first_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\first_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="money_40px5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_40px5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="money_40px2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\money_40px2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ok_36px4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ok_36px4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ok_36px3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ok_36px3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="first_48px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\first_48px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cancel_64px4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_64px4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel_64px7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_64px7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="open_garage_door_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open_garage_door_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="organization_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\organization_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imagen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="place_marker_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\place_marker_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,94 +274,46 @@
   <data name="update_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\update_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="next_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\next_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="edit_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\edit_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ok_36px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ok_36px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cancel_64px7" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel_64px7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="exit_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exit_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cancel_64px2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel_64px2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="first_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\first_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cancel_64px4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel_64px4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="money_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\money_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="money_40px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\money_40px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="open_garage_door_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open_garage_door_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="previous_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\previous_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="home_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="page_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\page_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="home_50px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home_50px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="imagen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cancel_64px5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel_64px5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="open_garage_door_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open_garage_door_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ok_36px3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ok_36px3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="imagen1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagen1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cancel_64px6" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel_64px6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="firs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\firs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cancel_64px3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cancel_64px3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="last_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\last_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="huawei" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\huawei.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ok_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ok_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="first_48px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\first_48px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="todo_list_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\todo_list_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="money_40px6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\money_40px6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="people_48px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\people_48px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cancel_64px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel_64px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cancel_30px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_30px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="delete_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="home_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cancel_64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancel_64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ok_36px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ok_36px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="money_40px3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\money_40px3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cancel_64px6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_64px6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="exit_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imagen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imagen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel_35px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_35px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

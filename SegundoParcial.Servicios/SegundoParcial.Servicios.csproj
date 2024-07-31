@@ -46,7 +46,7 @@
     <Compile Include="Interfaces\IServiciosCiudades.cs" />
     <Compile Include="Interfaces\IServiciosEmpleados.cs" />
     <Compile Include="Interfaces\IServiciosHorarios.cs" />
-    <Compile Include="Interfaces\IServiciosItemSueldo.cs" />
+    <Compile Include="Interfaces\IServiciosItemsDetallePago.cs" />
     <Compile Include="Interfaces\IServiciosPagos.cs" />
     <Compile Include="Interfaces\IServiciosPuestos.cs" />
     <Compile Include="Interfaces\IServiciosSectores.cs" />
@@ -55,7 +55,7 @@
     <Compile Include="Servicios\ServiciosCiudades.cs" />
     <Compile Include="Servicios\ServiciosEmpleados.cs" />
     <Compile Include="Servicios\ServiciosHorarios.cs" />
-    <Compile Include="Servicios\ServiciosItemSueldo.cs" />
+    <Compile Include="Servicios\ServiciosItemsDetallePago.cs" />
     <Compile Include="Servicios\ServiciosPagos.cs" />
     <Compile Include="Servicios\ServiciosPuestos.cs" />
     <Compile Include="Servicios\ServiciosSectores.cs" />

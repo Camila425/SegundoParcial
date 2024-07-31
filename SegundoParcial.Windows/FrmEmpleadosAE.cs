@@ -101,7 +101,6 @@ namespace SegundoParcial.Windows
             }
             return valido;
         }
-
         public void SetEmpleado(Empleado empleado)
         {
             this.empleado = empleado;

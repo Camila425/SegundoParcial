@@ -36,10 +36,14 @@
             this.HorariosiconMenuItem = new FontAwesome.Sharp.IconMenuItem();
             this.CiudadesiconMenuItem = new FontAwesome.Sharp.IconMenuItem();
             this.PagosiconMenuItem = new FontAwesome.Sharp.IconMenuItem();
+            this.iconMenuItem1 = new FontAwesome.Sharp.IconMenuItem();
             this.TitulomenuStrip = new System.Windows.Forms.MenuStrip();
             this.label1 = new System.Windows.Forms.Label();
             this.Contenedorpanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BarramenuStrip.SuspendLayout();
+            this.Contenedorpanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // BarramenuStrip
@@ -52,10 +56,11 @@
             this.AsistenciasiconMenuItem,
             this.HorariosiconMenuItem,
             this.CiudadesiconMenuItem,
-            this.PagosiconMenuItem});
+            this.PagosiconMenuItem,
+            this.iconMenuItem1});
             this.BarramenuStrip.Location = new System.Drawing.Point(0, 57);
             this.BarramenuStrip.Name = "BarramenuStrip";
-            this.BarramenuStrip.Size = new System.Drawing.Size(1224, 73);
+            this.BarramenuStrip.Size = new System.Drawing.Size(1025, 73);
             this.BarramenuStrip.TabIndex = 8;
             this.BarramenuStrip.Text = "menuStrip1";
             // 
@@ -69,7 +74,7 @@
             this.EmpleadosiconMenuItem.IconSize = 50;
             this.EmpleadosiconMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.EmpleadosiconMenuItem.Name = "EmpleadosiconMenuItem";
-            this.EmpleadosiconMenuItem.Size = new System.Drawing.Size(190, 69);
+            this.EmpleadosiconMenuItem.Size = new System.Drawing.Size(126, 69);
             this.EmpleadosiconMenuItem.Text = "Empleados";
             this.EmpleadosiconMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.EmpleadosiconMenuItem.Click += new System.EventHandler(this.EmpleadosiconMenuItem_Click);
@@ -84,7 +89,7 @@
             this.PuestosiconMenuItem.IconSize = 50;
             this.PuestosiconMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.PuestosiconMenuItem.Name = "PuestosiconMenuItem";
-            this.PuestosiconMenuItem.Size = new System.Drawing.Size(190, 69);
+            this.PuestosiconMenuItem.Size = new System.Drawing.Size(126, 69);
             this.PuestosiconMenuItem.Text = "Puestos";
             this.PuestosiconMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.PuestosiconMenuItem.Click += new System.EventHandler(this.PuestosiconMenuItem_Click);
@@ -99,7 +104,7 @@
             this.SectoresiconMenuItem.IconSize = 50;
             this.SectoresiconMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.SectoresiconMenuItem.Name = "SectoresiconMenuItem";
-            this.SectoresiconMenuItem.Size = new System.Drawing.Size(190, 69);
+            this.SectoresiconMenuItem.Size = new System.Drawing.Size(126, 69);
             this.SectoresiconMenuItem.Text = "Sectores";
             this.SectoresiconMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.SectoresiconMenuItem.Click += new System.EventHandler(this.SectoresiconMenuItem_Click);
@@ -114,7 +119,7 @@
             this.AsistenciasiconMenuItem.IconSize = 50;
             this.AsistenciasiconMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.AsistenciasiconMenuItem.Name = "AsistenciasiconMenuItem";
-            this.AsistenciasiconMenuItem.Size = new System.Drawing.Size(200, 69);
+            this.AsistenciasiconMenuItem.Size = new System.Drawing.Size(126, 69);
             this.AsistenciasiconMenuItem.Text = "Asistencias";
             this.AsistenciasiconMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.AsistenciasiconMenuItem.Click += new System.EventHandler(this.AsistenciasiconMenuItem_Click);
@@ -123,13 +128,13 @@
             // 
             this.HorariosiconMenuItem.AutoSize = false;
             this.HorariosiconMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.HorariosiconMenuItem.IconChar = FontAwesome.Sharp.IconChar.Wallet;
+            this.HorariosiconMenuItem.IconChar = FontAwesome.Sharp.IconChar.ListCheck;
             this.HorariosiconMenuItem.IconColor = System.Drawing.Color.Black;
             this.HorariosiconMenuItem.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.HorariosiconMenuItem.IconSize = 50;
             this.HorariosiconMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.HorariosiconMenuItem.Name = "HorariosiconMenuItem";
-            this.HorariosiconMenuItem.Size = new System.Drawing.Size(200, 69);
+            this.HorariosiconMenuItem.Size = new System.Drawing.Size(125, 69);
             this.HorariosiconMenuItem.Text = "Horarios";
             this.HorariosiconMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.HorariosiconMenuItem.Click += new System.EventHandler(this.HorariosiconMenuItem_Click);
@@ -144,7 +149,7 @@
             this.CiudadesiconMenuItem.IconSize = 50;
             this.CiudadesiconMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.CiudadesiconMenuItem.Name = "CiudadesiconMenuItem";
-            this.CiudadesiconMenuItem.Size = new System.Drawing.Size(190, 69);
+            this.CiudadesiconMenuItem.Size = new System.Drawing.Size(126, 69);
             this.CiudadesiconMenuItem.Text = "Ciudades";
             this.CiudadesiconMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.CiudadesiconMenuItem.Click += new System.EventHandler(this.CiudadesiconMenuItem_Click);
@@ -153,16 +158,31 @@
             // 
             this.PagosiconMenuItem.AutoSize = false;
             this.PagosiconMenuItem.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.PagosiconMenuItem.IconChar = FontAwesome.Sharp.IconChar.Paragraph;
+            this.PagosiconMenuItem.IconChar = FontAwesome.Sharp.IconChar.HandHoldingUsd;
             this.PagosiconMenuItem.IconColor = System.Drawing.Color.Black;
             this.PagosiconMenuItem.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.PagosiconMenuItem.IconSize = 50;
             this.PagosiconMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.PagosiconMenuItem.Name = "PagosiconMenuItem";
-            this.PagosiconMenuItem.Size = new System.Drawing.Size(190, 69);
+            this.PagosiconMenuItem.Size = new System.Drawing.Size(126, 69);
             this.PagosiconMenuItem.Text = "Pagos";
             this.PagosiconMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.PagosiconMenuItem.Click += new System.EventHandler(this.PagosiconMenuItem_Click);
+            // 
+            // iconMenuItem1
+            // 
+            this.iconMenuItem1.AutoSize = false;
+            this.iconMenuItem1.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.iconMenuItem1.IconChar = FontAwesome.Sharp.IconChar.ExternalLinkSquare;
+            this.iconMenuItem1.IconColor = System.Drawing.Color.Black;
+            this.iconMenuItem1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem1.IconSize = 50;
+            this.iconMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.iconMenuItem1.Name = "iconMenuItem1";
+            this.iconMenuItem1.Size = new System.Drawing.Size(126, 69);
+            this.iconMenuItem1.Text = " Salir";
+            this.iconMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.iconMenuItem1.Click += new System.EventHandler(this.iconMenuItem1_Click);
             // 
             // TitulomenuStrip
             // 
@@ -171,7 +191,7 @@
             this.TitulomenuStrip.Location = new System.Drawing.Point(0, 0);
             this.TitulomenuStrip.Name = "TitulomenuStrip";
             this.TitulomenuStrip.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.TitulomenuStrip.Size = new System.Drawing.Size(1224, 57);
+            this.TitulomenuStrip.Size = new System.Drawing.Size(1025, 57);
             this.TitulomenuStrip.TabIndex = 9;
             this.TitulomenuStrip.Text = "menuStrip2";
             // 
@@ -181,34 +201,50 @@
             this.label1.BackColor = System.Drawing.Color.RosyBrown;
             this.label1.Font = new System.Drawing.Font("Lucida Calligraphy", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(565, 9);
+            this.label1.Location = new System.Drawing.Point(248, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(294, 36);
+            this.label1.Size = new System.Drawing.Size(489, 36);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Control de Sueldos";
+            this.label1.Text = "Control de Pagos de Empleados";
             // 
             // Contenedorpanel
             // 
+            this.Contenedorpanel.BackColor = System.Drawing.Color.RosyBrown;
+            this.Contenedorpanel.Controls.Add(this.pictureBox1);
             this.Contenedorpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Contenedorpanel.Location = new System.Drawing.Point(0, 130);
             this.Contenedorpanel.Name = "Contenedorpanel";
-            this.Contenedorpanel.Size = new System.Drawing.Size(1224, 402);
+            this.Contenedorpanel.Size = new System.Drawing.Size(1025, 405);
             this.Contenedorpanel.TabIndex = 11;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SegundoParcial.Windows.Properties.Resources.organization_120px;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1019, 399);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1224, 532);
+            this.ClientSize = new System.Drawing.Size(1025, 535);
+            this.ControlBox = false;
             this.Controls.Add(this.Contenedorpanel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.BarramenuStrip);
             this.Controls.Add(this.TitulomenuStrip);
             this.MainMenuStrip = this.BarramenuStrip;
             this.Name = "FrmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.BarramenuStrip.ResumeLayout(false);
             this.BarramenuStrip.PerformLayout();
+            this.Contenedorpanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,6 +262,8 @@
         private FontAwesome.Sharp.IconMenuItem CiudadesiconMenuItem;
         private FontAwesome.Sharp.IconMenuItem PagosiconMenuItem;
         private System.Windows.Forms.Panel Contenedorpanel;
+        private FontAwesome.Sharp.IconMenuItem iconMenuItem1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

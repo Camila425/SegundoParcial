@@ -47,10 +47,8 @@ namespace SegundoParcial.Windows
             if (Horario != null)
             {
                 HorariocomboBox.SelectedValue = Horario.HorarioId;
-
                 HoraIniciodateTimePicker.Value = DateTime.Parse(Horario.HoraInicio.ToString());
                 HoraSalidadateTimePicker.Value = DateTime.Parse(Horario.HoraFin.ToString());
-
             }
         }
 

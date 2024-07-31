@@ -58,9 +58,9 @@
             // Cancelarbutton
             // 
             this.Cancelarbutton.Image = global::SegundoParcial.Windows.Properties.Resources.cancel_64px1;
-            this.Cancelarbutton.Location = new System.Drawing.Point(264, 133);
+            this.Cancelarbutton.Location = new System.Drawing.Point(274, 160);
             this.Cancelarbutton.Name = "Cancelarbutton";
-            this.Cancelarbutton.Size = new System.Drawing.Size(102, 56);
+            this.Cancelarbutton.Size = new System.Drawing.Size(131, 56);
             this.Cancelarbutton.TabIndex = 7;
             this.Cancelarbutton.Text = "Cancelar";
             this.Cancelarbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -70,9 +70,9 @@
             // OKbutton
             // 
             this.OKbutton.Image = global::SegundoParcial.Windows.Properties.Resources.ok_36px;
-            this.OKbutton.Location = new System.Drawing.Point(65, 133);
+            this.OKbutton.Location = new System.Drawing.Point(46, 160);
             this.OKbutton.Name = "OKbutton";
-            this.OKbutton.Size = new System.Drawing.Size(102, 56);
+            this.OKbutton.Size = new System.Drawing.Size(137, 56);
             this.OKbutton.TabIndex = 6;
             this.OKbutton.Text = "Ok";
             this.OKbutton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -81,7 +81,7 @@
             // 
             // SueldotextBox
             // 
-            this.SueldotextBox.Location = new System.Drawing.Point(118, 70);
+            this.SueldotextBox.Location = new System.Drawing.Point(118, 74);
             this.SueldotextBox.Name = "SueldotextBox";
             this.SueldotextBox.Size = new System.Drawing.Size(316, 20);
             this.SueldotextBox.TabIndex = 8;
@@ -89,7 +89,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 73);
+            this.label2.Location = new System.Drawing.Point(29, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 9;
@@ -103,6 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.RosyBrown;
             this.ClientSize = new System.Drawing.Size(452, 243);
             this.ControlBox = false;
             this.Controls.Add(this.label2);

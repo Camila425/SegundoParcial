@@ -1,5 +1,4 @@
-﻿using SegundoParcial.Entidades.Enums;
-using System;
+﻿using System;
 
 namespace SegundoParcial.Entidades.Dtos.Asistencias
 {
@@ -10,9 +9,9 @@ namespace SegundoParcial.Entidades.Dtos.Asistencias
         public string Nombre { get; set; }
         public DateTime Fecha { get; set; }
         public TimeSpan HoraEntrada { get; set; }
-        public TimeSpan HoraSalida { get; set; }
+        public TimeSpan? HoraSalida { get; set; }
         public double HorasTrabajadas { get; set; }
-
+        public double HorasExtras { get; set; }
 
         public object Clone()
         {

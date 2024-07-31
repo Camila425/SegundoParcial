@@ -7,14 +7,17 @@ namespace SegundoParcial.Datos.Interfaces
     public interface IRepositorioPagos
     {
         void Agregar(Pago pago);
+        void AgregarDetalles(Pago pago);
+        void AnularPago(PagoListDto pago);
         void Borrar(int pagoId);
+        void Editar(Asistencia asistencia, Pago pago);
         void Editar(Pago pago);
-        bool EstaRelacionado(PagoListDto pago);
+        bool EstaRelacionado(Pago pago);
         int GetCantidad(int? empleadoId);
-        List<PagoListDto> GetPago(int? EmpleadoId);
+        List<PagoListDto> GetPago();
         PagoListDto GetPagoPorId(int pagoId);
         Pago GetPagosPorId(int pagoId);
         List<PagoListDto> GetPagosPorPagina(int registrosPorPagina, int paginaActual,int? empleadoId);
-        double GetSueldoPorHora(int empleadoId);
+        void PagarAEmpleado(PagoListDto pago);
     }
 }

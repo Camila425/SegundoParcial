@@ -1,4 +1,5 @@
 ﻿using SegundoParcial.Datos.Repositorios;
+using SegundoParcial.Entidades.Dtos.PagoDetalleDto;
 using SegundoParcial.Entidades.Dtos.Pagos;
 using SegundoParcial.Entidades.Entidades;
 using SegundoParcial.Servicios.Interfaces;
@@ -32,7 +33,7 @@ namespace SegundoParcial.Servicios.Servicios
             }
         }
 
-        public bool EstaRelacionado(PagoListDto pago)
+        public bool EstaRelacionado(Pago pago)
         {
             using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
@@ -43,9 +44,8 @@ namespace SegundoParcial.Servicios.Servicios
                 catch (Exception)
                 {
                     throw;
-                } 
+                }
             }
-
         }
 
         public int GetCantidad(int? empleadoId)
@@ -63,16 +63,13 @@ namespace SegundoParcial.Servicios.Servicios
             }
         }
 
-        public PagoDetalleDto GetPagoDetalle(int PagoId)
+        public List<PagoListDto> GetPago()
         {
-            PagoDetalleDto pagoDetalleDto = new PagoDetalleDto();
             using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
             {
                 try
                 {
-                    pagoDetalleDto.pagoListDto = unitOfWork.Pagos.GetPagoPorId(PagoId);
-                    pagoDetalleDto.DetallesDto = unitOfWork.DetallePago.GetDetallePago(PagoId);
-                    return pagoDetalleDto;
+                    return unitOfWork.Pagos.GetPago();
                 }
                 catch (Exception)
                 {
@@ -81,35 +78,7 @@ namespace SegundoParcial.Servicios.Servicios
             }
         }
 
-        public List<PagoListDto> GetPago(int? EmpleadoId)
-        {
-            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
-            {
-                try
-                {
-                    return unitOfWork.Pagos.GetPago(EmpleadoId);
-                }
-                catch (Exception)
-                {
-                    throw;
-                } 
-            }
-        }
 
-        public PagoListDto GetPagoPorId(int pagoId)
-        {
-            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
-            {
-                try
-                {
-                    return unitOfWork.Pagos.GetPagoPorId(pagoId);
-                }
-                catch (Exception)
-                {
-                    throw;
-                } 
-            }
-        }
 
         public List<PagoListDto> GetPagosPorPagina(int registrosPorPagina, int paginaActual, int? empleado)
         {
@@ -117,7 +86,7 @@ namespace SegundoParcial.Servicios.Servicios
             {
                 try
                 {
-                    var lista = unitOfWork.Pagos.GetPagosPorPagina(registrosPorPagina, paginaActual,empleado);
+                    var lista = unitOfWork.Pagos.GetPagosPorPagina(registrosPorPagina, paginaActual, empleado);
                     return lista;
                 }
                 catch (Exception)
@@ -133,21 +102,13 @@ namespace SegundoParcial.Servicios.Servicios
             {
                 try
                 {
-                    if (pago.PagoId == 0)
-                    {
-                        unitOfWork.Pagos.Agregar(pago);
-                    }
-                    else
-                    {
-                        unitOfWork.Pagos.Editar(pago);
-                    }
-                    unitOfWork.Commit();
+                    unitOfWork.Pagos.Agregar(pago);
                 }
                 catch (Exception)
                 {
                     unitOfWork.Rollback();
                     unitOfWork.Dispose();
-                } 
+                }
             }
         }
 
@@ -163,6 +124,80 @@ namespace SegundoParcial.Servicios.Servicios
                 {
                     throw;
                 }
+            }
+        }
+
+        public PagoDetalleDto GetPagoDetalle(int pagoId)
+        {
+            PagoDetalleDto ItemDetalleDto = new PagoDetalleDto();
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+                try
+                {
+                    ItemDetalleDto.pagoListDto = unitOfWork.Pagos.GetPagoPorId(pagoId);
+                    ItemDetalleDto.DetallesDto = unitOfWork.ItemsDetallePago.GetItemsDetallePago(pagoId);
+                    return ItemDetalleDto;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public PagoListDto GetPagoPorId(int pagoId)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+                try
+                {
+                    return unitOfWork.Pagos.GetPagoPorId(pagoId);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public void Editar(Asistencia asistencia, Pago pago)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+                if (asistencia.AsistenciaId != 0)
+                {
+                    unitOfWork.Pagos.Editar(asistencia,pago);
+
+                }
+            }
+        }
+
+        public void PagarAEmpleado(PagoListDto pago)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            { 
+               unitOfWork.Pagos.PagarAEmpleado(pago);
+            }
+        }
+
+        public void Editar(Pago pago)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+                if (pago.PagoId != 0)
+                {
+                    unitOfWork.Pagos.Editar(pago);
+                }
+                unitOfWork.Commit();
+
+            }
+        }
+
+        public void AnularPago(PagoListDto pago)
+        {
+            using (var unitOfWork = new UnitOfWork(ConfigurationManager.ConnectionStrings["MiConexion"].ToString()))
+            {
+                unitOfWork.Pagos.AnularPago(pago);
             }
         }
     }
